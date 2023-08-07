@@ -42,7 +42,7 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - medium               
+ *               - mediumname              
  *             properties:
  *               mediumname:
  *                 type: string *                              
@@ -55,7 +55,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Video'
+ *                $ref: '#/components/schemas/Medium'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -71,10 +71,10 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         mediumname: medium
+ *         mediumname: mediumname
  *         schema:
  *           type: string
- *         description: User name *       
+ *         description: Medium name *       
  *       - in: query
  *         name: sortBy
  *         schema:
