@@ -3,14 +3,9 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
 
-const userSchema = mongoose.Schema(
-  {
-     
-    board: {
-      type: String,      
-      trim: true,
-    }, 
-    classname: {
+const classSchema = mongoose.Schema(
+  { 
+    className: {
       type: String,      
       trim: true,
     },    
@@ -21,13 +16,13 @@ const userSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-userSchema.plugin(toJSON);
-userSchema.plugin(paginate);
+classSchema.plugin(toJSON);
+classSchema.plugin(paginate);
 
 
 /**
  * @typedef Video
  */
-const Classes = mongoose.model('Classes', userSchema);
+const Classes = mongoose.model('Classes', classSchema);
 
 module.exports = Classes;

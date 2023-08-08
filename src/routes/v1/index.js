@@ -5,6 +5,7 @@ const videoRoute = require('./video.route');
 const planvideoRoute = require('./planvideo.route');
 const boardRoute = require('./board.route');
 const classesRoute = require('./classes.route');
+const chapterRoute = require('./chapter.route');
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
 
@@ -34,6 +35,10 @@ const defaultRoutes = [
   {
     path: '/classes',
     route: classesRoute,
+  },
+  {
+    path: '/chapter',
+    route: chapterRoute,
   },
 ];
 
