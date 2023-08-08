@@ -29,7 +29,7 @@ const queryMedium = async (filter, options) => {
 /**
 * Get medium by id
 * @param {ObjectId} id
-* @returns {Promise<User>}
+* @returns {Promise<Medium>}
 */
 const getMediumById = async (id) => {
     return Medium.findById(id);
