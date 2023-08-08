@@ -43,6 +43,7 @@ module.exports = router
  * /chapter/{chapterId}:
  *   patch:
  *     summary: Update a single chapter by ID
+ *     tags: [Chapters]
  *     parameters:
  *       - in: path
  *         name: chapterId
@@ -64,6 +65,7 @@ module.exports = router
  *         description: Chapter not found
  *   delete:
  *     summary: Delete a single chapter by ID
+ *     tags: [Chapters]
  *     parameters:
  *       - in: path
  *         name: chapterId
@@ -78,6 +80,7 @@ module.exports = router
  *         description: Chapter not found
  *   get:
  *     summary: Get a single chapter by ID
+ *     tags: [Chapters]
  *     parameters:
  *       - in: path
  *         name: chapterId

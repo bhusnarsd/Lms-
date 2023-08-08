@@ -52,6 +52,7 @@ module.exports = router;
  * /classes/{classId}:
  *   get:
  *     summary: Get a single class by ID
+ *     tags: [Classes]
  *     parameters:
  *       - in: path
  *         name: classId
@@ -73,6 +74,7 @@ module.exports = router;
  *
  *   patch:
  *     summary: Update a single class by ID
+ *     tags: [Classes]
  *     parameters:
  *       - in: path
  *         name: classId
@@ -95,6 +97,7 @@ module.exports = router;
  *
  *   delete:
  *     summary: Delete a single class by ID
+ *     tags: [Classes]
  *     parameters:
  *       - in: path
  *         name: classId
