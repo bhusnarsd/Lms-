@@ -8,9 +8,6 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<User>}
  */
 const createClasses = async (userBody) => {
-  //if (await User.isEmailTaken(userBody.email)) {
-   // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
- // }
   return Classes.create(userBody); 
  
 };
@@ -24,9 +21,9 @@ const createClasses = async (userBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryUsers = async (filter, options) => {
-  const videos = await Classes.paginate(filter, options);
-  return videos;
+const getAllClasses = async (filter, options) => {
+  const classes = await Classes.paginate(filter, options);
+  return classes;
 };
 
 /**
@@ -34,17 +31,8 @@ const queryUsers = async (filter, options) => {
  * @param {ObjectId} id
  * @returns {Promise<User>}
  */
-const getUserById = async (id) => {
-  return Video.findById(id);
-};
-
-/**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
+const getClassById = async (id) => {
+  return Classes.findById(id);
 };
 
 /**
@@ -53,17 +41,14 @@ const getUserByEmail = async (email) => {
  * @param {Object} updateBody
  * @returns {Promise<User>}
  */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const updateClassById = async (classId, updateBody) => {
+  const singleClass = await getClassById(classId);
+  if (!singleClass) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
+  Object.assign(singleClass, updateBody);
+  await singleClass.save();
+  return singleClass;
 };
 
 /**
@@ -71,10 +56,10 @@ const updateUserById = async (userId, updateBody) => {
  * @param {ObjectId} userId
  * @returns {Promise<User>}
  */
-const deleteUserById = async (userId) => {
-  const user = await getUserById(userId);
+const deleteClassById = async (classId) => {
+  const user = await getClassById(classId);
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
   }
   await user.remove();
   return user;
@@ -82,9 +67,8 @@ const deleteUserById = async (userId) => {
 
 module.exports = {
   createClasses,
-  queryUsers,
-  getUserById,
-  getUserByEmail,
-  updateUserById,
-  deleteUserById,
+  getAllClasses,
+  getClassById,
+  updateClassById,
+  deleteClassById,
 };
