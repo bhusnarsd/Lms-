@@ -8,8 +8,12 @@ const classesRoute = require('./classes.route');
 const chapterRoute = require('./chapter.route');
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
+
 const mediumRoute = require('./medium.route');
 const lessionRoute = require('./lession.route');
+const subjectRoute = require('./subject.route');
+const bookRoute = require('./book.route');
+
 
 const router = express.Router();
 
@@ -31,7 +35,7 @@ const defaultRoutes = [
     route: planvideoRoute,
   },
   {
-    path: '/board',
+    path: '/boards',
     route: boardRoute,
   },
   {
@@ -45,6 +49,16 @@ const defaultRoutes = [
   {
     path: '/lession',
     route: lessionRoute,
+
+    path: '/chapter',
+    route: chapterRoute,
+
+    path: '/subjects',
+    route: subjectRoute,
+  },
+  {
+    path: '/books',
+    route: bookRoute,
   },
 ];
 
