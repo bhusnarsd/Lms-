@@ -6,40 +6,40 @@ const { classesService } = require('../services');
  
  
 const createClasses = catchAsync(async (req, res) => {
-  const user = await classesService.createClasses(req.body);
-  res.status(httpStatus.CREATED).send(user);
+  const newClass = await classesService.createClasses(req.body);
+  res.status(httpStatus.CREATED).send(newClass);
 });
 
 
-const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['classname']);
+const getClasses = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['className']); 
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await classesService.queryUsers(filter, options);
-  res.send(result);
+  const allClasses = await classesService.getAllClasses(filter, options);
+  res.send(allClasses);
 });
 
-const getUser = catchAsync(async (req, res) => {
-  const user = await videoService.getUserById(req.params.userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const getSingleClass = catchAsync(async (req, res) => {
+  const singleClass = await classesService.getClassById(req.params.classId);
+  if (!singleClass) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
   }
-  res.send(user);
+  res.send(singleClass);
 });
 
-const updateUser = catchAsync(async (req, res) => {
-  const user = await videoService.updateUserById(req.params.userId, req.body);
-  res.send(user);
+const updateSingleClass = catchAsync(async (req, res) => {
+  const updateddClass = await classesService.updateClassById(req.params.classId, req.body);
+  res.send(updateddClass);
 });
 
-const deleteUser = catchAsync(async (req, res) => {
-  await videoService.deleteUserById(req.params.userId);
-  res.status(httpStatus.NO_CONTENT).send();
+const deleteSingleClass = catchAsync(async (req, res) => {
+ const deletedClass =  await classesService.deleteClassById(req.params.classId);
+  res.status(httpStatus.NO_CONTENT).send(deletedClass);
 });
 
 module.exports = {
   createClasses,
-  getUsers,
-  getUser,
-  updateUser,
-  deleteUser,
+  getClasses,
+  getSingleClass,
+  updateSingleClass,
+  deleteSingleClass,
 };
