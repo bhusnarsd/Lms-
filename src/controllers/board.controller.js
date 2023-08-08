@@ -5,41 +5,41 @@ const catchAsync = require('../utils/catchAsync');
 const { boardService } = require('../services');
  
  
-const createUser = catchAsync(async (req, res) => {
+const createBoard = catchAsync(async (req, res) => {
   const user = await boardService.createBoard(req.body);
   res.status(httpStatus.CREATED).send(user);
 });
 
 
-const getUsers = catchAsync(async (req, res) => {
+const getAllBoard = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['board']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await boardService.queryUsers(filter, options);
+  const result = await boardService.queryBoard(filter, options);
   res.send(result);
 });
 
-const getUser = catchAsync(async (req, res) => {
-  const user = await videoService.getUserById(req.params.userId);
-  if (!user) {
+const getBoard = catchAsync(async (req, res) => {
+  const board = await boardService.getBoardById(req.params.boardId);
+  if (!board) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
+  res.send(board);
+});
+
+const updateBoard = catchAsync(async (req, res) => {
+  const user = await boardService.updateBoardById(req.params.boardId, req.body);
   res.send(user);
 });
 
-const updateUser = catchAsync(async (req, res) => {
-  const user = await videoService.updateUserById(req.params.userId, req.body);
-  res.send(user);
-});
-
-const deleteUser = catchAsync(async (req, res) => {
-  await videoService.deleteUserById(req.params.userId);
+const deleteBoard = catchAsync(async (req, res) => {
+  await boardService.deleteBoardById(req.params.boardId);
   res.status(httpStatus.NO_CONTENT).send();
 });
 
 module.exports = {
-  createUser,
-  getUsers,
-  getUser,
-  updateUser,
-  deleteUser,
+  createBoard,
+  getAllBoard,
+  getBoard,
+  updateBoard,
+  deleteBoard,
 };

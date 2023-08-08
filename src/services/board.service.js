@@ -3,20 +3,16 @@ const { Board } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
- * @param {Object} userBody
- * @returns {Promise<User>}
+ * Create a board
+ * @param {Object} boardBody
+ * @returns {Promise<Board>}
  */
-const createBoard = async (userBody) => {
-  //if (await User.isEmailTaken(userBody.email)) {
-   // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
- // }
-  return Board.create(userBody);
- 
+const createBoard = async (boardBody) => {
+  return Board.create(boardBody);
 };
 
 /**
- * Query for users
+ * Query for board
  * @param {Object} filter - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -24,67 +20,54 @@ const createBoard = async (userBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryUsers = async (filter, options) => {
-  const videos = await Board.paginate(filter, options);
-  return videos;
+const queryBoard = async (filter, options) => {
+  const  boards = await Board.paginate(filter, options);
+  return boards;
 };
 
 /**
- * Get user by id
+ * Get board by id
  * @param {ObjectId} id
- * @returns {Promise<User>}
+ * @returns {Promise<Board>}
  */
-const getUserById = async (id) => {
-  return Video.findById(id);
+const getBoardById = async (id) => {
+  return Board.findById(id);
 };
 
 /**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
-};
-
-/**
- * Update user by id
+ * Update board by id
  * @param {ObjectId} userId
  * @param {Object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Board>}
  */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const updateBoardById = async (boardId, updateBody) => {
+  const board = await getBoardById(boardId);
+  if (!board) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Board not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
+  Object.assign(board, updateBody);
+  await board.save();
+  return board;
 };
 
 /**
- * Delete user by id
- * @param {ObjectId} userId
- * @returns {Promise<User>}
+ * Delete board by id
+ * @param {ObjectId} boardId
+ * @returns {Promise<Board>}
  */
-const deleteUserById = async (userId) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const deleteBoardById = async (userId) => {
+  const board = await getBoardById(userId);
+  if (!board) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Board not found');
   }
-  await user.remove();
-  return user;
+  await board.remove();
+  return board;
 };
 
 module.exports = {
   createBoard,
-  queryUsers,
-  getUserById,
-  getUserByEmail,
-  updateUserById,
-  deleteUserById,
+  queryBoard,
+  getBoardById,
+  updateBoardById,
+  deleteBoardById,
 };
