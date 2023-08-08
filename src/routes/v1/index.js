@@ -8,6 +8,7 @@ const classesRoute = require('./classes.route');
 const docsRoute = require('./docs.route');
 const config = require('../../config/config');
 const mediumRoute = require('./medium.route');
+const lessionRoute = require('./lession.route');
 
 const router = express.Router();
 
@@ -39,6 +40,10 @@ const defaultRoutes = [
   {
     path: '/medium',
     route: mediumRoute,
+  },
+  {
+    path: '/lession',
+    route: lessionRoute,
   },
 ];
 

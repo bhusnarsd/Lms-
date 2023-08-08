@@ -3,7 +3,7 @@ const { Medium } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
+ * Create a medium
  * @param {Object} mediumBody
  * @returns {Promise<Medium>}
  */
@@ -13,7 +13,7 @@ const createMedium = async (mediumBody) => {
 };
 
 /**
-* Query for users
+* Query for medium
 * @param {Object} filter - Mongo filter
 * @param {Object} options - Query options
 * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -27,7 +27,7 @@ const queryMedium = async (filter, options) => {
 };
 
 /**
-* Get user by id
+* Get medium by id
 * @param {ObjectId} id
 * @returns {Promise<User>}
 */
@@ -36,7 +36,7 @@ const getMediumById = async (id) => {
 };
 
 /**
- * Update user by id
+ * Update medium by id
  * @param {ObjectId} mediumId
  * @param {Object} updateBody
  * @returns {Promise<Medium>}
@@ -52,7 +52,7 @@ const updateMediumById = async (mediumId, updateBody) => {
   };
   
   /**
-   * Delete user by id
+   * Delete medium by id
    * @param {ObjectId} mediumId
    * @returns {Promise<Medium>}
    */

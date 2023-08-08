@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const mediumSchema = mongoose.Schema({
-        mediumname: {
+        name: {
             type: String,
             trim: true,
             required: true

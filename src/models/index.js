@@ -5,3 +5,4 @@ module.exports.Planvideo = require('./planvideo.model');
 module.exports.Board = require('./board.model');
 module.exports.Classes = require('./classes.model');
 module.exports.Medium = require('./medium.model');
+module.exports.Lession = require('./lession.model');

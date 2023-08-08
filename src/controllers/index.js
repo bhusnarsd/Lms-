@@ -5,4 +5,5 @@ module.exports.planvideoController = require('./planvideo.controller');
 module.exports.boardController = require('./board.controller');
 module.exports.classesController = require('./classes.controller');
 module.exports.mediumController = require('./medium.controller');
+module.exports.lessionController = require('./lession.controller');
 

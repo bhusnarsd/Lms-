@@ -7,3 +7,4 @@ module.exports.planvideoService = require('./planvideo.service');
 module.exports.boardService = require('./board.service');
 module.exports.classesService = require('./classes.service');
 module.exports.mediumService = require('./medium.service');
+module.exports.lessionService = require('./lession.service');
