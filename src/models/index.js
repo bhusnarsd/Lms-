@@ -4,4 +4,9 @@ module.exports.Video = require('./video.model');
 module.exports.Planvideo = require('./planvideo.model');
 module.exports.Board = require('./board.model');
 module.exports.Classes = require('./classes.model');
+
 module.exports.Chapter = require('./chapter.model');
+
+module.exports.Subject  = require('./subject.model')
+module.exports.Book  = require('./book.model')
+

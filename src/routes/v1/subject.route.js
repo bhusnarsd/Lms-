@@ -1,38 +1,41 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  boardController = require('../../controllers/board.controller');
-const boardValidation = require('../../validations/board.validation')
+const  subjectController = require('../../controllers/subject.controller');
+const subjectValidation = require('../../validations/subject.validation')
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(boardValidation.createBoard), boardController.createBoard)
-  .get(validate(boardValidation.getAllBoard), boardController.getAllBoard);
+  .post(validate(subjectValidation.createSubject), subjectController.createSubject)
+  .get(validate(subjectValidation.getAllSubject), subjectController.getAllSubject);
 
 router
-  .route('/:boardId')
-  .get(validate(boardValidation.getBoard), boardController.getBoard)
-  .patch( validate(boardValidation.updateBoard), boardController.updateBoard)
-  .delete( validate(boardValidation.deleteBoard), boardController.deleteBoard);
+  .route('/:subjectId')
+  .get(validate(subjectValidation.getSubject), subjectController.getSubjectById)
+  .patch(validate(subjectValidation.updateSubject),  subjectController.updateSubject)
+  .delete( validate(subjectValidation.deleteSubject), subjectController.deleteSubject);
+
+  router
+  .route('/class/:classId')
+  .get( subjectController.getSubjectByClassId)
 
 module.exports = router;
 
 /**
  * @swagger
  * tags:
- *   name: Board
+ *   name: Subject
  *   description: User management and retrieval
  */
 
 /**
  * @swagger
- * /boards:
+ * /subjects:
  *   post:
- *     summary: Create a user
- *     description: Only admins can create other Board.
- *     tags: [Board]
+ *     summary: Create a subject
+ *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -42,12 +45,15 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name               
+ *               - name    
+ *               - classId           
  *             properties:
- *               naboardme:
- *                 type: string *                              
+ *               name:
+ *                 type: string 
+ *               classId: string                             
  *             example:
- *               name: CBSC            
+ *               name: CBSC  
+ *               classId: 7656765a          
  *                 
  *     responses:
  *       "201":
@@ -55,7 +61,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Video'
+ *                $ref: '#/components/schemas/Subject'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -64,16 +70,16 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
- *     summary: Get all boards
- *     tags: [Board]
+ *     summary: Get all subjects
+ *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: board
+ *         name: subject
  *         schema:
  *           type: string
- *         description: Board name *       
+ *         description: Subject name *       
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -85,7 +91,7 @@ module.exports = router;
  *           type: integer
  *           minimum: 1
  *         default: 10
- *         description: Maximum number of users
+ *         description: Maximum number of subject
  *       - in: query
  *         name: page
  *         schema:
@@ -104,7 +110,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Board'
+ *                     $ref: '#/components/schemas/SUbject'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -125,11 +131,10 @@ module.exports = router;
 
 /**
  * @swagger
- * /boards/{boardId}:
+ * /subjects/{boardId}:
  *   get:
  *     summary: Get a board
- *     description: Logged in users can fetch only their own board information. Only admins can fetch other users.
- *     tags: [Board]
+ *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -138,14 +143,14 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: boardId
+ *         description: subjectId
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Board'
+ *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -154,8 +159,8 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a board
- *     tags: [Board]
+ *     summary: Update a subject
+ *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -164,7 +169,7 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: boardId
+ *         description: subjectId
  *     requestBody:
  *       required: true
  *       content:
@@ -173,16 +178,19 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string     
+ *               classId:
+ *                 type: string             
  *             example:
- *               name: fake name*               
+ *               name: fake name 
+ *               classId: 54867567             
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Board'
+ *                $ref: '#/components/schemas/Subject'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -193,8 +201,8 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a board
- *     tags: [Board]
+ *     summary: Delete a subject
+ *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -203,7 +211,7 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: boardId
+ *         description: subjectId
  *     responses:
  *       "200":
  *         description: No content
