@@ -13,5 +13,6 @@ module.exports.chapterController = require('./chapter.controller');
 
 module.exports.subjectController = require('./subject.controller')
 module.exports.bookController = require('./book.controller')
+module.exports.broadcastController = require('./broadcast.controller')
 
 
