@@ -1,10 +1,9 @@
 const Joi = require('joi');
-const { password, objectId } = require('./custom.validation');
+const { objectId } = require('./custom.validation');
 
 const createBoard = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    classId: Joi.string().required(),
   }),
 };
 

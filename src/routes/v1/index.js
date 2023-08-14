@@ -49,10 +49,12 @@ const defaultRoutes = [
   {
     path: '/lession',
     route: lessionRoute,
-
+  },
+  {
     path: '/chapter',
     route: chapterRoute,
-
+  },
+  {
     path: '/subjects',
     route: subjectRoute,
   },
