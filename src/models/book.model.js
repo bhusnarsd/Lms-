@@ -7,17 +7,16 @@ const bookSchema = mongoose.Schema(
             type: String,
             trim: true,
         },
-        classId: {
-            type: String,
-          
-        },
-        subjectId: {
+        boardId: {
             type: String,
         },
         mediumId: {
             type: String,
         },
-        boardId: {
+        classId: {
+            type: String,          
+        },
+        subjectId: {
             type: String,
         },
     },

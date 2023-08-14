@@ -51,19 +51,16 @@ module.exports = router;
  *               - mediumId
  *               - classId 
  *               - subjectId
- *               - bookId  
  *             properties:
  *               name:
  *                 type: string 
  *               classId: string                             
  *             example:
- *               name: CBSC  
- *               boardId: q23412
- *               mediumId: 21421214
- *               classId: 7656765a     
- *               subjectId: 24214   
- *               bookId: 2141421  
- *                 
+ *               name: History  
+ *               boardId: 64d9ceaef49e9f5dc06502c6
+ *               mediumId: 64d327a41128844220f0cce4
+ *               classId: 64d327811128844220f0cce0     
+ *               subjectId: 64d9d4666205c371563fcadb   
  *     responses:
  *       "201":
  *         description: Created

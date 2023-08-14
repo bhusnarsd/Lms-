@@ -6,15 +6,15 @@ const { quizeService } = require('../services');
  
  
 const createQuize = catchAsync(async (req, res) => {
-  const quize = await quizeService.createBoard(req.body);
+  const quize = await quizeService.createQuize(req.body);
   res.status(httpStatus.CREATED).send(quize);
 });
 
 
 const getAllQuize = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['queName']);
+  const filter = pick(req.query, ['quizname']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await quizeService.queryBoard(filter, options);
+  const result = await quizeService.queryQuize(filter, options);
   res.send(result);
 });
 
@@ -32,7 +32,7 @@ const updateQuizeById = catchAsync(async (req, res) => {
 });
 
 const deleteQuizeById = catchAsync(async (req, res) => {
-  await quizeService.deleteQuizeById(req.params.boardId);
+  await quizeService.deleteQuizeById(req.params.quizeId);
   res.status(httpStatus.NO_CONTENT).send();
 });
 

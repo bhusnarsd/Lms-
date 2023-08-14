@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { Quize } = require('../models');
+const { quize } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -7,8 +7,8 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} quizeBody
  * @returns {Promise<Quize>}
  */
-const createQuize = async (quizeBody) => {
-  return Quize.create(boardBody);
+const createQuize = async (quizeBody) => {  
+  return quize.create(quizeBody);
 };
 
 /**
@@ -21,7 +21,7 @@ const createQuize = async (quizeBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryQuize = async (filter, options) => {
-  const  quizes = await Quize.paginate(filter, options);
+  const  quizes = await quize.paginate(filter, options);
   return quizes;
 };
 
@@ -31,7 +31,7 @@ const queryQuize = async (filter, options) => {
  * @returns {Promise<Quize>}
  */
 const getQuizeById = async (id) => {
-  return Quize.findById(id);
+  return quize.findById(id);
 };
 
 /**
@@ -41,7 +41,7 @@ const getQuizeById = async (id) => {
  * @returns {Promise<Quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
-  const quize = await getQuizeById(boardId);
+  const quize = await getQuizeById(quizeId);
   if (!quize) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');
   }
@@ -56,7 +56,7 @@ const updateQuizeById = async (quizeId, updateBody) => {
  * @returns {Promise<Quize>}
  */
 const deleteQuizeById = async (quizeId) => {
-  const quize = await getBoardById(quizeId);
+  const quize = await getQuizeById(quizeId);
   if (!quize) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');
   }

@@ -20,9 +20,9 @@ const getAllboardcast = catchAsync(async (req, res) => {
 
 const getboardcastById = catchAsync(async (req, res) => {
   const Broadcast = await broadcastService.getBoardcastById(req.params.broadcastId);
-  // if (!boardcast) {
-  //   throw new ApiError(httpStatus.NOT_FOUND, 'broadcast not found');
-  // }
+  if (!Broadcast) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'broadcast not found');
+  }
   res.send(Broadcast);
 });
 
