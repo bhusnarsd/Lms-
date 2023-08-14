@@ -18,13 +18,13 @@ const getAllBoard = {
 
 const getBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    boardId: Joi.string().custom(objectId),
   }),
 };
 
 const updateBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.required().custom(objectId),
+    boardId: Joi.required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -35,7 +35,7 @@ const updateBoard = {
 
 const deleteBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    boardId: Joi.string().custom(objectId),
   }),
 };
 

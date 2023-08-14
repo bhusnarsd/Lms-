@@ -6,13 +6,13 @@ const { boardService } = require('../services');
  
  
 const createBoard = catchAsync(async (req, res) => {
-  const user = await boardService.createBoard(req.body);
-  res.status(httpStatus.CREATED).send(user);
+  const board = await boardService.createBoard(req.body);
+  res.status(httpStatus.CREATED).send(board);
 });
 
 
 const getAllBoard = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['board']);
+  const filter = pick(req.query, ['name']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await boardService.queryBoard(filter, options);
   res.send(result);
@@ -21,7 +21,7 @@ const getAllBoard = catchAsync(async (req, res) => {
 const getBoard = catchAsync(async (req, res) => {
   const board = await boardService.getBoardById(req.params.boardId);
   if (!board) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Board not found');
   }
   res.send(board);
 });
