@@ -4,7 +4,7 @@ const { toJSON, paginate } = require('./plugins');
 const lessionSchema = mongoose.Schema({
     boardId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'board',
+        ref: 'Board',
         required: true,
     },
     mediumId: {
@@ -14,22 +14,22 @@ const lessionSchema = mongoose.Schema({
     },
     classId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'class',
+        ref: 'Classes',
         required: true,
     },
     subjectId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'subjectId',
+        ref: 'Subject',
         required: true,
     },
     bookId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'bookId',
+        ref: 'book',
         required: true,
     },
     chapterId: {
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'chapter',
+        ref: 'Chapter',
         required: true,
     },
     name: {
@@ -37,11 +37,25 @@ const lessionSchema = mongoose.Schema({
         trim: true,
         required: true
     },
-    path: {
+    type: {
         type: String,
         trim: true,
         required: true
+    },
+    order:{
+        type:Number,
+        trim: true,
+        required: true
+    },
+    thumbnail: {
+        type: String,
+        trim: true,
+    },
+    poster: {
+        type: String,
+        trim: true,
     }
+
 },
     { timestamps: true, }
 );
