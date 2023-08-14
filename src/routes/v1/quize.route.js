@@ -1,21 +1,21 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  quizeController = require('../../controllers/quize.controller');
-const boardValidation = require('../../validations/board.validation')
+const quizeController = require('../../controllers/quize.controller');
+const quizeValidation = require('../../validations/quize.validation')
 
 const router = express.Router();
 
 router
   .route('/')
-  .post( quizeController.createQuize)
-  .get( quizeController.getAllQuize);
+  .post(validate(quizeValidation.createQuize), quizeController.createQuize)
+  .get(validate(quizeValidation.getQuizes), quizeController.getAllQuize);
 
 router
   .route('/:quizeId')
-  .get( quizeController.getQuizeById)
-  .patch(  quizeController.updateQuizeById)
-  .delete( quizeController.deleteQuizeById);
+  .get(validate(quizeValidation.getQuize),quizeController.getQuizeById)
+  .patch(validate(quizeValidation.updateQuize),quizeController.updateQuizeById)
+  .delete(validate(quizeValidation.deleteQuize),quizeController.deleteQuizeById);
 
 module.exports = router;
 
@@ -39,13 +39,14 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - queName  
+ *               - quizname  
  *               - option1
  *               - option2
  *               - option3
  *               - option4
  *               - explain
  *               - hint
+ *               - types
  *               - isVerified
  *               - marks
  *               - boardId
@@ -56,21 +57,23 @@ module.exports = router;
  *               - chapterId
  *               - lessonId                            
  *             example:
- *               queName: fake quetion 
- *               option1: Fake option 
- *               option2: fake option 
- *               option3: fake option
- *               option4: fake option
- *               explain: fake expaination of anwser
- *               hint: fake hint of quetion 
+ *               quizname: Sample Quiz 
+ *               option1: Option A
+ *               option2: Option B
+ *               option3: Option c
+ *               option4: Option D
+ *               explain: Explanation for the correct option
+ *               hint: Hint for solving the quiz
+ *               types: easy
+ *               isVerified: false
  *               marks: 23
- *               boardId: 2657
- *               mediumId: 3475324
- *               classId: 6754665
- *               bookId: 454787
- *               subjectId: 435646 
- *               chapterId: 5677
- *               lessonId: 47868687
+ *               boardId: 64d9ceaef49e9f5dc06502c6
+ *               mediumId: 64d327a41128844220f0cce4
+ *               classId: 64d327811128844220f0cce0
+ *               bookId: 64d9d7143ac675796cdcd433
+ *               subjectId: 64d9d4666205c371563fcadb 
+ *               chapterId: 64d327811128844220f0cce0
+ *               lessonId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "201":
  *         description: Created
@@ -87,7 +90,7 @@ module.exports = router;
  *
  *   get:
  *     summary: Get all boards
- *     tags: [Board]
+ *     tags: [Quize]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -147,10 +150,9 @@ module.exports = router;
 
 /**
  * @swagger
- * /quizes/{quizeId}:
+ * /quizes/{id}:
  *   get:
- *     summary: Get a quize
- *     description: Logged in quize can fetch only their own board information. Only admins can fetch other users.
+ *     summary: Get a Quize
  *     tags: [Quize]
  *     security:
  *       - bearerAuth: []
@@ -160,14 +162,14 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: quizeId
+ *         description: Quize
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Quize'
+ *                $ref: '#/components/schemas/boardcast'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -176,17 +178,17 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a quize
+ *     summary: Update a Quize
  *     tags: [Quize]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *           : id
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: quizeId
+ *         description: QuizeId
  *     requestBody:
  *       required: true
  *       content:
@@ -194,17 +196,20 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               name:
- *                 type: string                
+ *               title:
+ *                 type: string     
+ *               path:
+ *                 type: string             
  *             example:
- *               name: fake name*               
+ *               title: fake name 
+ *               path: "54867567"             
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Board'
+ *                $ref: '#/components/schemas/boardcast'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -215,8 +220,8 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a board
- *     tags: [Board]
+ *     summary: Delete a Quize
+ *     tags: [Quize]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -225,7 +230,7 @@ module.exports = router;
  *         required: true
  *         schema:
  *           type: string
- *         description: boardId
+ *         description: QuizeId
  *     responses:
  *       "200":
  *         description: No content
