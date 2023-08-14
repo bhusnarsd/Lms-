@@ -5,6 +5,7 @@ const createSubject = {
   body: Joi.object().keys({
     name: Joi.string().required(),
     classId: Joi.string().required(),
+    order: Joi.number().required(),
   }),
 };
 
