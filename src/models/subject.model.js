@@ -7,9 +7,17 @@ const subjectSchema = mongoose.Schema(
     name: {
       type: String,      
       trim: true,
+      required: true,
     },  
     classId: {
-        type: String,      
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "class",
+        required: true,      
+      },
+      order: {
+        type: Number,
+        trim: true,
+        required: true,
       },     
   },
   {

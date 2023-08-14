@@ -10,7 +10,9 @@ module.exports.Lession = require('./lession.model');
 
 module.exports.Chapter = require('./chapter.model');
 
-module.exports.Subject  = require('./subject.model')
-module.exports.Book  = require('./book.model')
+module.exports.Subject  = require('./subject.model');
+module.exports.Book  = require('./book.model');
+module.exports.Studio  = require('./studio.model');
+module.exports.Presentator  = require('./presentator.model');
 
 
