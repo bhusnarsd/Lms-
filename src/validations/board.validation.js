@@ -4,7 +4,6 @@ const { password, objectId } = require('./custom.validation');
 const createBoard = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    classId: Joi.string().required(),
   }),
 };
 
@@ -19,13 +18,13 @@ const getAllBoard = {
 
 const getBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    boardId: Joi.string().custom(objectId),
   }),
 };
 
 const updateBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.required().custom(objectId),
+    boardId: Joi.required().custom(objectId),
   }),
   body: Joi.object()
     .keys({
@@ -36,7 +35,7 @@ const updateBoard = {
 
 const deleteBoard = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    boardId: Joi.string().custom(objectId),
   }),
 };
 
