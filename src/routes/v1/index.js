@@ -14,6 +14,7 @@ const lessionRoute = require('./lession.route');
 const subjectRoute = require('./subject.route');
 const bookRoute = require('./book.route');
 const quizeRoute = require('./quize.route');
+const broadcast = require('./broadcast.route')
 
 
 const router = express.Router();
@@ -66,6 +67,10 @@ const defaultRoutes = [
   {
     path: '/quizes',
     route: quizeRoute,
+  },
+  {
+    path: '/broadcast',
+    route: broadcast,
   },
 ];
 
