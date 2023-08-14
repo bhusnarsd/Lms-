@@ -2,7 +2,7 @@ const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const chapterValidation = require('../../validations/chapter.validation');
-const  chaterController = require('../../controllers/chapter.controller'); 
+const chaterController = require('../../controllers/chapter.controller');
 const router = express.Router();
 router
   .route('/')
@@ -12,8 +12,8 @@ router
 router
   .route('/:chapterId')
   .get(validate(chapterValidation.getChapter), chaterController.getSingleChapter)
-  .patch( validate(chapterValidation.updateChapterById), chaterController.updateSingleClass)
-  .delete( validate(chapterValidation.deleteChapterById), chaterController.deleteSingleChapter);
+  .patch(validate(chapterValidation.updateChapterById), chaterController.updateSingleClass)
+  .delete(validate(chapterValidation.deleteChapterById), chaterController.deleteSingleChapter);
 
 module.exports = router
 

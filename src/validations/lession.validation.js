@@ -3,14 +3,17 @@ const { objectId } = require('./custom.validation');
 
 const createLession = {
     body: Joi.object().keys({
-        boardId:Joi.string().custom(objectId),
-        mediumId:Joi.string().custom(objectId),
-        classId:Joi.string().custom(objectId),
-        subjectId:Joi.string().custom(objectId),
-        bookId:Joi.string().custom(objectId),
-        chapterId:Joi.string().custom(objectId),
+        boardId: Joi.string().custom(objectId),
+        mediumId: Joi.string().custom(objectId),
+        classId: Joi.string().custom(objectId),
+        subjectId: Joi.string().custom(objectId),
+        bookId: Joi.string().custom(objectId),
+        chapterId: Joi.string().custom(objectId),
         name: Joi.string().required(),
-        path: Joi.string().required()
+        type: Joi.string().required(),
+        order: Joi.string().required(),
+        thumbnail: Joi.string().required(),
+        poster: Joi.string()
     }),
 };
 
@@ -35,6 +38,10 @@ const updateLession = {
     body: Joi.object()
         .keys({
             name: Joi.string().required(),
+            type: Joi.string().required(),
+            order: Joi.string().required(),
+            thumbnail: Joi.string().required(),
+            poster: Joi.string()
         })
         .min(1),
 };
