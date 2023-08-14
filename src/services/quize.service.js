@@ -5,7 +5,7 @@ const ApiError = require('../utils/ApiError');
 /**
  * Create a quize
  * @param {Object} quizeBody
- * @returns {Promise<Quize>}
+ * @returns {Promise<quize>}
  */
 const createQuize = async (quizeBody) => {  
   return quize.create(quizeBody);
@@ -28,7 +28,7 @@ const queryQuize = async (filter, options) => {
 /**
  * Get quize by id
  * @param {ObjectId} id
- * @returns {Promise<Quize>}
+ * @returns {Promise<quize>}
  */
 const getQuizeById = async (id) => {
   return quize.findById(id);
@@ -38,7 +38,7 @@ const getQuizeById = async (id) => {
  * Update quize by id
  * @param {ObjectId} quizeId
  * @param {Object} updateBody
- * @returns {Promise<Quize>}
+ * @returns {Promise<quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
   const quize = await getQuizeById(quizeId);
@@ -53,7 +53,7 @@ const updateQuizeById = async (quizeId, updateBody) => {
 /**
  * Delete quize by id
  * @param {ObjectId} quizeId
- * @returns {Promise<Quize>}
+ * @returns {Promise<quize>}
  */
 const deleteQuizeById = async (quizeId) => {
   const quize = await getQuizeById(quizeId);
