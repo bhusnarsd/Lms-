@@ -9,29 +9,45 @@ const chapterSchema = mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'board',
       required: true,
+      trim: true,
     },
     mediumId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Medium',
       required: true,
+      trim: true,
     },
     classId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'class',
       required: true,
+      trim: true,
     },
     subjectId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'suject',
       required: true,
+      trim: true,
     },
     bookId: {
+<<<<<<< HEAD
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'book',
       required: true,
     },
+=======
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "book",
+        required: true,
+        trim: true,
+      },
+>>>>>>> onkar-lms
     chapterName: {
       type: String,
+      trim: true,
+    },
+    order: {
+      type: Number,
       trim: true,
     },
   },

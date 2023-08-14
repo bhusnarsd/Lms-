@@ -2,10 +2,42 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const bookSchema = mongoose.Schema(
+<<<<<<< HEAD
   {
     name: {
       type: String,
       trim: true,
+=======
+    {
+        name: {
+            type: String,
+            trim: true,
+        },
+        boardId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "board",
+            required: true,
+            trim: true,
+          },
+          mediumId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "Medium",
+            required: true,
+            trim: true,
+          },
+          classId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "class",
+            required: true,
+            trim: true,
+          },
+          subjectId: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "suject",
+            required: true,
+            trim: true,
+          },
+>>>>>>> onkar-lms
     },
     boardId: {
       type: String,

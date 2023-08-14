@@ -3,6 +3,7 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const  planvideoController = require('../../controllers/planvideo.controller');
 const planValidation = require('../../validations/planvideo.validation');
+<<<<<<< HEAD
 const { valid } = require('joi');
 
 const router = express.Router();
@@ -14,30 +15,45 @@ router
   .get(planvideoController.getUser)
   .patch(planvideoController.updateUser)
   .delete(planvideoController.deleteUser);
+=======
+
+
+const router = express.Router();
+
+router
+  .route('/')
+  .post(validate(planValidation.createNewPlan), planvideoController.createNewPlan)
+  .get( validate(planValidation.getAllPlan),planvideoController.getAllPlans);
+
+router
+  .route('/:planId')
+  .get( validate(planValidation.getSinglePlan),planvideoController.getSinglePlan)
+  .patch( validate(planValidation.updatePlanById), planvideoController.updatePlan)
+  .delete( validate(planValidation.deletePlanById), planvideoController.deletePlan);
+>>>>>>> onkar-lms
 
 module.exports = router;
+
 
 /**
  * @swagger
  * tags:
- *   name: Users
- *   description: User management and retrieval
+ *   name: PlanVideo
+ *   description: APIs for managing plan videos
  */
 
 /**
  * @swagger
  * /planvideos:
  *   post:
- *     summary: Create a user
- *     description: Only admins can create other users.
- *     tags: [Today Lesson]
- *     security:
- *       - bearerAuth: []
+ *     summary: Create a new plan video
+ *     tags: [PlanVideo]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
+<<<<<<< HEAD
  *             type: object
  *             required:
  *               - name
@@ -78,17 +94,21 @@ module.exports = router;
  *               book:  Science
  *               chapter: Animation
  *               videoid: 64bf7a68c0797a1734b71faa
+=======
+ *             $ref: '#/components/schemas/PlanVideoInput'
+>>>>>>> onkar-lms
  *     responses:
- *       "201":
- *         description: Created
+ *       201:
+ *         description: Plan video successfully created
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Video'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
- *       "401":
+ *               $ref: '#/components/schemas/PlanVideo'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       401:
  *         $ref: '#/components/responses/Unauthorized'
+<<<<<<< HEAD
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *
@@ -151,98 +171,184 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+=======
+ *       500:
+ *         $ref: '#/components/responses/InternalServer'
+>>>>>>> onkar-lms
  */
 
 /**
  * @swagger
- * /videos/{id}:
+ * /planvideos:
  *   get:
- *     summary: Get a user
- *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
- *     tags: [Videos]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: User id
+ *     summary: Get all plan videos
+ *     tags: [PlanVideo]
  *     responses:
- *       "200":
- *         description: OK
+ *       200:
+ *         description: List of plan videos
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/User'
- *       "401":
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/PlanVideo'
+ *       401:
  *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- *
- *   patch:
- *     summary: Update a user
- *     description: Logged in users can only update their own information. Only admins can update other users.
- *     tags: [Videos]
- *     security:
- *       - bearerAuth: []
+ *       500:
+ *         $ref: '#/components/responses/InternalServer'
+ */
+
+/**
+ * @swagger
+ * /planvideos/{planId}:
+ *   get:
+ *     summary: Get a single plan video by ID
+ *     tags: [PlanVideo]
  *     parameters:
- *       - in: path
- *         name: id
+ *       - name: planId
+ *         in: path
+ *         description: ID of the plan video to retrieve
  *         required: true
  *         schema:
  *           type: string
- *         description: User id
+ *     responses:
+ *       200:
+ *         description: The requested plan video
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/PlanVideo'
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/InternalServer'
+ */
+
+/**
+ * @swagger
+ * /planvideos/{planId}:
+ *   patch:
+ *     summary: Update a plan video by ID
+ *     tags: [PlanVideo]
+ *     parameters:
+ *       - name: planId
+ *         in: path
+ *         description: ID of the plan video to update
+ *         required: true
+ *         schema:
+ *           type: string
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
+<<<<<<< HEAD
  *             type: object
  *             properties:
  *               name:
  *                 type: string
  *             example:
  *               name: fake name*
+=======
+ *             $ref: '#/components/schemas/PlanVideoUpdate'
+>>>>>>> onkar-lms
  *     responses:
- *       "200":
- *         description: OK
+ *       200:
+ *         description: Plan video successfully updated
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/User'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
- *       "401":
+ *               $ref: '#/components/schemas/PlanVideo'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       401:
  *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
+ *       404:
  *         $ref: '#/components/responses/NotFound'
- *
+ *       500:
+ *         $ref: '#/components/responses/InternalServer'
+ */
+
+/**
+ * @swagger
+ * /planvideos/{planId}:
  *   delete:
- *     summary: Delete a user
- *     description: Logged in users can delete only themselves. Only admins can delete other users.
- *     tags: [Videos]
- *     security:
- *       - bearerAuth: []
+ *     summary: Delete a plan video by ID
+ *     tags: [PlanVideo]
  *     parameters:
- *       - in: path
- *         name: id
+ *       - name: planId
+ *         in: path
+ *         description: ID of the plan video to delete
  *         required: true
  *         schema:
  *           type: string
- *         description: User id
  *     responses:
- *       "200":
- *         description: No content
- *       "401":
+ *       204:
+ *         description: Plan video successfully deleted
+ *       401:
  *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
+ *       404:
  *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/InternalServer'
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     PlanVideo:
+ *       type: object
+ *       properties:
+ *         title:
+ *           type: string
+ *         date:
+ *           type: string
+ *         time:
+ *           type: string
+ *         type:
+ *           type: string
+ *         boardId:
+ *           type: string
+ *         mediumId:
+ *           type: string
+ *         classId:
+ *           type: string
+ *         subjectId:
+ *           type: string
+ *         bookId:
+ *           type: string
+ *         chapterId:
+ *           type: string
+ *         lessonId:
+ *           type: string
+ *         status:
+ *           type: string
+ *           default: active
+ *       required:
+ *         - title
+ *         - date
+ *         - time
+ *         - type
+ *         - boardId
+ *         - mediumId
+ *         - classId
+ *         - subjectId
+ *         - bookId
+ *         - chapterId
+ *         - lessonId
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     PlanVideoUpdate:
+ *       type: object
+ *       properties:
+ *         type:
+ *           type: string
  */

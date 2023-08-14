@@ -1,13 +1,13 @@
-const express = require('express');
-const authRoute = require('./auth.route');
-const userRoute = require('./user.route');
-const videoRoute = require('./video.route');
-const planvideoRoute = require('./planvideo.route');
-const boardRoute = require('./board.route');
-const classesRoute = require('./classes.route');
-const chapterRoute = require('./chapter.route');
-const docsRoute = require('./docs.route');
-const config = require('../../config/config');
+const express = require("express");
+const authRoute = require("./auth.route");
+const userRoute = require("./user.route");
+const videoRoute = require("./video.route");
+const planvideoRoute = require("./planvideo.route");
+const boardRoute = require("./board.route");
+const classesRoute = require("./classes.route");
+const chapterRoute = require("./chapter.route");
+const docsRoute = require("./docs.route");
+const config = require("../../config/config");
 
 const mediumRoute = require('./medium.route');
 const lessionRoute = require('./lession.route');
@@ -22,49 +22,48 @@ const router = express.Router();
 
 const defaultRoutes = [
   {
-    path: '/auth',
+    path: "/auth",
     route: authRoute,
   },
   {
-    path: '/users',
+    path: "/users",
     route: userRoute,
   },
   {
-    path: '/videos',
+    path: "/videos",
     route: videoRoute,
   },
   {
-    path: '/planvideos',
+    path: "/planvideos",
     route: planvideoRoute,
   },
   {
-    path: '/boards',
+    path: "/boards",
     route: boardRoute,
   },
   {
-    path: '/classes',
+    path: "/classes",
     route: classesRoute,
   },
   {
-    path: '/medium',
+    path: "/medium",
     route: mediumRoute,
   },
   {
-    path: '/lession',
+    path: "/lession",
     route: lessionRoute,
-  },
-  {
+
     path: '/chapter',
     route: chapterRoute,
-  },
-  {
+
     path: '/subjects',
     route: subjectRoute,
   },
   {
-    path: '/books',
+    path: "/books",
     route: bookRoute,
   },
+<<<<<<< HEAD
   {
     path: '/broadcast',
     route: broadcast,
@@ -73,12 +72,14 @@ const defaultRoutes = [
     path: '/quizes',
     route: quizeRoute,
   },
+=======
+>>>>>>> onkar-lms
 ];
 
 const devRoutes = [
   // routes available only in development mode
   {
-    path: '/docs',
+    path: "/docs",
     route: docsRoute,
   },
 ];
@@ -88,7 +89,7 @@ defaultRoutes.forEach((route) => {
 });
 
 /* istanbul ignore next */
-if (config.env === 'development') {
+if (config.env === "development") {
   devRoutes.forEach((route) => {
     router.use(route.path, route.route);
   });

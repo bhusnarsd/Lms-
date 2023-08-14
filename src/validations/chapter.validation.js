@@ -8,7 +8,8 @@ const createChapter = {
         classId: Joi.string().required(),
         subjectId: Joi.string().required(),
         bookId: Joi.string().required(),
-        chapterName: Joi.string().required()
+        chapterName: Joi.string().required(),
+        order: Joi.number().required()
     }),
   };
 

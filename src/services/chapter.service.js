@@ -1,3 +1,4 @@
+
 const httpStatus = require('http-status');
 const { Chapter } = require('../models');
 const ApiError = require('../utils/ApiError');
@@ -8,7 +9,11 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Chapter>}
  */
 const createChapter = async (chapter) => {
+<<<<<<< HEAD
   return Chapter.create(chapter);
+=======
+  return Chapter.create(chapter); 
+>>>>>>> onkar-lms
 };
 
 /**
@@ -65,9 +70,18 @@ const deleteChapterById = async (chapterId) => {
 };
 
 module.exports = {
+<<<<<<< HEAD
   createChapter,
   getChapterById,
   getAllChapter,
   updateChapterById,
   deleteChapterById,
 };
+=======
+createChapter,
+getChapterById,
+getAllChapter,
+updateChapterById,
+deleteChapterById,
+};
+>>>>>>> onkar-lms
