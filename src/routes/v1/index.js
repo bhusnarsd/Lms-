@@ -13,11 +13,11 @@ const mediumRoute = require('./medium.route');
 const lessionRoute = require('./lession.route');
 const subjectRoute = require('./subject.route');
 const bookRoute = require('./book.route');
-<<<<<<<<< Temporary merge branch 1
+
 const broadcast = require('./broadcast.route')
-=========
+
 const quizeRoute = require('./quize.route');
->>>>>>>>> Temporary merge branch 2
+
 
 
 const router = express.Router();
@@ -68,14 +68,14 @@ const defaultRoutes = [
     route: bookRoute,
   },
   {
-<<<<<<<<< Temporary merge branch 1
+
     path: '/broadcast',
     route: broadcast,
-=========
+  },
+  {
     path: '/quizes',
     route: quizeRoute,
->>>>>>>>> Temporary merge branch 2
-  },
+  }
 ];
 
 const devRoutes = [
