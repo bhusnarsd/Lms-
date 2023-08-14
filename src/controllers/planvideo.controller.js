@@ -4,41 +4,42 @@ const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { planvideoService } = require('../services');
 
-const createUser = catchAsync(async (req, res) => {
-  const user = await planvideoService.createPlanvideo(req.body);
+const createNewPlan = catchAsync(async (req, res) => {
+  const user = await planvideoService.createNewPlan(req.body);
   res.status(httpStatus.CREATED).send(user);
 });
 
 
-const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name','board', 'class', 'subject', 'book', 'chapter', 'videoid']);
+const getAllPlans = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['title']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
-  const result = await planvideoService.queryUsers(filter, options);
+  const result = await planvideoService.getAllPlans(filter, options);
   res.send(result);
 });
 
-const getUser = catchAsync(async (req, res) => {
-  const user = await videoService.getUserById(req.params.userId);
+const getSinglePlan = catchAsync(async (req, res) => {
+  const user = await planvideoService.getPlanById(req.params.planId);
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
   }
   res.send(user);
 });
 
-const updateUser = catchAsync(async (req, res) => {
-  const user = await videoService.updateUserById(req.params.userId, req.body);
+const updatePlan = catchAsync(async (req, res) => {
+  const user = await planvideoService.updatePlanById(req.params.planId, req.body);
   res.send(user);
 });
 
-const deleteUser = catchAsync(async (req, res) => {
-  await videoService.deleteUserById(req.params.userId);
+const deletePlan = catchAsync(async (req, res) => {
+  await planvideoService.deletePlanById(req.params.planId);
   res.status(httpStatus.NO_CONTENT).send();
 });
 
 module.exports = {
-  createUser,
-  getUsers,
-  getUser,
-  updateUser,
-  deleteUser,
+  createNewPlan,
+  getAllPlans,
+  getSinglePlan,
+  updatePlan,
+  deletePlan,
 };
+ 

@@ -3,20 +3,17 @@ const { Planvideo } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
- * @param {Object} userBody
- * @returns {Promise<User>}
+ * Create a todaysPlan
+ * @param {Object} planBody
+ * @returns {Promise<Planvideo>}
  */
-const createPlanvideo = async (userBody) => {
-  //if (await User.isEmailTaken(userBody.email)) {
-   // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
- // }
-  return Planvideo.create(userBody);
+const createNewPlan = async (planBody) => {
+  return Planvideo.create(planBody);
  
 };
 
 /**
- * Query for users
+ * Query for TodayPlans
  * @param {Object} filter - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -24,67 +21,55 @@ const createPlanvideo = async (userBody) => {
  * @param {number} [options.page] - Current page (default = 1)
  * @returns {Promise<QueryResult>}
  */
-const queryUsers = async (filter, options) => {
+const getAllPlans = async (filter, options) => {
   const videos = await Planvideo.paginate(filter, options);
   return videos;
 };
 
 /**
- * Get user by id
+ * Get Planvideo by id
  * @param {ObjectId} id
- * @returns {Promise<User>}
+ * @returns {Promise<Planvideo>}
  */
-const getUserById = async (id) => {
-  return Video.findById(id);
+const getPlanById = async (id) => {
+  return Planvideo.findById(id);
 };
 
 /**
- * Get user by email
- * @param {string} email
- * @returns {Promise<User>}
- */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
-};
-
-/**
- * Update user by id
- * @param {ObjectId} userId
+ * Update Planvideo by id
+ * @param {ObjectId} planId
  * @param {Object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Planvideo>}
  */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+const updatePlanById = async (planId, updateBody) => {
+  const todaysPlan = await getPlanById(planId);
+  if (!todaysPlan) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
   }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
+  Object.assign(todaysPlan, updateBody);
+  await todaysPlan.save();
+  return todaysPlan;
 };
 
 /**
  * Delete user by id
- * @param {ObjectId} userId
- * @returns {Promise<User>}
+ * @param {ObjectId} planId
+ * @returns {Promise<Planvideo>}
  */
-const deleteUserById = async (userId) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+
+const deletePlanById = async (planId) => {
+  const deletedPlan = await getPlanById(planId);
+  if (!deletedPlan) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Plan not found');
   }
-  await user.remove();
-  return user;
+  await deletedPlan.remove();
+  return deletedPlan;
 };
 
 module.exports = {
-  createPlanvideo,
-  queryUsers,
-  getUserById,
-  getUserByEmail,
-  updateUserById,
-  deleteUserById,
+  createNewPlan,
+  getAllPlans,
+  getPlanById,
+  updatePlanById,
+  deletePlanById,
 };

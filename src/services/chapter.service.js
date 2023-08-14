@@ -1,19 +1,19 @@
+
 const httpStatus = require('http-status');
 const { Chapter } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
- * Create a user
+ * Create a chapter
  * @param {Object} Chapter
- * @returns {Promise<User>}
+ * @returns {Promise<Chapter>}
  */
 const createChapter = async (chapter) => {
   return Chapter.create(chapter); 
- 
 };
 
 /**
- * Query for users
+ * Query for Chapter
  * @param {Object} filter - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -27,7 +27,7 @@ const getAllChapter = async (filter, options) => {
 };
 
 /**
- * Get user by id
+ * Get Chapter by id
  * @param {ObjectId} id
  * @returns {Promise<User>}
  */
@@ -37,10 +37,10 @@ const getChapterById = async (id) => {
 
 
 /**
- * Update user by id
+ * Update Chapter by id
  * @param {ObjectId} chapterId
  * @param {Object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Chapter>}
  */
 const updateChapterById = async (chapterId, updateBody) => {
   const singleChapter = await getChapterById(chapterId);
@@ -53,9 +53,9 @@ const updateChapterById = async (chapterId, updateBody) => {
 };
 
 /**
- * Delete user by id
+ * Delete Chapter by id
  * @param {ObjectId} chapterId
- * @returns {Promise<User>}
+ * @returns {Promise<Chapter>}
  */
 const deleteChapterById = async (chapterId) => {
   const chapter = await getChapterById(chapterId);
