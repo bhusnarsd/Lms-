@@ -2,7 +2,7 @@ const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const broadcastController = require('../../controllers/broadcast.controller');
-const broadcastValidation  = require('../../validations/broadcast.validation')
+const broadcastValidation = require('../../validations/broadcast.validation');
 
 const router = express.Router();
 
@@ -13,12 +13,11 @@ router
 
 router
   .route('/:broadcastId')
-  .get(validate(broadcastValidation.getBroadcast),broadcastController.getboardcastById)
-  .patch(validate(broadcastValidation.updateBroadcast),broadcastController.updateboardcast)
-  .delete(validate(broadcastValidation.deleteBroadcast),broadcastController.deleteboardcast);
+  .get(validate(broadcastValidation.getBroadcast), broadcastController.getboardcastById)
+  .patch(validate(broadcastValidation.updateBroadcast), broadcastController.updateboardcast)
+  .delete(validate(broadcastValidation.deleteBroadcast), broadcastController.deleteboardcast);
 
 module.exports = router;
-
 
 /**
  * @swagger
@@ -42,15 +41,15 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - title    
- *               - path     
+ *               - title
+ *               - path
  *             properties:
- *               title: 
- *                 type: string    
- *               path: 
- *                 type: string                       
+ *               title:
+ *                 type: string
+ *               path:
+ *                 type: string
  *             example:
- *               title: CBSC 10 Class  
+ *               title: CBSC 10 Class
  *               path: http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4
  *     responses:
  *       "201":
@@ -76,7 +75,7 @@ module.exports = router;
  *         name: Boardcast
  *         schema:
  *           type: string
- *         description: Boardcast name *       
+ *         description: Boardcast name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -175,12 +174,12 @@ module.exports = router;
  *             type: object
  *             properties:
  *               title:
- *                 type: string     
+ *                 type: string
  *               path:
- *                 type: string             
+ *                 type: string
  *             example:
- *               title: fake name 
- *               path: "54867567"             
+ *               title: fake name
+ *               path: "54867567"
  *     responses:
  *       "200":
  *         description: OK

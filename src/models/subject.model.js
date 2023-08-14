@@ -3,14 +3,13 @@ const { toJSON, paginate } = require('./plugins');
 
 const subjectSchema = mongoose.Schema(
   {
-     
     name: {
-      type: String,      
+      type: String,
       trim: true,
-    },  
+    },
     classId: {
-        type: String,      
-      },     
+      type: String,
+    },
   },
   {
     timestamps: true,
@@ -20,7 +19,6 @@ const subjectSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 subjectSchema.plugin(toJSON);
 subjectSchema.plugin(paginate);
-
 
 const Subject = mongoose.model('Subject', subjectSchema);
 

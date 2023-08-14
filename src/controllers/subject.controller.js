@@ -3,13 +3,11 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { subjectService } = require('../services');
- 
- 
+
 const createSubject = catchAsync(async (req, res) => {
   const subject = await subjectService.createSubject(req.body);
   res.status(httpStatus.CREATED).send(subject);
 });
-
 
 const getAllSubject = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['board']);
@@ -27,13 +25,12 @@ const getSubjectById = catchAsync(async (req, res) => {
 });
 
 const getSubjectByClassId = catchAsync(async (req, res) => {
-    const subject = await subjectService.getClassById(req.params.classId);
-    console.log("subject",subject)
-    if (!subject) {
-      throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
-    }
-    res.send(subject);
-  });
+  const subject = await subjectService.getClassById(req.params.classId);
+  if (!subject) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
+  }
+  res.send(subject);
+});
 
 const updateSubject = catchAsync(async (req, res) => {
   const subject = await subjectService.updatSubjectById(req.params.subjectId, req.body);

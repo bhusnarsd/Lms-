@@ -4,11 +4,11 @@ const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
 
 const classSchema = mongoose.Schema(
-  { 
+  {
     className: {
-      type: String,      
+      type: String,
       trim: true,
-    },    
+    },
   },
   {
     timestamps: true,
@@ -18,7 +18,6 @@ const classSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 classSchema.plugin(toJSON);
 classSchema.plugin(paginate);
-
 
 /**
  * @typedef Video

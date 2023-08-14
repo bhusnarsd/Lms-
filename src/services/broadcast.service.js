@@ -8,8 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<User>}
  */
 const createBoardcast = async (userBody) => {
-  return Broadcast.create(userBody); 
- 
+  return Broadcast.create(userBody);
 };
 
 /**
@@ -66,9 +65,9 @@ const deleteBoardcastById = async (broadcastId) => {
 };
 
 module.exports = {
-    createBoardcast,
-    getAllBoardcasts,
-    getBoardcastById,
-    updateBoardcastById,
-    deleteBoardcastById,
+  createBoardcast,
+  getAllBoardcasts,
+  getBoardcastById,
+  updateBoardcastById,
+  deleteBoardcastById,
 };

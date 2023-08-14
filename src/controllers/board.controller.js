@@ -3,13 +3,11 @@ const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { boardService } = require('../services');
- 
- 
+
 const createBoard = catchAsync(async (req, res) => {
   const board = await boardService.createBoard(req.body);
   res.status(httpStatus.CREATED).send(board);
 });
-
 
 const getAllBoard = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['name']);

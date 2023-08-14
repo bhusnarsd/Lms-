@@ -8,11 +8,10 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<User>}
  */
 const createPlanvideo = async (userBody) => {
-  //if (await User.isEmailTaken(userBody.email)) {
-   // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
- // }
+  // if (await User.isEmailTaken(userBody.email)) {
+  // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
+  // }
   return Planvideo.create(userBody);
- 
 };
 
 /**

@@ -1,20 +1,17 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  planvideoController = require('../../controllers/planvideo.controller');
+const planvideoController = require('../../controllers/planvideo.controller');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post( planvideoController.createUser)
-  .get( planvideoController.getUsers);
+router.route('/').post(planvideoController.createUser).get(planvideoController.getUsers);
 
 router
   .route('/:userId')
-  .get( planvideoController.getUser)
-  .patch(  planvideoController.updateUser)
-  .delete(  planvideoController.deleteUser);
+  .get(planvideoController.getUser)
+  .patch(planvideoController.updateUser)
+  .delete(planvideoController.deleteUser);
 
 module.exports = router;
 
@@ -43,22 +40,22 @@ module.exports = router;
  *             required:
  *               - name
  *               - date
- *               - time 
+ *               - time
  *               - board
  *               - class
  *               - subject
- *               - book         
+ *               - book
  *               - chapter
  *               - videoid
  *             properties:
  *               name:
  *                 type: string
  *               date:
- *                 type: string               
+ *                 type: string
  *               time:
  *                 type: string
  *               board:
- *                 type: string              
+ *                 type: string
  *               class:
  *                 type: string
  *               subject:
@@ -68,17 +65,17 @@ module.exports = router;
  *               chapter:
  *                 type: string
  *               videoid:
- *                 type: string               
+ *                 type: string
  *             example:
- *               name: Today Plan title              
+ *               name: Today Plan title
  *               date: 2023-07-25
- *               time: 10:00              
+ *               time: 10:00
  *               board: CBSC
  *               class: Class 9
  *               subject: Science
  *               book:  Science
- *               chapter: Animation 
- *               videoid: 64bf7a68c0797a1734b71faa  
+ *               chapter: Animation
+ *               videoid: 64bf7a68c0797a1734b71faa
  *     responses:
  *       "201":
  *         description: Created
@@ -104,7 +101,7 @@ module.exports = router;
  *         name: name
  *         schema:
  *           type: string
- *         description: User name *       
+ *         description: User name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -205,9 +202,9 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string
  *             example:
- *               name: fake name*               
+ *               name: fake name*
  *     responses:
  *       "200":
  *         description: OK

@@ -16,29 +16,29 @@ const userSchema = mongoose.Schema(
       trim: true,
     },
     board: {
-      type: String,      
+      type: String,
       trim: true,
     },
     class: {
-      type: String,      
+      type: String,
       trim: true,
     },
     subject: {
-      type: String,      
+      type: String,
       trim: true,
     },
     book: {
-      type: String,      
+      type: String,
       trim: true,
     },
     chapter: {
-      type: String,      
+      type: String,
       trim: true,
     },
     status: {
-      type: String,      
+      type: String,
       trim: true,
-    },    
+    },
   },
   {
     timestamps: true,
@@ -48,7 +48,6 @@ const userSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 userSchema.plugin(paginate);
-
 
 /**
  * @typedef Video

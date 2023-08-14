@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const mediumSchema = mongoose.Schema({
-        name: {
-            type: String,
-            trim: true,
-            required: true
-        },
+const mediumSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
     },
-    {timestamps: true,}
+  },
+  { timestamps: true }
 );
 
 // add plugin that converts mongoose to json

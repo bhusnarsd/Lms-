@@ -6,15 +6,15 @@ const lessionValidation = require('../../validations/lession.validation');
 const router = express.Router();
 
 router
-    .route('/')
-    .post(validate(lessionValidation.createLession), lessionController.createLession)
-    .get(validate(lessionValidation.getLessions), lessionController.getLessions);
+  .route('/')
+  .post(validate(lessionValidation.createLession), lessionController.createLession)
+  .get(validate(lessionValidation.getLessions), lessionController.getLessions);
 
 router
-    .route('/:lessionId')
-    .get(validate(lessionValidation.getLession), lessionController.getLession)
-    .patch(validate(lessionValidation.updateLession), lessionController.updateLession)
-    .delete(validate(lessionValidation.deleteLession), lessionController.deleteLession);
+  .route('/:lessionId')
+  .get(validate(lessionValidation.getLession), lessionController.getLession)
+  .patch(validate(lessionValidation.updateLession), lessionController.updateLession)
+  .delete(validate(lessionValidation.deleteLession), lessionController.deleteLession);
 
 module.exports = router;
 
@@ -34,7 +34,7 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name              
+ *               - name
  *             properties:
  *               boardId:
  *                 type: string
@@ -49,9 +49,9 @@ module.exports = router;
  *               chapterId:
  *                 type: string
  *               name:
- *                 type: string *   
+ *                 type: string *
  *               path:
- *                 type: string                           
+ *                 type: string
  *             example:
  *               boardId: 64ca45e050227f21d906d83c
  *               mediumId: 64d0bc1d18f7609763d21063
@@ -60,7 +60,7 @@ module.exports = router;
  *               bookId: 64b8f019ba89c333de42f169
  *               chapterId: 64b8f094050c643582b80481
  *               name: English
- *               path: path":"https://www.youtube.com/watch?v=D52_BL9sVMU                   
+ *               path: path":"https://www.youtube.com/watch?v=D52_BL9sVMU
  *     responses:
  *       "201":
  *         description: Created
@@ -86,7 +86,7 @@ module.exports = router;
  *         name: name
  *         schema:
  *           type: string
- *         description: lession name *       
+ *         description: lession name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -187,9 +187,9 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string
  *             example:
- *               name: fake name*               
+ *               name: fake name*
  *     responses:
  *       "200":
  *         description: OK

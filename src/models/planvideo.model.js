@@ -5,7 +5,7 @@ const { toJSON, paginate } = require('./plugins');
 
 const userSchema = mongoose.Schema(
   {
-     name: {
+    name: {
       type: String,
       required: true,
       trim: true,
@@ -19,35 +19,35 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-    },    
+    },
     board: {
-      type: String,      
+      type: String,
       trim: true,
     },
-     class: {
-      type: String,      
+    class: {
+      type: String,
       trim: true,
     },
     subject: {
-      type: String,      
+      type: String,
       trim: true,
     },
     book: {
-      type: String,      
+      type: String,
       trim: true,
     },
     chapter: {
-      type: String,      
+      type: String,
       trim: true,
     },
     videoid: {
-      type: String,      
+      type: String,
       trim: true,
     },
     status: {
-      type: String,      
+      type: String,
       trim: true,
-    },     
+    },
   },
   {
     timestamps: true,
@@ -57,7 +57,6 @@ const userSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
 userSchema.plugin(paginate);
-
 
 /**
  * @typedef Video

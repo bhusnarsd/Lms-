@@ -1,8 +1,7 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  boardController = require('../../controllers/board.controller');
-const boardValidation = require('../../validations/board.validation')
+const boardController = require('../../controllers/board.controller');
+const boardValidation = require('../../validations/board.validation');
 
 const router = express.Router();
 
@@ -14,8 +13,8 @@ router
 router
   .route('/:boardId')
   .get(validate(boardValidation.getBoard), boardController.getBoard)
-  .patch( validate(boardValidation.updateBoard), boardController.updateBoard)
-  .delete( validate(boardValidation.deleteBoard), boardController.deleteBoard);
+  .patch(validate(boardValidation.updateBoard), boardController.updateBoard)
+  .delete(validate(boardValidation.deleteBoard), boardController.deleteBoard);
 
 module.exports = router;
 
@@ -42,13 +41,13 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name               
+ *               - name
  *             properties:
  *               naboardme:
- *                 type: string *                              
+ *                 type: string *
  *             example:
- *               name: CBSC            
- *                 
+ *               name: CBSC
+ *
  *     responses:
  *       "201":
  *         description: Created
@@ -73,7 +72,7 @@ module.exports = router;
  *         name: board
  *         schema:
  *           type: string
- *         description: Board name *       
+ *         description: Board name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -173,9 +172,9 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string
  *             example:
- *               name: fake name*               
+ *               name: fake name*
  *     responses:
  *       "200":
  *         description: OK

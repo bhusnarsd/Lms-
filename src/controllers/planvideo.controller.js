@@ -9,9 +9,8 @@ const createUser = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(user);
 });
 
-
 const getUsers = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ['name','board', 'class', 'subject', 'book', 'chapter', 'videoid']);
+  const filter = pick(req.query, ['name', 'board', 'class', 'subject', 'book', 'chapter', 'videoid']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await planvideoService.queryUsers(filter, options);
   res.send(result);

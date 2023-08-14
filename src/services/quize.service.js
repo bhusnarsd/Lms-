@@ -7,7 +7,7 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} quizeBody
  * @returns {Promise<quize>}
  */
-const createQuize = async (quizeBody) => {  
+const createQuize = async (quizeBody) => {
   return quize.create(quizeBody);
 };
 
@@ -21,7 +21,7 @@ const createQuize = async (quizeBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryQuize = async (filter, options) => {
-  const  quizes = await quize.paginate(filter, options);
+  const quizes = await quize.paginate(filter, options);
   return quizes;
 };
 
@@ -41,13 +41,13 @@ const getQuizeById = async (id) => {
  * @returns {Promise<quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
-  const quize = await getQuizeById(quizeId);
-  if (!quize) {
+  const quizes = await getQuizeById(quizeId);
+  if (!quizes) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');
   }
-  Object.assign(quize, updateBody);
-  await quize.save();
-  return quize;
+  Object.assign(quizes, updateBody);
+  await quizes.save();
+  return quizes;
 };
 
 /**
