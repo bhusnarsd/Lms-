@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
 const broadcastSchema = mongoose.Schema(
-    {
-        title: {
-            type: String,
-            trim: true,
-        },
-        path: {
-            type: String,    
-        },       
+  {
+    title: {
+      type: String,
+      trim: true,
     },
-    {
-        timestamps: true,
-    }
+    path: {
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
 );
 
 // add plugin that converts mongoose to json

@@ -1,20 +1,13 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  videoController = require('../../controllers/video.controller');
+const videoController = require('../../controllers/video.controller');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post( videoController.createUser)
-  .get( videoController.getUsers);
+router.route('/').post(videoController.createUser).get(videoController.getUsers);
 
-router
-  .route('/:userId')
-  .get( videoController.getUser)
-  .patch(  videoController.updateUser)
-  .delete(  videoController.deleteUser);
+router.route('/:userId').get(videoController.getUser).patch(videoController.updateUser).delete(videoController.deleteUser);
 
 module.exports = router;
 
@@ -46,15 +39,15 @@ module.exports = router;
  *               - board
  *               - class
  *               - subject
- *               - book         
+ *               - book
  *               - chapter
  *             properties:
  *               name:
  *                 type: string
  *               path:
- *                 type: string 
+ *                 type: string
  *               board:
- *                 type: string              
+ *                 type: string
  *               class:
  *                 type: string
  *               subject:
@@ -62,7 +55,7 @@ module.exports = router;
  *               book:
  *                 type: string
  *               chapter:
- *                 type: string                               
+ *                 type: string
  *             example:
  *               name: Matter in our surroundings - an introduction
  *               path: https://www.youtube.com/watch?v=3G9sWAaj26k
@@ -70,7 +63,7 @@ module.exports = router;
  *               class: Class 9
  *               subject: Science
  *               book:  Science
- *               chapter: Animation                   
+ *               chapter: Animation
  *     responses:
  *       "201":
  *         description: Created
@@ -96,7 +89,7 @@ module.exports = router;
  *         name: name
  *         schema:
  *           type: string
- *         description: User name *       
+ *         description: User name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -197,9 +190,9 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string
  *             example:
- *               name: fake name*               
+ *               name: fake name*
  *     responses:
  *       "200":
  *         description: OK

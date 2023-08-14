@@ -6,18 +6,17 @@ const mediumValidation = require('../../validations/medium.validation');
 const router = express.Router();
 
 router
-    .route('/')
-    .post(validate(mediumValidation.createMedium), mediumController.createMedium)
-    .get(validate(mediumValidation.getMediums), mediumController.getMediums);
+  .route('/')
+  .post(validate(mediumValidation.createMedium), mediumController.createMedium)
+  .get(validate(mediumValidation.getMediums), mediumController.getMediums);
 
 router
-    .route('/:mediumId')
-    .get(validate(mediumValidation.getMedium), mediumController.getMedium)
-    .patch(validate(mediumValidation.updateMedium), mediumController.updateMedium)
-    .delete(validate(mediumValidation.deleteMedium), mediumController.deleteMedium);
+  .route('/:mediumId')
+  .get(validate(mediumValidation.getMedium), mediumController.getMedium)
+  .patch(validate(mediumValidation.updateMedium), mediumController.updateMedium)
+  .delete(validate(mediumValidation.deleteMedium), mediumController.deleteMedium);
 
 module.exports = router;
-
 
 /**
  * @swagger
@@ -42,13 +41,13 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name              
+ *               - name
  *             properties:
  *               name:
- *                 type: string *                              
+ *                 type: string *
  *             example:
- *               name: English            
- *                 
+ *               name: English
+ *
  *     responses:
  *       "201":
  *         description: Created
@@ -74,7 +73,7 @@ module.exports = router;
  *         name: name
  *         schema:
  *           type: string
- *         description: Medium name *       
+ *         description: Medium name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -174,9 +173,9 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string                
+ *                 type: string
  *             example:
- *               name: fake name*               
+ *               name: fake name*
  *     responses:
  *       "200":
  *         description: OK

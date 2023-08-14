@@ -21,7 +21,7 @@ const createBoard = async (boardBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryBoard = async (filter, options) => {
-  const  boards = await Board.paginate(filter, options);
+  const boards = await Board.paginate(filter, options);
   return boards;
 };
 

@@ -8,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Chapter>}
  */
 const createChapter = async (chapter) => {
-  return Chapter.create(chapter); 
+  return Chapter.create(chapter);
 };
 
 /**
@@ -33,7 +33,6 @@ const getAllChapter = async (filter, options) => {
 const getChapterById = async (id) => {
   return Chapter.findById(id);
 };
-
 
 /**
  * Update Chapter by id
@@ -66,9 +65,9 @@ const deleteChapterById = async (chapterId) => {
 };
 
 module.exports = {
-createChapter,
-getChapterById,
-getAllChapter,
-updateChapterById,
-deleteChapterById,
+  createChapter,
+  getChapterById,
+  getAllChapter,
+  updateChapterById,
+  deleteChapterById,
 };

@@ -3,6 +3,7 @@ const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const chapterValidation = require('../../validations/chapter.validation');
 const chaterController = require('../../controllers/chapter.controller');
+
 const router = express.Router();
 router
   .route('/')
@@ -15,7 +16,7 @@ router
   .patch(validate(chapterValidation.updateChapterById), chaterController.updateSingleClass)
   .delete(validate(chapterValidation.deleteChapterById), chaterController.deleteSingleChapter);
 
-module.exports = router
+module.exports = router;
 
 /**
  * @swagger
@@ -39,7 +40,7 @@ module.exports = router
  *     responses:
  *       200:
  *         description: List of chapters retrieved successfully
- * 
+ *
  * /chapter/{chapterId}:
  *   patch:
  *     summary: Update a single chapter by ID
@@ -95,7 +96,6 @@ module.exports = router
  *         description: Chapter not found
  */
 
-
 /**
  * @swagger
  * components:
@@ -129,4 +129,3 @@ module.exports = router
  *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
  */
-

@@ -8,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Book>}
  */
 const createBook = async (bookBody) => {
-    return Book.create(bookBody);
+  return Book.create(bookBody);
 };
 
 /**
@@ -21,8 +21,8 @@ const createBook = async (bookBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryBook = async (filter, options) => {
-    const book = await Book.paginate(filter, options);
-    return book;
+  const book = await Book.paginate(filter, options);
+  return book;
 };
 
 /**
@@ -32,11 +32,11 @@ const queryBook = async (filter, options) => {
  */
 
 const getClassById = async (classId) => {
-    return Book.find({ classId });
+  return Book.find({ classId });
 };
 
 const getBookById = async (id) => {
-    return Book.findById(id);
+  return Book.findById(id);
 };
 /**
  * Update book by id
@@ -44,14 +44,14 @@ const getBookById = async (id) => {
  * @param {Object} updateBody
  * @returns {Promise<Board>}
  */
-const updatBookById = async (bookId, updateBody) => {
-    const book = await getBookById(subjectId);
-    if (!book) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
-    }
-    Object.assign(book, updateBody);
-    await book.save();
-    return book;
+const updatBookById = async (subjectId, updateBody) => {
+  const book = await getBookById(subjectId);
+  if (!book) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
+  }
+  Object.assign(book, updateBody);
+  await book.save();
+  return book;
 };
 
 /**
@@ -60,19 +60,19 @@ const updatBookById = async (bookId, updateBody) => {
  * @returns {Promise<Book>}
  */
 const deleteBookById = async (bookId) => {
-    const book = await getBookById(bookId);
-    if (!book) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
-    }
-    await book.remove();
-    return book;
+  const book = await getBookById(bookId);
+  if (!book) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
+  }
+  await book.remove();
+  return book;
 };
 
 module.exports = {
-    createBook,
-    queryBook,
-    getBookById,
-    updatBookById,
-    deleteBookById,
-    getClassById
+  createBook,
+  queryBook,
+  getBookById,
+  updatBookById,
+  deleteBookById,
+  getClassById,
 };

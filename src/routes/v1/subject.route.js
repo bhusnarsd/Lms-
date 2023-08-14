@@ -1,8 +1,8 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  subjectController = require('../../controllers/subject.controller');
-const subjectValidation = require('../../validations/subject.validation')
+const subjectController = require('../../controllers/subject.controller');
+const subjectValidation = require('../../validations/subject.validation');
 
 const router = express.Router();
 
@@ -14,12 +14,10 @@ router
 router
   .route('/:subjectId')
   .get(validate(subjectValidation.getSubject), subjectController.getSubjectById)
-  .patch(validate(subjectValidation.updateSubject),  subjectController.updateSubject)
-  .delete( validate(subjectValidation.deleteSubject), subjectController.deleteSubject);
+  .patch(validate(subjectValidation.updateSubject), subjectController.updateSubject)
+  .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject);
 
-  router
-  .route('/class/:classId')
-  .get( subjectController.getSubjectByClassId)
+router.route('/class/:classId').get(subjectController.getSubjectByClassId);
 
 module.exports = router;
 
@@ -45,16 +43,16 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name    
- *               - classId           
+ *               - name
+ *               - classId
  *             properties:
  *               name:
- *                 type: string 
- *               classId: string                             
+ *                 type: string
+ *               classId: string
  *             example:
- *               name: CBSC  
- *               classId: 7656765a          
- *                 
+ *               name: CBSC
+ *               classId: 7656765a
+ *
  *     responses:
  *       "201":
  *         description: Created
@@ -79,7 +77,7 @@ module.exports = router;
  *         name: subject
  *         schema:
  *           type: string
- *         description: Subject name *       
+ *         description: Subject name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -178,12 +176,12 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string     
+ *                 type: string
  *               classId:
- *                 type: string             
+ *                 type: string
  *             example:
- *               name: fake name 
- *               classId: 54867567             
+ *               name: fake name
+ *               classId: 54867567
  *     responses:
  *       "200":
  *         description: OK

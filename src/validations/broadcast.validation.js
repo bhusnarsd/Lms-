@@ -1,5 +1,5 @@
-const Joi = require("joi");
-const { objectId } = require("./custom.validation");
+const Joi = require('joi');
+const { objectId } = require('./custom.validation');
 
 const createBroadcast = {
   body: Joi.object().keys({
@@ -30,7 +30,7 @@ const updateBroadcast = {
   body: Joi.object()
     .keys({
       title: Joi.string(),
-      path:Joi.string(),
+      path: Joi.string(),
     })
     .min(1),
 };

@@ -3,11 +3,10 @@ const { toJSON, paginate } = require('./plugins');
 
 const boardSchema = mongoose.Schema(
   {
-     
     name: {
-      type: String,      
+      type: String,
       trim: true,
-    },     
+    },
   },
   {
     timestamps: true,
@@ -17,7 +16,6 @@ const boardSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 boardSchema.plugin(toJSON);
 boardSchema.plugin(paginate);
-
 
 const Board = mongoose.model('Board', boardSchema);
 

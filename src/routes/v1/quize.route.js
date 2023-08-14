@@ -1,8 +1,7 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const quizeController = require('../../controllers/quize.controller');
-const quizeValidation = require('../../validations/quize.validation')
+const quizeValidation = require('../../validations/quize.validation');
 
 const router = express.Router();
 
@@ -13,9 +12,9 @@ router
 
 router
   .route('/:quizeId')
-  .get(validate(quizeValidation.getQuize),quizeController.getQuizeById)
-  .patch(validate(quizeValidation.updateQuize),quizeController.updateQuizeById)
-  .delete(validate(quizeValidation.deleteQuize),quizeController.deleteQuizeById);
+  .get(validate(quizeValidation.getQuize), quizeController.getQuizeById)
+  .patch(validate(quizeValidation.updateQuize), quizeController.updateQuizeById)
+  .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById);
 
 module.exports = router;
 
@@ -39,7 +38,7 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - quizname  
+ *               - quizname
  *               - option1
  *               - option2
  *               - option3
@@ -55,9 +54,9 @@ module.exports = router;
  *               - bookId
  *               - subjectId
  *               - chapterId
- *               - lessonId                            
+ *               - lessonId
  *             example:
- *               quizname: Sample Quiz 
+ *               quizname: Sample Quiz
  *               option1: Option A
  *               option2: Option B
  *               option3: Option c
@@ -71,7 +70,7 @@ module.exports = router;
  *               mediumId: 64d327a41128844220f0cce4
  *               classId: 64d327811128844220f0cce0
  *               bookId: 64d9d7143ac675796cdcd433
- *               subjectId: 64d9d4666205c371563fcadb 
+ *               subjectId: 64d9d4666205c371563fcadb
  *               chapterId: 64d327811128844220f0cce0
  *               lessonId: 64d9d83711b20e7b83affceb
  *     responses:
@@ -98,7 +97,7 @@ module.exports = router;
  *         queName: fake quetion
  *         schema:
  *           type: string
- *         description: Quize name *       
+ *         description: Quize name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -197,12 +196,12 @@ module.exports = router;
  *             type: object
  *             properties:
  *               title:
- *                 type: string     
+ *                 type: string
  *               path:
- *                 type: string             
+ *                 type: string
  *             example:
- *               title: fake name 
- *               path: "54867567"             
+ *               title: fake name
+ *               path: "54867567"
  *     responses:
  *       "200":
  *         description: OK

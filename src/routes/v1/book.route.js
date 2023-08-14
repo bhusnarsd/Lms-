@@ -1,28 +1,24 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  bookController = require('../../controllers/book.controller');
-const bookValidation  = require('../../validations/book.validation')
+const bookController = require('../../controllers/book.controller');
+const bookValidation = require('../../validations/book.validation');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(bookValidation.createBook),  bookController.createBook)
-  .get(validate(bookValidation.getBooks),  bookController.getAllBook);
+  .post(validate(bookValidation.createBook), bookController.createBook)
+  .get(validate(bookValidation.getBooks), bookController.getAllBook);
 
 router
   .route('/:bookId')
-  .get(validate(bookValidation.getBook),  bookController.getBookById)
-  .patch(validate(bookValidation.updateBook),   bookController.updateBook)
-  .delete(validate(bookValidation.deleteBook),   bookController.deleteBook);
+  .get(validate(bookValidation.getBook), bookController.getBookById)
+  .patch(validate(bookValidation.updateBook), bookController.updateBook)
+  .delete(validate(bookValidation.deleteBook), bookController.deleteBook);
 
-  router
-  .route('/class/:classId')
-  .get( bookController.getBookByClassId)
+router.route('/class/:classId').get(bookController.getBookByClassId);
 
 module.exports = router;
-
 
 /**
  * @swagger
@@ -46,21 +42,21 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name    
+ *               - name
  *               - boardId
  *               - mediumId
- *               - classId 
+ *               - classId
  *               - subjectId
  *             properties:
  *               name:
- *                 type: string 
- *               classId: string                             
+ *                 type: string
+ *               classId: string
  *             example:
- *               name: History  
+ *               name: History
  *               boardId: 64d9ceaef49e9f5dc06502c6
  *               mediumId: 64d327a41128844220f0cce4
- *               classId: 64d327811128844220f0cce0     
- *               subjectId: 64d9d4666205c371563fcadb   
+ *               classId: 64d327811128844220f0cce0
+ *               subjectId: 64d9d4666205c371563fcadb
  *     responses:
  *       "201":
  *         description: Created
@@ -85,7 +81,7 @@ module.exports = router;
  *         name: subject
  *         schema:
  *           type: string
- *         description: Subject name *       
+ *         description: Subject name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -184,12 +180,12 @@ module.exports = router;
  *             type: object
  *             properties:
  *               name:
- *                 type: string     
+ *                 type: string
  *               classId:
- *                 type: string             
+ *                 type: string
  *             example:
- *               name: fake name 
- *               classId: 54867567             
+ *               name: fake name
+ *               classId: 54867567
  *     responses:
  *       "200":
  *         description: OK

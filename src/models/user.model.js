@@ -36,7 +36,7 @@ const userSchema = mongoose.Schema(
       private: true, // used by the toJSON plugin
     },
     status: {
-      type: String,      
+      type: String,
       trim: true,
     },
     role: {

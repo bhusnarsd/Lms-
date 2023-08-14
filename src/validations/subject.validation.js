@@ -1,5 +1,5 @@
 const Joi = require('joi');
-const { password, objectId } = require('./custom.validation');
+const { objectId } = require('./custom.validation');
 
 const createSubject = {
   body: Joi.object().keys({
@@ -43,8 +43,7 @@ const deleteSubject = {
 module.exports = {
   createSubject,
   getSubject,
-  getSubject,
   updateSubject,
   deleteSubject,
-  getAllSubject
+  getAllSubject,
 };

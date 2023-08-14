@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { toJSON, paginate } = require("./plugins");
+const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const quizeSchema = mongoose.Schema(
   {
@@ -26,7 +26,7 @@ const quizeSchema = mongoose.Schema(
     },
     types: {
       type: String,
-      enum: ["easy", "medium", "hard"],
+      enum: ['easy', 'medium', 'hard'],
     },
     isVerified: {
       type: Boolean,
@@ -37,37 +37,37 @@ const quizeSchema = mongoose.Schema(
     },
     boardId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "board",
+      ref: 'board',
       required: true,
     },
     mediumId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "medium",
+      ref: 'medium',
       required: true,
     },
     classId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "class",
+      ref: 'class',
       required: true,
     },
     bookId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "book",
+      ref: 'book',
       required: true,
     },
     subjectId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "subject",
+      ref: 'subject',
       required: true,
     },
     chapterId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "chapter",
+      ref: 'chapter',
       required: true,
     },
     lessonId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "lesson",
+      ref: 'lesson',
       required: true,
     },
   },
@@ -80,6 +80,6 @@ const quizeSchema = mongoose.Schema(
 quizeSchema.plugin(toJSON);
 quizeSchema.plugin(paginate);
 
-const Quize = mongoose.model("quize", quizeSchema);
+const Quize = mongoose.model('quize', quizeSchema);
 
 module.exports = Quize;

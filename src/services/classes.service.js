@@ -8,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Classes>}
  */
 const createClasses = async (userBody) => {
-  return Classes.create(userBody); 
+  return Classes.create(userBody);
 };
 
 /**

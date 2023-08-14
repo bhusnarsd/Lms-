@@ -21,7 +21,7 @@ const createSubject = async (subjectBody) => {
  * @returns {Promise<QueryResult>}
  */
 const querySubject = async (filter, options) => {
-  const  subject = await Subject.paginate(filter, options);
+  const subject = await Subject.paginate(filter, options);
   return subject;
 };
 
@@ -35,9 +35,9 @@ const getSubjectById = async (id) => {
 };
 
 const getClassById = async (classId) => {
-    return Subject.find({classId});
-  };
-  
+  return Subject.find({ classId });
+};
+
 /**
  * Update subject by id
  * @param {ObjectId} userId
@@ -74,5 +74,5 @@ module.exports = {
   getSubjectById,
   updatSubjectById,
   deleteSubjectById,
-  getClassById
+  getClassById,
 };
