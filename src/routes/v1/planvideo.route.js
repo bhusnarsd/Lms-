@@ -1,7 +1,9 @@
 const express = require('express');
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const planvideoController = require('../../controllers/planvideo.controller');
+const  planvideoController = require('../../controllers/planvideo.controller');
+const planValidation = require('../../validations/planvideo.validation');
+const { valid } = require('joi');
 
 const router = express.Router();
 

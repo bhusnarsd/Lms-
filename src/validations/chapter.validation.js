@@ -2,15 +2,15 @@ const Joi = require('joi');
 const { password, objectId } = require('./custom.validation');
 
 const createChapter = {
-  body: Joi.object().keys({
-    boardId: Joi.string().required(),
-    mediumId: Joi.string().required(),
-    classId: Joi.string().required(),
-    subjectId: Joi.string().required(),
-    bookId: Joi.string().required(),
-    chapterName: Joi.string().required(),
-  }),
-};
+    body: Joi.object().keys({
+        boardId: Joi.string().required(),
+        mediumId: Joi.string().required(),
+        classId: Joi.string().required(),
+        subjectId: Joi.string().required(),
+        bookId: Joi.string().required(),
+        chapterName: Joi.string().required()
+    }),
+  };
 
 const getChapter = {
   params: Joi.object().keys({
