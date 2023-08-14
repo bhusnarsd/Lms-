@@ -5,7 +5,7 @@ const quizeSchema = mongoose.Schema(
   {
      
     queName: {
-      type: String,      
+      type: String,   
     }, 
     option1:{
         type : String

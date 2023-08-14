@@ -11,4 +11,3 @@ module.exports.Subject  = require('./subject.model');
 module.exports.Book  = require('./book.model');
 module.exports.quize  = require('./quize.model');
 
-
