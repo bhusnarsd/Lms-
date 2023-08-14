@@ -128,5 +128,6 @@ module.exports = router
  *         subjectId: 614a7e7d7f1d813bbf8e89c2
  *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
+ *         order:  1
  */
 
