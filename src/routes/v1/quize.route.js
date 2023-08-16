@@ -79,7 +79,6 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Quize'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -128,7 +127,6 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Quize'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -168,7 +166,6 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/boardcast'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -195,20 +192,19 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               title:
+ *               quizname:
  *                 type: string
- *               path:
+ *               explain:
  *                 type: string
  *             example:
- *               title: fake name
- *               path: "54867567"
+ *               quizname: Demo testing name
+ *               explain: "this is testing releted explain"
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/boardcast'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
