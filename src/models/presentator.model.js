@@ -1,31 +1,28 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const { toJSON, paginate } = require("./plugins");
+const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const presentatorSchema = mongoose.Schema(
   {
     presentatorName: {
-        type: String,
-        trim: true,
-        required: true,
-      },
+      type: String,
+      trim: true,
+      required: true,
+    },
     qualification: {
-        type:String,
-        required: true,
-        trim: true,
-      },
-      experience: {
-        type:String,
-        required: true,
-        trim: true,
-      },
-      schoolName: {
-        type:String,
-        required: true,
-        trim: true,
-      },
-
+      type: String,
+      required: true,
+      trim: true,
+    },
+    experience: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    schoolName: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
@@ -36,6 +33,6 @@ const presentatorSchema = mongoose.Schema(
 presentatorSchema.plugin(toJSON);
 presentatorSchema.plugin(paginate);
 
-const Presentator = mongoose.model("Presentator", presentatorSchema);
+const Presentator = mongoose.model('Presentator', presentatorSchema);
 
 module.exports = Presentator;

@@ -1,4 +1,3 @@
-
 const httpStatus = require('http-status');
 const { Presentator } = require('../models');
 const ApiError = require('../utils/ApiError');
@@ -9,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Presentator>}
  */
 const createPresentator = async (presentatorData) => {
-  return Presentator.create(presentatorData); 
+  return Presentator.create(presentatorData);
 };
 
 /**
@@ -72,4 +71,3 @@ module.exports = {
   updatePresentatorById,
   deletePresentatorById,
 };
-

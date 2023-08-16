@@ -4,11 +4,11 @@ const ApiError = require('../utils/ApiError');
 
 /**
  * Create a Classes
- * @param {Object} userBody
+ * @param {Object} classBody
  * @returns {Promise<Classes>}
  */
-const createClasses = async (userBody) => {
-  return Classes.create(userBody);
+const createClasses = async (classBody) => {
+  return Classes.create(classBody);
 };
 
 /**
@@ -26,17 +26,17 @@ const getAllClasses = async (filter, options) => {
 };
 
 /**
- * Get Classes by id
- * @param {ObjectId} id
+ * Get Classes by classId
+ * @param {ObjectId} classId
  * @returns {Promise<Classes>}
  */
-const getClassById = async (id) => {
-  return Classes.findById(id);
+const getClassById = async (classId) => {
+  return Classes.findById(classId);
 };
 
 /**
- * Update Classes by id
- * @param {ObjectId} userId
+ * Update Classes by classId
+ * @param {ObjectId} classId
  * @param {Object} updateBody
  * @returns {Promise<Classes>}
  */
@@ -51,8 +51,8 @@ const updateClassById = async (classId, updateBody) => {
 };
 
 /**
- * Delete Classes by id
- * @param {ObjectId} userId
+ * Delete Classes by classId
+ * @param {ObjectId} classId
  * @returns {Promise<Classes>}
  */
 const deleteClassById = async (classId) => {

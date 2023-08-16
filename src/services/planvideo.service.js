@@ -7,17 +7,8 @@ const ApiError = require('../utils/ApiError');
  * @param {Object} planBody
  * @returns {Promise<Planvideo>}
  */
-<<<<<<< HEAD
-const createPlanvideo = async (userBody) => {
-  // if (await User.isEmailTaken(userBody.email)) {
-  // throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  // }
-  return Planvideo.create(userBody);
-=======
 const createNewPlan = async (planBody) => {
   return Planvideo.create(planBody);
- 
->>>>>>> onkar-lms
 };
 
 /**
@@ -36,11 +27,11 @@ const getAllPlans = async (filter, options) => {
 
 /**
  * Get Planvideo by id
- * @param {ObjectId} id
+ * @param {ObjectId} planId
  * @returns {Promise<Planvideo>}
  */
-const getPlanById = async (id) => {
-  return Planvideo.findById(id);
+const getPlanById = async (planId) => {
+  return Planvideo.findById(planId);
 };
 
 /**

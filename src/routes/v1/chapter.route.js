@@ -1,5 +1,4 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const chapterValidation = require('../../validations/chapter.validation');
 const chaterController = require('../../controllers/chapter.controller');

@@ -1,4 +1,3 @@
-
 const httpStatus = require('http-status');
 const { Studio } = require('../models');
 const ApiError = require('../utils/ApiError');
@@ -9,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Studio>}
  */
 const createStudio = async (studioData) => {
-  return Studio.create(studioData); 
+  return Studio.create(studioData);
 };
 
 /**
@@ -72,4 +71,3 @@ module.exports = {
   updateStudioById,
   deleteStudioById,
 };
-

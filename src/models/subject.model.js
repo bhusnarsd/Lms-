@@ -6,25 +6,18 @@ const subjectSchema = mongoose.Schema(
     name: {
       type: String,
       trim: true,
-<<<<<<< HEAD
-    },
-    classId: {
-      type: String,
-    },
-=======
       required: true,
-    },  
+    },
     classId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: "class",
-        required: true,      
-      },
-      order: {
-        type: Number,
-        trim: true,
-        required: true,
-      },     
->>>>>>> onkar-lms
+      ref: 'class',
+      required: true,
+    },
+    order: {
+      type: Number,
+      trim: true,
+      required: true,
+    },
   },
   {
     timestamps: true,

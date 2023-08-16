@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
 
 const chapterSchema = mongoose.Schema(
@@ -30,18 +28,11 @@ const chapterSchema = mongoose.Schema(
       trim: true,
     },
     bookId: {
-<<<<<<< HEAD
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'book',
       required: true,
+      trim: true,
     },
-=======
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: "book",
-        required: true,
-        trim: true,
-      },
->>>>>>> onkar-lms
     chapterName: {
       type: String,
       trim: true,

@@ -1,8 +1,8 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const studioValidation = require('../../validations/studio.validation');
-const  studioController = require('../../controllers/studio.controller'); 
+const studioController = require('../../controllers/studio.controller');
+
 const router = express.Router();
 router
   .route('/')
@@ -12,10 +12,10 @@ router
 router
   .route('/:studioId')
   .get(validate(studioValidation.getStudio), studioController.getStudio)
-  .patch( validate(studioValidation.updateStudioById), studioController.updateStudio)
-  .delete( validate(studioValidation.deleteStudioById), studioController.deleteStudio);
+  .patch(validate(studioValidation.updateStudioById), studioController.updateStudio)
+  .delete(validate(studioValidation.deleteStudioById), studioController.deleteStudio);
 
-module.exports = router
+module.exports = router;
 
 /**
  * @swagger
@@ -39,7 +39,7 @@ module.exports = router
  *     responses:
  *       200:
  *         description: List of studio retrieved successfully
- * 
+ *
  * /studio/{studioId}:
  *   patch:
  *     summary: Update a single chapter by ID
@@ -95,7 +95,6 @@ module.exports = router
  *         description: Studio not found
  */
 
-
 /**
  * @swagger
  * components:
@@ -111,4 +110,3 @@ module.exports = router
  *         studioName: studio1 or studio-2
  *         location: pune,mumbai,delhi
  */
-

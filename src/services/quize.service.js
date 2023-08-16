@@ -1,14 +1,14 @@
 const httpStatus = require('http-status');
-const { quize } = require('../models');
+const { Quize } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
  * Create a quize
  * @param {Object} quizeBody
- * @returns {Promise<quize>}
+ * @returns {Promise<Quize>}
  */
 const createQuize = async (quizeBody) => {
-  return quize.create(quizeBody);
+  return Quize.create(quizeBody);
 };
 
 /**
@@ -21,24 +21,24 @@ const createQuize = async (quizeBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryQuize = async (filter, options) => {
-  const quizes = await quize.paginate(filter, options);
+  const quizes = await Quize.paginate(filter, options);
   return quizes;
 };
 
 /**
  * Get quize by id
  * @param {ObjectId} id
- * @returns {Promise<quize>}
+ * @returns {Promise<Quize>}
  */
 const getQuizeById = async (id) => {
-  return quize.findById(id);
+  return Quize.findById(id);
 };
 
 /**
  * Update quize by id
  * @param {ObjectId} quizeId
  * @param {Object} updateBody
- * @returns {Promise<quize>}
+ * @returns {Promise<Quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
   const quizes = await getQuizeById(quizeId);
@@ -53,7 +53,7 @@ const updateQuizeById = async (quizeId, updateBody) => {
 /**
  * Delete quize by id
  * @param {ObjectId} quizeId
- * @returns {Promise<quize>}
+ * @returns {Promise<Quize>}
  */
 const deleteQuizeById = async (quizeId) => {
   const quize = await getQuizeById(quizeId);
