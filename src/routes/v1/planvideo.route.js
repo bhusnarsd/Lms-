@@ -1,39 +1,22 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const  planvideoController = require('../../controllers/planvideo.controller');
+const planvideoController = require('../../controllers/planvideo.controller');
 const planValidation = require('../../validations/planvideo.validation');
-<<<<<<< HEAD
-const { valid } = require('joi');
-
-const router = express.Router();
-
-router.route('/').post(planvideoController.createUser).get(planvideoController.getUsers);
-
-router
-  .route('/:userId')
-  .get(planvideoController.getUser)
-  .patch(planvideoController.updateUser)
-  .delete(planvideoController.deleteUser);
-=======
-
 
 const router = express.Router();
 
 router
   .route('/')
   .post(validate(planValidation.createNewPlan), planvideoController.createNewPlan)
-  .get( validate(planValidation.getAllPlan),planvideoController.getAllPlans);
+  .get(validate(planValidation.getAllPlan), planvideoController.getAllPlans);
 
 router
   .route('/:planId')
-  .get( validate(planValidation.getSinglePlan),planvideoController.getSinglePlan)
-  .patch( validate(planValidation.updatePlanById), planvideoController.updatePlan)
-  .delete( validate(planValidation.deletePlanById), planvideoController.deletePlan);
->>>>>>> onkar-lms
+  .get(validate(planValidation.getSinglePlan), planvideoController.getSinglePlan)
+  .patch(validate(planValidation.updatePlanById), planvideoController.updatePlan)
+  .delete(validate(planValidation.deletePlanById), planvideoController.deletePlan);
 
 module.exports = router;
-
 
 /**
  * @swagger
@@ -53,7 +36,6 @@ module.exports = router;
  *       content:
  *         application/json:
  *           schema:
-<<<<<<< HEAD
  *             type: object
  *             required:
  *               - name
@@ -93,10 +75,7 @@ module.exports = router;
  *               subject: Science
  *               book:  Science
  *               chapter: Animation
- *               videoid: 64bf7a68c0797a1734b71faa
-=======
- *             $ref: '#/components/schemas/PlanVideoInput'
->>>>>>> onkar-lms
+ *               lessonId: 64bf7a68c0797a1734b71faa
  *     responses:
  *       201:
  *         description: Plan video successfully created
@@ -108,7 +87,6 @@ module.exports = router;
  *         $ref: '#/components/responses/BadRequest'
  *       401:
  *         $ref: '#/components/responses/Unauthorized'
-<<<<<<< HEAD
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *
@@ -171,10 +149,6 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
-=======
- *       500:
- *         $ref: '#/components/responses/InternalServer'
->>>>>>> onkar-lms
  */
 
 /**
@@ -244,16 +218,12 @@ module.exports = router;
  *       content:
  *         application/json:
  *           schema:
-<<<<<<< HEAD
  *             type: object
  *             properties:
  *               name:
  *                 type: string
  *             example:
  *               name: fake name*
-=======
- *             $ref: '#/components/schemas/PlanVideoUpdate'
->>>>>>> onkar-lms
  *     responses:
  *       200:
  *         description: Plan video successfully updated
@@ -340,7 +310,6 @@ module.exports = router;
  *         - chapterId
  *         - lessonId
  */
-
 
 /**
  * @swagger

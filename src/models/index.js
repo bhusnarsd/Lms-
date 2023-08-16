@@ -7,14 +7,10 @@ module.exports.Classes = require('./classes.model');
 module.exports.Medium = require('./medium.model');
 module.exports.Lession = require('./lession.model');
 module.exports.Chapter = require('./chapter.model');
-<<<<<<< HEAD
+
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
-module.exports.quize = require('./quize.model');
-=======
+module.exports.Quize = require('./quize.model');
 
-module.exports.Subject  = require('./subject.model')
-module.exports.Book  = require('./book.model')
-
-
->>>>>>> onkar-lms
+module.exports.Subject = require('./subject.model');
+module.exports.Book = require('./book.model');

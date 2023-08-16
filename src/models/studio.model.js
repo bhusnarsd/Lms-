@@ -1,21 +1,18 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const { toJSON, paginate } = require("./plugins");
+const mongoose = require('mongoose');
+const { toJSON, paginate } = require('./plugins');
 
 const studioSchema = mongoose.Schema(
   {
     studioName: {
-        type: String,
-        trim: true,
-        required: true,
-      },
+      type: String,
+      trim: true,
+      required: true,
+    },
     location: {
-        type:String,
-        required: true,
-        trim: true,
-      },
-
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
@@ -26,6 +23,6 @@ const studioSchema = mongoose.Schema(
 studioSchema.plugin(toJSON);
 studioSchema.plugin(paginate);
 
-const Studio = mongoose.model("Studio", studioSchema);
+const Studio = mongoose.model('Studio', studioSchema);
 
 module.exports = Studio;

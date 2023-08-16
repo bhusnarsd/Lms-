@@ -1,8 +1,8 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const presentatorValidation = require('../../validations/presentator.validation');
-const presentatorController = require('../../controllers/presentator.controller'); 
+const presentatorController = require('../../controllers/presentator.controller');
+
 const router = express.Router();
 router
   .route('/')
@@ -12,10 +12,10 @@ router
 router
   .route('/:presentatorId')
   .get(validate(presentatorValidation.getPresentator), presentatorController.getPresentator)
-  .patch( validate(presentatorValidation.updatePresentatorById), presentatorController.updatePresentator)
-  .delete( validate(presentatorValidation.deletePresentatorById), presentatorController.deletePresentator);
+  .patch(validate(presentatorValidation.updatePresentatorById), presentatorController.updatePresentator)
+  .delete(validate(presentatorValidation.deletePresentatorById), presentatorController.deletePresentator);
 
-module.exports = router
+module.exports = router;
 
 /**
  * @swagger
@@ -39,7 +39,7 @@ module.exports = router
  *     responses:
  *       200:
  *         description: List of Presentator retrieved successfully
- * 
+ *
  * /presentator/{presentatorId}:
  *   patch:
  *     summary: Update a single presentator by ID
@@ -95,7 +95,6 @@ module.exports = router
  *         description: Presentator not found
  */
 
-
 /**
  * @swagger
  * components:
@@ -117,4 +116,3 @@ module.exports = router
  *         experience: 3 years
  *         schoolName: Shastri school lucknow
  */
-

@@ -1,5 +1,4 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const broadcastController = require('../../controllers/broadcast.controller');
 const broadcastValidation = require('../../validations/broadcast.validation');
