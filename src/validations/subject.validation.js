@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const { objectId } = require('./custom.validation');
 
 const createSubject = {
   body: Joi.object().keys({
@@ -20,24 +19,26 @@ const getAllSubject = {
 
 const getSubject = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    subjectId: Joi.string(),
   }),
 };
 
 const updateSubject = {
   params: Joi.object().keys({
-    subjectId: Joi.required().custom(objectId),
+    subjectId: Joi.string().required(),
   }),
   body: Joi.object()
     .keys({
       name: Joi.string(),
+      classId: Joi.string(),
+      order: Joi.number(),
     })
     .min(1),
 };
 
 const deleteSubject = {
   params: Joi.object().keys({
-    subjectId: Joi.string().custom(objectId),
+    subjectId: Joi.string(),
   }),
 };
 

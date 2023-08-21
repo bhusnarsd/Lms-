@@ -133,7 +133,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /subjects/{boardId}:
+ * /books/{bookId}:
  *   get:
  *     summary: Get a board
  *     tags: [Book]
@@ -141,18 +141,17 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -167,11 +166,11 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     requestBody:
  *       required: true
  *       content:
@@ -185,16 +184,13 @@ module.exports = router;
  *                 type: string
  *             example:
  *               name: fake name
- *               classId: 54867567
+ *               classId: 64d9d4666205c371563fcadb
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Subject'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -209,11 +205,11 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     responses:
  *       "200":
  *         description: No content

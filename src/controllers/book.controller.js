@@ -17,7 +17,7 @@ const getAllBook = catchAsync(async (req, res) => {
 });
 
 const getBookById = catchAsync(async (req, res) => {
-  const book = await bookService.getBookById(req.params.boardId);
+  const book = await bookService.getBookById(req.params.bookId);
   if (!book) {
     throw new ApiError(httpStatus.NOT_FOUND, 'book not found');
   }

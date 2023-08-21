@@ -133,7 +133,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string
@@ -159,7 +159,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string
@@ -198,7 +198,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string
