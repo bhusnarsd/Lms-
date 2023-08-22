@@ -13,6 +13,7 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
+const basicAuth = require('express-basic-auth');
 
 const app = express();
 
@@ -50,8 +51,16 @@ if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
 
-// v1 api routes
-app.use('/v1', routes);
+// Define basic authentication middleware
+const auth = basicAuth({
+  users: { 'admin': 'welcome@07' }, 
+  challenge: true, 
+  unauthorizedResponse: 'Unauthorized',
+});
+
+// Apply the basic authentication middleware to the /v1/docs path
+app.use('/v1',auth, routes);
+
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
