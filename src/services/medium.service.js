@@ -41,7 +41,7 @@ const getMediumById = async (id) => {
  * @returns {Promise<Medium>}
  */
 const getMediumByboardId = async (boardId) => {
-  return Medium.find({boardId});
+  return Medium.find({ boardId });
 };
 
 /**
@@ -80,5 +80,5 @@ module.exports = {
   getMediumById,
   updateMediumById,
   deleteMediumById,
-  getMediumByboardId
+  getMediumByboardId,
 };

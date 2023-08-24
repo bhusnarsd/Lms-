@@ -29,8 +29,6 @@ const getMediumbyBoardId = {
   }),
 };
 
-
-
 const updateMedium = {
   params: Joi.object().keys({
     mediumId: Joi.required().custom(objectId),
@@ -54,5 +52,5 @@ module.exports = {
   getMedium,
   updateMedium,
   deleteMedium,
-  getMediumbyBoardId
+  getMediumbyBoardId,
 };

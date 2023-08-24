@@ -64,5 +64,5 @@ module.exports = {
   getLession,
   updateLession,
   deleteLession,
-  getLessionbychapterId
+  getLessionbychapterId,
 };

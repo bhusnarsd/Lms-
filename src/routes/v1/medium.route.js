@@ -16,11 +16,9 @@ router
   .patch(validate(mediumValidation.updateMedium), mediumController.updateMedium)
   .delete(validate(mediumValidation.deleteMedium), mediumController.deleteMedium);
 
-  router
+router
   .route('/getAllmedium/:boardId')
-  .get(validate(mediumValidation.getMediumbyBoardId), mediumController.getMediumbyBoardId)
-
-  
+  .get(validate(mediumValidation.getMediumbyBoardId), mediumController.getMediumbyBoardId);
 
 module.exports = router;
 
@@ -220,7 +218,7 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- * 
+ *
  * /medium/getAllmedium/{boardId}:
  *   get:
  *     summary: Get a medium by boardId
