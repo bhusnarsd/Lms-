@@ -41,12 +41,13 @@ module.exports = router;
  *               - name
  *               - date
  *               - time
- *               - board
- *               - class
- *               - subject
- *               - book
- *               - chapter
- *               - videoid
+ *               - type
+ *               - boardId
+ *               - classId
+ *               - subjectId
+ *               - bookId
+ *               - chapterId
+ *               - lessonId
  *             properties:
  *               name:
  *                 type: string
@@ -54,27 +55,33 @@ module.exports = router;
  *                 type: string
  *               time:
  *                 type: string
- *               board:
+ *               boardId:
  *                 type: string
- *               class:
+ *               classId:
  *                 type: string
- *               subject:
+ *               subjectId:
  *                 type: string
- *               book:
+ *               bookId:
  *                 type: string
- *               chapter:
+ *               chapterId:
  *                 type: string
- *               videoid:
+ *               lessonId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               type:
  *                 type: string
  *             example:
  *               name: Today Plan title
  *               date: 2023-07-25
  *               time: 10:00
- *               board: CBSC
- *               class: Class 9
- *               subject: Science
- *               book:  Science
- *               chapter: Animation
+ *               type: video
+ *               boardId: 64bf7a68c0797a1734b71faa
+ *               classId: 64bf7a68c0797a1734b71faa
+ *               subjectId: 64bf7a68c0797a1734b71faa
+ *               bookId:  64bf7a68c0797a1734b71faa
+ *               chapterId: 64bf7a68c0797a1734b71faa
+ *               mediumId: 64bf7a68c0797a1734b71faa
  *               lessonId: 64bf7a68c0797a1734b71faa
  *     responses:
  *       201:
@@ -94,8 +101,6 @@ module.exports = router;
  *     summary: Get all users
  *     description: Only admins can retrieve all users.
  *     tags: [Today Lesson]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -272,7 +277,7 @@ module.exports = router;
  *     PlanVideo:
  *       type: object
  *       properties:
- *         title:
+ *         name:
  *           type: string
  *         date:
  *           type: string
@@ -298,7 +303,7 @@ module.exports = router;
  *           type: string
  *           default: active
  *       required:
- *         - title
+ *         - name
  *         - date
  *         - time
  *         - type
