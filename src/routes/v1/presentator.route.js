@@ -16,6 +16,12 @@ router
   .delete(validate(presentatorValidation.deletePresentatorById), presentatorController.deletePresentator);
 
 module.exports = router;
+/**
+ * @swagger
+ * tags:
+ *   name: Presentator
+ *   description:   Presentator Management System
+ */
 
 /**
  * @swagger
@@ -33,12 +39,63 @@ module.exports = router;
  *     responses:
  *       200:
  *         description: Presentator created successfully
+ *
  *   get:
- *     summary: Get list of Presentator
+ *     summary: Get all presentators
  *     tags: [Presentator]
+ *     parameters:
+ *       - in: query
+ *         name: presentatorName
+ *         schema:
+ *           type: string
+ *         description: presentator name
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. name:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of presentators
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
  *     responses:
- *       200:
- *         description: List of Presentator retrieved successfully
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/PresentatorInput'
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 totalPages:
+ *                   type: integer
+ *                   example: 1
+ *                 totalResults:
+ *                   type: integer
+ *                   example: 1
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  *
  * /presentator/{presentatorId}:
  *   patch:

@@ -10,12 +10,22 @@ router
   .get(validate(chapterValidation.getAllChapter), chaterController.getChapter);
 
 router
+  .route('/getChaptersByBookid/:bookId')
+  .get(validate(chapterValidation.getChaptersByBookId), chaterController.getChaptersByBookId);
+
+router
   .route('/:chapterId')
   .get(validate(chapterValidation.getChapter), chaterController.getSingleChapter)
   .patch(validate(chapterValidation.updateChapterById), chaterController.updateSingleClass)
   .delete(validate(chapterValidation.deleteChapterById), chaterController.deleteSingleChapter);
 
 module.exports = router;
+/**
+ * @swagger
+ * tags:
+ *   name: Chapters
+ *   description:   Chapters Management System
+ */
 
 /**
  * @swagger
@@ -34,11 +44,61 @@ module.exports = router;
  *       200:
  *         description: Chapter created successfully
  *   get:
- *     summary: Get list of chapters
+ *     summary: Get all chapters
  *     tags: [Chapters]
+ *     parameters:
+ *       - in: query
+ *         name: chapterName
+ *         schema:
+ *           type: string
+ *         description: chapter name
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *         description: sort by query in the form of field:desc/asc (ex. name:asc)
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *         default: 10
+ *         description: Maximum number of chapters
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Page number
  *     responses:
- *       200:
- *         description: List of chapters retrieved successfully
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 results:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/ChapterInput'
+ *                 page:
+ *                   type: integer
+ *                   example: 1
+ *                 limit:
+ *                   type: integer
+ *                   example: 10
+ *                 totalPages:
+ *                   type: integer
+ *                   example: 1
+ *                 totalResults:
+ *                   type: integer
+ *                   example: 1
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  *
  * /chapter/{chapterId}:
  *   patch:
@@ -93,6 +153,23 @@ module.exports = router;
  *         description: Successful response
  *       404:
  *         description: Chapter not found
+ *
+ * /chapter/getChaptersByBookid/{bookId}:
+ *    get:
+ *     summary: Get all chapters by bookId
+ *     tags: [Chapters]
+ *     parameters:
+ *       - in: path
+ *         name: bookId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID of the bookId
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *       404:
+ *         description: Chapters not found
  */
 
 /**

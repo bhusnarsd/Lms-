@@ -10,7 +10,7 @@ const createNewPlan = {
     bookId: Joi.string().required(),
     chapterId: Joi.string().required(),
     lessonId: Joi.string().required(),
-    title: Joi.string().required(),
+    name: Joi.string().required(),
     date: Joi.string().required(),
     time: Joi.string().required(),
     type: Joi.string().required(),

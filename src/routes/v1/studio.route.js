@@ -16,6 +16,12 @@ router
   .delete(validate(studioValidation.deleteStudioById), studioController.deleteStudio);
 
 module.exports = router;
+/**
+ * @swagger
+ * tags:
+ *   name: Studios
+ *   description:   Studios Management System
+ */
 
 /**
  * @swagger
