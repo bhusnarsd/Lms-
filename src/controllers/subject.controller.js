@@ -19,7 +19,7 @@ const getAllSubject = catchAsync(async (req, res) => {
 const getSubjectByClassId = catchAsync(async (req, res) => {
   const subject = await subjectService.getClassById(req.params.classId);
   if (!subject) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
   }
   res.send(subject);
 });

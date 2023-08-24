@@ -24,10 +24,10 @@ const getBookById = catchAsync(async (req, res) => {
   res.send(book);
 });
 
-const getBookByClassId = catchAsync(async (req, res) => {
-  const book = await bookService.getClassById(req.params.classId);
+const getBookBySubjectId = catchAsync(async (req, res) => {
+  const book = await bookService.getBookBySubjectId(req.params.subjectId);
   if (!book) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
   }
   res.send(book);
 });
@@ -48,5 +48,5 @@ module.exports = {
   getBookById,
   updateBook,
   deleteBook,
-  getBookByClassId,
+  getBookBySubjectId,
 };

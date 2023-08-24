@@ -31,8 +31,8 @@ const queryBook = async (filter, options) => {
  * @returns {Promise<Board>}
  */
 
-const getClassById = async (classId) => {
-  return Book.find({ classId });
+const getBookBySubjectId = async (subjectId) => {
+  return Book.find({ subjectId });
 };
 
 const getBookById = async (id) => {
@@ -44,8 +44,8 @@ const getBookById = async (id) => {
  * @param {Object} updateBody
  * @returns {Promise<Board>}
  */
-const updatBookById = async (subjectId, updateBody) => {
-  const book = await getBookById(subjectId);
+const updatBookById = async (bookId, updateBody) => {
+  const book = await getBookById(bookId);
   if (!book) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
   }
@@ -74,5 +74,5 @@ module.exports = {
   getBookById,
   updatBookById,
   deleteBookById,
-  getClassById,
+  getBookBySubjectId,
 };
