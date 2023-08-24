@@ -33,6 +33,10 @@ const updateBook = {
   body: Joi.object()
     .keys({
       name: Joi.string(),
+      classId: Joi.string(),
+      mediumId: Joi.string(),
+      boardId: Joi.string(),
+      subjectId: Joi.string(),
     })
     .min(1),
 };

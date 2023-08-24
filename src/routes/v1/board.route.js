@@ -1,5 +1,6 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
+const auth = require('../../middlewares/auth')
 const boardController = require('../../controllers/board.controller');
 const boardValidation = require('../../validations/board.validation');
 
@@ -29,8 +30,7 @@ module.exports = router;
  * @swagger
  * /boards:
  *   post:
- *     summary: Create a user
- *     description: Only admins can create other Board.
+ *     summary: Create a board
  *     tags: [Board]
  *     security:
  *       - bearerAuth: []
@@ -54,7 +54,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Video'
+ *                $ref: '#/components/schemas/Board'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -77,7 +77,6 @@ module.exports = router;
  *         name: sortBy
  *         schema:
  *           type: string
- *         description: sort by query in the form of field:desc/asc (ex. name:asc)
  *       - in: query
  *         name: limit
  *         schema:
@@ -127,13 +126,12 @@ module.exports = router;
  * /boards/{boardId}:
  *   get:
  *     summary: Get a board
- *     description: Logged in users can fetch only their own board information. Only admins can fetch other users.
  *     tags: [Board]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string
@@ -159,7 +157,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string
@@ -198,7 +196,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: boardId
  *         required: true
  *         schema:
  *           type: string

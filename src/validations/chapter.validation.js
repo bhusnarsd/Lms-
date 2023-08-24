@@ -18,6 +18,11 @@ const getChapter = {
     chapterId: Joi.string().custom(objectId),
   }),
 };
+const getChaptersByBookId = {
+  params: Joi.object().keys({
+    bookId: Joi.string().custom(objectId),
+  }),
+};
 
 const getAllChapter = {
   query: Joi.object().keys({
@@ -50,4 +55,5 @@ module.exports = {
   getAllChapter,
   updateChapterById,
   deleteChapterById,
+  getChaptersByBookId,
 };
