@@ -36,6 +36,15 @@ const getLessionById = async (id) => {
 };
 
 /**
+ * Get lession by id
+ * @param {ObjectId} chapterId
+ * @returns {Promise<Lession>}
+ */
+const getLessionbychapterId = async(chapterId)=>{
+  return Lession.find({chapterId})
+}
+
+/**
  * Update lession by id
  * @param {ObjectId} lessionId
  * @param {Object} updateBody
@@ -71,4 +80,5 @@ module.exports = {
   getLessionById,
   updateLessionById,
   deleteLessionById,
+  getLessionbychapterId
 };

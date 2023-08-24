@@ -24,6 +24,15 @@ const getLession = catchAsync(async (req, res) => {
   res.send(lession);
 });
 
+const getLessionbychapId = catchAsync(async (req,res) =>{
+  const lession = await lessionService.getLessionbychapterId(req.params.chapterId);
+  if(!lession) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Lession not found by this chapter ID');
+  }
+  res.send(lession);
+})
+
+
 const updateLession = catchAsync(async (req, res) => {
   const lession = await lessionService.updateLessionById(req.params.lessionId, req.body);
   res.send(lession);
@@ -40,4 +49,5 @@ module.exports = {
   getLession,
   updateLession,
   deleteLession,
+  getLessionbychapId
 };
