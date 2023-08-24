@@ -23,7 +23,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Subject
- *   description: User management and retrieval
+ *   description: Subject management 
  */
 
 /**
@@ -62,6 +62,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
+ *                $ref: '#/components/schemas/Board'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
