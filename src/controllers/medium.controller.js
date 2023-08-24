@@ -24,6 +24,16 @@ const getMedium = catchAsync(async (req, res) => {
   res.send(medium);
 });
 
+const getMediumbyBoardId = catchAsync(async (req, res) => {
+  const medium = await mediumService.getMediumByboardId(req.params.boardId);
+  if (!medium) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'medium not found by board ID');
+  }
+  res.send(medium);
+});
+
+
+
 const updateMedium = catchAsync(async (req, res) => {
   const medium = await mediumService.updateMediumById(req.params.mediumId, req.body);
   res.send(medium);
@@ -40,4 +50,5 @@ module.exports = {
   getMedium,
   updateMedium,
   deleteMedium,
+  getMediumbyBoardId
 };

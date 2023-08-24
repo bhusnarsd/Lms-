@@ -16,6 +16,10 @@ router
   .patch(validate(lessionValidation.updateLession), lessionController.updateLession)
   .delete(validate(lessionValidation.deleteLession), lessionController.deleteLession);
 
+router
+  .route('/getallLession/:chapterId')
+  .get(validate(lessionValidation.getLessionbychapterId), lessionController.getLessionbychapId);
+
 module.exports = router;
 
 /**
@@ -228,4 +232,34 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
+ * 
+ * 
+ * /lession/getallLession/{chapterId}:
+ *   get:
+ *     summary: Get a lession by chapter id
+ *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
+ *     tags: [Lession]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: chapterId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Chapter id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Lession'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */
