@@ -3,13 +3,21 @@ const { objectId } = require('./custom.validation');
 
 const createClass = {
   body: Joi.object().keys({
+    mediumId: Joi.string().required(),
     className: Joi.string().required(),
+    order: Joi.number().required(),
   }),
 };
 
 const getClass = {
   params: Joi.object().keys({
     classId: Joi.string().custom(objectId),
+  }),
+};
+
+const getClassesByMediumId = {
+  params: Joi.object().keys({
+    mediumId: Joi.string().custom(objectId),
   }),
 };
 
@@ -44,4 +52,5 @@ module.exports = {
   getAllClass,
   updateClassById,
   deleteClassById,
+  getClassesByMediumId,
 };
