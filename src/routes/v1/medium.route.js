@@ -16,11 +16,9 @@ router
   .patch(validate(mediumValidation.updateMedium), mediumController.updateMedium)
   .delete(validate(mediumValidation.deleteMedium), mediumController.deleteMedium);
 
-  router
+router
   .route('/getAllmedium/:boardId')
-  .get(validate(mediumValidation.getMediumbyBoardId), mediumController.getMediumbyBoardId)
-
-  
+  .get(validate(mediumValidation.getMediumbyBoardId), mediumController.getMediumbyBoardId);
 
 module.exports = router;
 
@@ -48,11 +46,15 @@ module.exports = router;
  *             type: object
  *             required:
  *               - name
+ *               - boardId
  *             properties:
  *               name:
  *                 type: string *
+ *               boardId:
+ *                 type: string
  *             example:
  *               name: English
+ *               boardId: 64ca45e050227f21d906d83c
  *
  *     responses:
  *       "201":
@@ -133,7 +135,6 @@ module.exports = router;
  * /medium/{id}:
  *   get:
  *     summary: Get a medium
- *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
  *     tags: [Medium]
  *     security:
  *       - bearerAuth: []
@@ -160,7 +161,6 @@ module.exports = router;
  *
  *   patch:
  *     summary: Update a Medium
- *     description: Logged in users can only update their own information. Only admins can update other users.
  *     tags: [Medium]
  *     security:
  *       - bearerAuth: []
@@ -200,7 +200,6 @@ module.exports = router;
  *
  *   delete:
  *     summary: Delete a Medium
- *     description: Logged in users can delete only themselves. Only admins can delete other users.
  *     tags: [Medium]
  *     security:
  *       - bearerAuth: []
@@ -220,11 +219,10 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- * 
+ *
  * /medium/getAllmedium/{boardId}:
  *   get:
  *     summary: Get a medium by boardId
- *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
  *     tags: [Medium]
  *     security:
  *       - bearerAuth: []

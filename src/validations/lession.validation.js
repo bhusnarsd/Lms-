@@ -11,7 +11,7 @@ const createLession = {
     chapterId: Joi.string().custom(objectId),
     name: Joi.string().required(),
     type: Joi.string().required(),
-    order: Joi.string().required(),
+    order: Joi.number().required(),
     thumbnail: Joi.string().required(),
     poster: Joi.string(),
   }),
@@ -43,10 +43,10 @@ const updateLession = {
   }),
   body: Joi.object()
     .keys({
-      name: Joi.string().required(),
-      type: Joi.string().required(),
-      order: Joi.string().required(),
-      thumbnail: Joi.string().required(),
+      name: Joi.string(),
+      type: Joi.string(),
+      order: Joi.string(),
+      thumbnail: Joi.string(),
       poster: Joi.string(),
     })
     .min(1),
@@ -64,5 +64,5 @@ module.exports = {
   getLession,
   updateLession,
   deleteLession,
-  getLessionbychapterId
+  getLessionbychapterId,
 };
