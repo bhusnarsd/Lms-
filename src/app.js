@@ -6,6 +6,7 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
+const basicAuth = require('express-basic-auth');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
@@ -13,7 +14,6 @@ const { authLimiter } = require('./middlewares/rateLimiter');
 const routes = require('./routes/v1');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
-const basicAuth = require('express-basic-auth');
 
 const app = express();
 
@@ -53,14 +53,13 @@ if (config.env === 'production') {
 
 // Define basic authentication middleware
 const auth = basicAuth({
-  users: { 'admin': 'welcome@07' }, 
-  challenge: true, 
+  users: { admin: 'welcome@07' },
+  challenge: true,
   unauthorizedResponse: 'Unauthorized',
 });
 
 // Apply the basic authentication middleware to the /v1/docs path
-app.use('/v1',auth, routes);
-
+app.use('/v1', auth, routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
