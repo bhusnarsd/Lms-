@@ -59,7 +59,7 @@ module.exports = router;
  *                 type: number
  *             example:
  *               name: CBSC
- *               board: 614a7e7d7f1d813bbf8e89b9
+ *               boardId: 614a7e7d7f1d813bbf8e89b9
  *               mediumId: 614a7e7d7f1d813bbf8e89b8
  *               classId: 614a7e7d7f1d813bbf8e89b7
  *               order: 2
@@ -199,7 +199,7 @@ module.exports = router;
  *                 type: number
  *             example:
  *               name: CBSC
- *               board: 614a7e7d7f1d813bbf8e89b9
+ *               boardId: 614a7e7d7f1d813bbf8e89b9
  *               mediumId: 614a7e7d7f1d813bbf8e89b8
  *               classId: 614a7e7d7f1d813bbf8e89b7
  *               order: 2
