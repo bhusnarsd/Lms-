@@ -116,6 +116,12 @@ components:
       properties:
         name:
           type: string
+        boardId:
+          type: string
+          description: Id of board
+        mediumId:
+          type: string
+          description: Id of medium
         classId:
           type: string
           description: ID of the classId
@@ -125,6 +131,8 @@ components:
         name: Example Subject
         classId: 614a7e7d7f1d813bbf8e89b7  
         order: 2
+        boardId: 614a7e7d7f1d813bbf8e89b8
+        mediumId: 614a7e7d7f1d813bbf8e89b9
          
     Token:
       type: object

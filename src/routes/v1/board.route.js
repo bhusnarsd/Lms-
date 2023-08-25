@@ -1,6 +1,5 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const auth = require('../../middlewares/auth')
 const boardController = require('../../controllers/board.controller');
 const boardValidation = require('../../validations/board.validation');
 
@@ -23,7 +22,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Board
- *   description: User management and retrieval
+ *   description: Board management
  */
 
 /**

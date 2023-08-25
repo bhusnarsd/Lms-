@@ -24,7 +24,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Book
- *   description: User management and retrieval
+ *   description: Book managment
  */
 
 /**
@@ -251,4 +251,4 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
- */ 
+ */

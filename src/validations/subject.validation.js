@@ -3,8 +3,10 @@ const Joi = require('joi');
 const createSubject = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    classId: Joi.string().required(),
     order: Joi.number().required(),
+    boardId: Joi.string().required(),
+    mediumId: Joi.string().required(),
+    classId: Joi.string().required(),
   }),
 };
 

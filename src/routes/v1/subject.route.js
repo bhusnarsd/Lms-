@@ -23,7 +23,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Subject
- *   description: Subject management 
+ *   description: Subject management
  */
 
 /**
@@ -42,6 +42,8 @@ module.exports = router;
  *             type: object
  *             required:
  *               - name
+ *               - boardId
+ *               - mediumId
  *               - classId
  *               - order
  *             properties:
@@ -49,20 +51,25 @@ module.exports = router;
  *                 type: string
  *               classId:
  *                 type: string
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
  *               order:
  *                 type: number
  *             example:
  *               name: CBSC
- *               classId: 7656765a
+ *               board: 614a7e7d7f1d813bbf8e89b9
+ *               mediumId: 614a7e7d7f1d813bbf8e89b8
+ *               classId: 614a7e7d7f1d813bbf8e89b7
  *               order: 2
- *
  *     responses:
  *       "201":
  *         description: Created
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Board'
+ *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -109,6 +116,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
+ *                     $ref: '#/components/schemas/Subject'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -147,6 +155,8 @@ module.exports = router;
  *         description: OK
  *         content:
  *           application/json:
+ *               schema:
+ *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -181,17 +191,25 @@ module.exports = router;
  *                 type: string
  *               classId:
  *                 type: string
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
  *               order:
  *                 type: number
  *             example:
- *               name: fake name
- *               classId: 64d0b08f8c4802835be17b86
- *               order: 4
+ *               name: CBSC
+ *               board: 614a7e7d7f1d813bbf8e89b9
+ *               mediumId: 614a7e7d7f1d813bbf8e89b8
+ *               classId: 614a7e7d7f1d813bbf8e89b7
+ *               order: 2
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
+ *               schema:
+ *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
