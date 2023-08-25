@@ -32,8 +32,6 @@ const getMediumbyBoardId = catchAsync(async (req, res) => {
   res.send(medium);
 });
 
-
-
 const updateMedium = catchAsync(async (req, res) => {
   const medium = await mediumService.updateMediumById(req.params.mediumId, req.body);
   res.send(medium);
@@ -50,5 +48,5 @@ module.exports = {
   getMedium,
   updateMedium,
   deleteMedium,
-  getMediumbyBoardId
+  getMediumbyBoardId,
 };
