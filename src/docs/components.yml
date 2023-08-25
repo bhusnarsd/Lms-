@@ -49,6 +49,68 @@ components:
         classId: 614a7e7d7f1d813bbf8e89b7  
         subjectId: 614a7e7d7f1d813bbf8e89a9 
 
+    Medium:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Medium
+        boardId:
+          type: string
+          description: ID of the boardId
+      example:
+        name: Example Medium
+        boardId: 614a7e7d7f1d813bbf8e89b7  
+
+    Lession:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Lession
+        type:
+          type: string
+          description: Lession Type eg. path, ebook,
+        order:
+          type: number
+          description: Number of order
+        thumbnail:
+          type: string
+          description: Thumbnail
+        poster:
+          type: string
+          description: Poster
+        boardId:
+          type: string
+          description: ID of the boardId
+        mediumId:
+          type: string
+          description: ID of the mediumId
+        classId:
+          type: string
+          description: ID of the classId
+        subjectId:
+          type: string
+          description: ID of the subjectId
+        bookId:
+          type: string
+          description: ID of the bookId
+        chapterId:
+          type: string
+          description: ID of the chapterId
+      example:
+        name: Example Book
+        type: "http://example.com"
+        order: 2
+        thumbnail: "http://example.com"
+        poster: "http://example.com"
+        boardId: 614a7e7d7f1d813bbf8e89b7  
+        mediumId: 614a7e7d7f1d813bbf8e89a9 
+        classId: 614a7e7d7f1d813bbf8e89b7  
+        subjectId: 614a7e7d7f1d813bbf8e89a9
+        bookId: 614a7e7d7f1d813bbf8e89a9
+        chapterId: 614a7e7d7f1d813bbf8e89a9
+
     Subject:
       type: object
       properties:
