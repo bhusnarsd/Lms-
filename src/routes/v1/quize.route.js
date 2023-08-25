@@ -2,7 +2,7 @@ const express = require('express');
 const validate = require('../../middlewares/validate');
 const quizeController = require('../../controllers/quize.controller');
 const quizeValidation = require('../../validations/quize.validation');
-// const isTeacher = require('../../middlewares/quize.middleware')
+
 const router = express.Router();
 
 router

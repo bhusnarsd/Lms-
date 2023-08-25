@@ -25,9 +25,6 @@ const getQuizeById = catchAsync(async (req, res) => {
 });
 
 const updateQuizeById = catchAsync(async (req, res) => {
-  // if (req.user.role !== 'Teacher') {
-  //   return res.status(httpStatus.FORBIDDEN).json({ message: 'Access denied' });
-  // }
   const quize = await quizeService.updateQuizeById(req.params.quizeId, req.body);
   res.send(quize);
 });

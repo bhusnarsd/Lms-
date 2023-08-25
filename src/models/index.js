@@ -14,6 +14,5 @@ module.exports.Quize = require('./quize.model');
 
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
-module.exports.Broadcast = require('./brandcast.model');
 module.exports.Presentator = require('./presentator.model');
 module.exports.Studio = require('./studio.model');
