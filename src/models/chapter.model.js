@@ -11,19 +11,19 @@ const chapterSchema = mongoose.Schema(
     },
     mediumId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Medium',
+      ref: 'medium',
       required: true,
       trim: true,
     },
     classId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'class',
+      ref: 'Classes',
       required: true,
       trim: true,
     },
     subjectId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'suject',
+      ref: 'Subject',
       required: true,
       trim: true,
     },

@@ -35,6 +35,15 @@ const getClassById = async (classId) => {
 };
 
 /**
+ * Get Classes by classId
+ * @param {ObjectId} mediumId
+ * @returns {Promise<Classes>}
+ */
+const getClassesByMediumId = async (mediumId) => {
+  return Classes.find({ mediumId });
+};
+
+/**
  * Update Classes by classId
  * @param {ObjectId} classId
  * @param {Object} updateBody
@@ -70,4 +79,5 @@ module.exports = {
   getClassById,
   updateClassById,
   deleteClassById,
+  getClassesByMediumId,
 };
