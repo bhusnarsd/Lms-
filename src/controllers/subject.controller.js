@@ -16,18 +16,10 @@ const getAllSubject = catchAsync(async (req, res) => {
   res.send(result);
 });
 
-const getSubjectById = catchAsync(async (req, res) => {
-  const subject = await subjectService.getSubjectById(req.params.boardId);
-  if (!subject) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
-  }
-  res.send(subject);
-});
-
 const getSubjectByClassId = catchAsync(async (req, res) => {
   const subject = await subjectService.getClassById(req.params.classId);
   if (!subject) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'Class not found');
+    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
   }
   res.send(subject);
 });
@@ -45,7 +37,6 @@ const deleteSubject = catchAsync(async (req, res) => {
 module.exports = {
   createSubject,
   getAllSubject,
-  getSubjectById,
   updateSubject,
   deleteSubject,
   getSubjectByClassId,

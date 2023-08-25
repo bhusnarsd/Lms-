@@ -35,6 +35,15 @@ const getChapterById = async (chapterId) => {
 };
 
 /**
+ * Get Chapter by id
+ * @param {ObjectId} bookId
+ * @returns {Promise<Chapter>}
+ */
+const getChaptersByBookId = async (bookId) => {
+  return Chapter.find({ bookId });
+};
+
+/**
  * Update Chapter by id
  * @param {ObjectId} chapterId
  * @param {Object} updateBody
@@ -70,4 +79,5 @@ module.exports = {
   getAllChapter,
   updateChapterById,
   deleteChapterById,
+  getChaptersByBookId,
 };

@@ -4,6 +4,7 @@ const { objectId } = require('./custom.validation');
 const createMedium = {
   body: Joi.object().keys({
     name: Joi.string().required(),
+    boardId: Joi.string().custom(objectId),
   }),
 };
 
@@ -19,6 +20,12 @@ const getMediums = {
 const getMedium = {
   params: Joi.object().keys({
     mediumId: Joi.string().custom(objectId),
+  }),
+};
+
+const getMediumbyBoardId = {
+  params: Joi.object().keys({
+    boardId: Joi.string().custom(objectId),
   }),
 };
 
@@ -45,4 +52,5 @@ module.exports = {
   getMedium,
   updateMedium,
   deleteMedium,
+  getMediumbyBoardId,
 };

@@ -15,7 +15,6 @@ const subjectSchema = mongoose.Schema(
     },
     order: {
       type: Number,
-      trim: true,
       required: true,
     },
   },

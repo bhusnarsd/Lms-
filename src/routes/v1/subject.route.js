@@ -12,7 +12,6 @@ router
 
 router
   .route('/:subjectId')
-  .get(validate(subjectValidation.getSubject), subjectController.getSubjectById)
   .patch(validate(subjectValidation.updateSubject), subjectController.updateSubject)
   .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject);
 
@@ -24,7 +23,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Subject
- *   description: User management and retrieval
+ *   description: Subject management 
  */
 
 /**
@@ -44,13 +43,18 @@ module.exports = router;
  *             required:
  *               - name
  *               - classId
+ *               - order
  *             properties:
  *               name:
  *                 type: string
- *               classId: string
+ *               classId:
+ *                 type: string
+ *               order:
+ *                 type: number
  *             example:
  *               name: CBSC
  *               classId: 7656765a
+ *               order: 2
  *
  *     responses:
  *       "201":
@@ -58,9 +62,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Subject'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *                $ref: '#/components/schemas/Board'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -107,7 +109,6 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/SUbject'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -128,26 +129,24 @@ module.exports = router;
 
 /**
  * @swagger
- * /subjects/{boardId}:
+ * /subjects/class/{classId}:
  *   get:
- *     summary: Get a board
+ *     summary: Get a class
  *     tags: [Subject]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: classId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: classId
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -155,6 +154,10 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
+ */
+/**
+ * @swagger
+ * /subjects/{subjectId}:
  *   patch:
  *     summary: Update a subject
  *     tags: [Subject]
@@ -162,7 +165,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: subjectId
  *         required: true
  *         schema:
  *           type: string
@@ -178,18 +181,17 @@ module.exports = router;
  *                 type: string
  *               classId:
  *                 type: string
+ *               order:
+ *                 type: number
  *             example:
  *               name: fake name
- *               classId: 54867567
+ *               classId: 64d0b08f8c4802835be17b86
+ *               order: 4
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/Subject'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -204,7 +206,7 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: subjectId
  *         required: true
  *         schema:
  *           type: string

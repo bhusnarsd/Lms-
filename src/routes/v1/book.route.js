@@ -16,7 +16,7 @@ router
   .patch(validate(bookValidation.updateBook), bookController.updateBook)
   .delete(validate(bookValidation.deleteBook), bookController.deleteBook);
 
-router.route('/class/:classId').get(bookController.getBookByClassId);
+router.route('/subject/:subjectId').get(bookController.getBookBySubjectId);
 
 module.exports = router;
 
@@ -112,7 +112,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/SUbject'
+ *                     $ref: '#/components/schemas/Book'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -133,26 +133,26 @@ module.exports = router;
 
 /**
  * @swagger
- * /subjects/{boardId}:
+ * /books/{bookId}:
  *   get:
- *     summary: Get a board
+ *     summary: Get a book
  *     tags: [Book]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Subject'
+ *                $ref: '#/components/schemas/Book'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -161,17 +161,17 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a subject
+ *     summary: Update a book
  *     tags: [Book]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     requestBody:
  *       required: true
  *       content:
@@ -185,16 +185,14 @@ module.exports = router;
  *                 type: string
  *             example:
  *               name: fake name
- *               classId: 54867567
+ *               classId: 64d9d4666205c371563fcadb
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Subject'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *                $ref: '#/components/schemas/Book'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -203,17 +201,17 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a subject
+ *     summary: Delete a book
  *     tags: [Book]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: bookId
  *         required: true
  *         schema:
  *           type: string
- *         description: subjectId
+ *         description: bookId
  *     responses:
  *       "200":
  *         description: No content
@@ -224,3 +222,33 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  */
+/**
+ * @swagger
+ * /books/subject/{subjectId}:
+ *   get:
+ *     summary: Get a books
+ *     tags: [Book]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: subjectId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: subjectId
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Book'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ */ 

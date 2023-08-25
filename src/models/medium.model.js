@@ -8,6 +8,11 @@ const mediumSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
+    boardId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Board',
+      required: true,
+    },
   },
   { timestamps: true }
 );

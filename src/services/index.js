@@ -13,3 +13,5 @@ module.exports.subjectService = require('./subject.service');
 module.exports.bookService = require('./book.service');
 module.exports.quizeService = require('./quize.service');
 module.exports.broadcastService = require('./broadcast.service');
+module.exports.presentatorService = require('./presentator.service');
+module.exports.studioService = require('./studio.service');

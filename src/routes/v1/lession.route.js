@@ -16,6 +16,10 @@ router
   .patch(validate(lessionValidation.updateLession), lessionController.updateLession)
   .delete(validate(lessionValidation.deleteLession), lessionController.deleteLession);
 
+router
+  .route('/getallLession/:chapterId')
+  .get(validate(lessionValidation.getLessionbychapterId), lessionController.getLessionbychapId);
+
 module.exports = router;
 
 /**
@@ -23,7 +27,6 @@ module.exports = router;
  * /lession:
  *   post:
  *     summary: Create a lession
- *     description: create other medium.
  *     tags: [Lession]
  *     security:
  *       - bearerAuth: []
@@ -50,17 +53,28 @@ module.exports = router;
  *                 type: string
  *               name:
  *                 type: string *
- *               path:
+ *               type:
  *                 type: string
+ *               order:
+ *                 type: number
+ *               thumbnail:
+ *                 type: string
+ *               poster:
+ *                 type: string
+ *               
  *             example:
+ *               name: English
+ *               type: "https://www.youtube.com/watch?v=D52_BL9sVMU"
+ *               order: 2
+ *               thumbnail: "https://ionicframework.com/docs/img/demos/thumbnail.svg"
+ *               poster: "https://ionicframework.com/docs/img/demos"
  *               boardId: 64ca45e050227f21d906d83c
  *               mediumId: 64d0bc1d18f7609763d21063
  *               classId: 64b122401b4cf04c356b8fc2
  *               subjectId: 64b122d49ddf324d2a8d12d3
  *               bookId: 64b8f019ba89c333de42f169
  *               chapterId: 64b8f094050c643582b80481
- *               name: English
- *               path: path":"https://www.youtube.com/watch?v=D52_BL9sVMU
+ *               
  *     responses:
  *       "201":
  *         description: Created
@@ -141,7 +155,6 @@ module.exports = router;
  * /lession/{id}:
  *   get:
  *     summary: Get a lession
- *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
  *     tags: [Lession]
  *     security:
  *       - bearerAuth: []
@@ -168,7 +181,6 @@ module.exports = router;
  *
  *   patch:
  *     summary: Update a Lession
- *     description: Logged in users can only update their own information. Only admins can update other users.
  *     tags: [Lession]
  *     security:
  *       - bearerAuth: []
@@ -208,7 +220,6 @@ module.exports = router;
  *
  *   delete:
  *     summary: Delete a lession
- *     description: Logged in users can delete only themselves. Only admins can delete other users.
  *     tags: [Lession]
  *     security:
  *       - bearerAuth: []
@@ -228,4 +239,33 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
+ *
+ *
+ * /lession/getallLession/{chapterId}:
+ *   get:
+ *     summary: Get a lession by chapter id
+ *     tags: [Lession]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: chapterId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Chapter id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Lession'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */
