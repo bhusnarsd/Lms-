@@ -24,6 +24,13 @@ const getSubjectByClassId = catchAsync(async (req, res) => {
   res.send(subject);
 });
 
+const getSubjectById = catchAsync(async (req, res) => {
+  const subject = await subjectService.getSubjectById(req.params.subjectId);
+  if (!subject) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
+  }
+  res.send(subject);
+});
 const updateSubject = catchAsync(async (req, res) => {
   const subject = await subjectService.updatSubjectById(req.params.subjectId, req.body);
   res.send(subject);
@@ -37,6 +44,7 @@ const deleteSubject = catchAsync(async (req, res) => {
 module.exports = {
   createSubject,
   getAllSubject,
+  getSubjectById,
   updateSubject,
   deleteSubject,
   getSubjectByClassId,

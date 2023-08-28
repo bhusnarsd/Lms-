@@ -21,6 +21,6 @@ const mediumSchema = mongoose.Schema(
 mediumSchema.plugin(toJSON);
 mediumSchema.plugin(paginate);
 
-const medium = mongoose.model('medium', mediumSchema);
+const medium = mongoose.model('Medium', mediumSchema);
 
 module.exports = medium;

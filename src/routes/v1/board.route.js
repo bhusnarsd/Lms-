@@ -1,6 +1,5 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const auth = require('../../middlewares/auth')
 const boardController = require('../../controllers/board.controller');
 const boardValidation = require('../../validations/board.validation');
 
@@ -23,7 +22,7 @@ module.exports = router;
  * @swagger
  * tags:
  *   name: Board
- *   description: User management and retrieval
+ *   description: Board management
  */
 
 /**
@@ -55,8 +54,6 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Board'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -180,8 +177,6 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Board'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
