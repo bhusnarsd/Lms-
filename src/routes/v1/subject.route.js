@@ -13,7 +13,8 @@ router
 router
   .route('/:subjectId')
   .patch(validate(subjectValidation.updateSubject), subjectController.updateSubject)
-  .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject);
+  .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject)
+  .get(validate(subjectValidation.getSubject), subjectController.getSubjectById);
 
 router.route('/class/:classId').get(subjectController.getSubjectByClassId);
 
@@ -135,6 +136,36 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  */
 
+/**
+ * @swagger
+ * /subjects/{subjectId}:
+ *   get:
+ *     summary: Get a subject
+ *     tags: [Subject]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: subjectId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: subjectId
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Subject'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ */
 /**
  * @swagger
  * /subjects/class/{classId}:
