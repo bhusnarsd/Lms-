@@ -180,8 +180,11 @@ module.exports = router;
  *             properties:
  *               name:
  *                 type: string
+ *               boardId:
+ *                 type: string
  *             example:
  *               name: fake name*
+ *               boardId: 64e845f71915d76bbf365d37
  *     responses:
  *       "200":
  *         description: OK

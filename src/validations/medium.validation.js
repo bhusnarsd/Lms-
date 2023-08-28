@@ -11,6 +11,7 @@ const createMedium = {
 const getMediums = {
   query: Joi.object().keys({
     name: Joi.string(),
+    boardId: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -36,6 +37,7 @@ const updateMedium = {
   body: Joi.object()
     .keys({
       name: Joi.string(),
+      boardId: Joi.string(),
     })
     .min(1),
 };
