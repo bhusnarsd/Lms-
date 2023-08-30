@@ -42,13 +42,15 @@ components:
         subjectId:
           type: string
           description: ID of the subjectId
+        thumbnail:
+          type: string 
       example:
         name: Example Book
         boardId: 614a7e7d7f1d813bbf8e89b7  
         mediumId: 614a7e7d7f1d813bbf8e89a9 
         classId: 614a7e7d7f1d813bbf8e89b7  
         subjectId: 614a7e7d7f1d813bbf8e89a9 
-
+        thumbnail: afllnEGAS/AGSJAGSNL
     Medium:
       type: object
       properties:
@@ -86,6 +88,8 @@ components:
         order:
           type: number
           description: order number
+        thumbnail:
+          type: string 
       example:
         name: Example Medium
         boardId: 614a7e7d7f1d813bbf8e89b7
@@ -95,6 +99,7 @@ components:
         bookId: 614a7e7d7f1d813bbf8e89b7
         order: 1
         chapterName: friction
+        thumbnail: afllnEGAS/AGSJAGSNL
 
     Class:
       type: object
@@ -213,12 +218,15 @@ components:
           description: ID of the classId
         order:
           type: string
+        thumbnail:
+          type: string  
       example:
         name: Example Subject
         classId: 614a7e7d7f1d813bbf8e89b7  
         order: 2
         boardId: 614a7e7d7f1d813bbf8e89b8
         mediumId: 614a7e7d7f1d813bbf8e89b9
+        thumbnail: sdfgjjhsdgjsf/sdghdgs
          
     Token:
       type: object

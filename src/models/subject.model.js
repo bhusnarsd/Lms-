@@ -30,6 +30,9 @@ const subjectSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    thumbnail: {
+      type: String,
+    },
   },
   {
     timestamps: true,

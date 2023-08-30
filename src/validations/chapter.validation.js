@@ -10,6 +10,7 @@ const createChapter = {
     bookId: Joi.string().required(),
     chapterName: Joi.string().required(),
     order: Joi.number().required(),
+    thumbnail: Joi.string(),
   }),
 };
 
@@ -46,6 +47,7 @@ const updateChapterById = {
       bookId: Joi.string().required(),
       chapterName: Joi.string().required(),
       order: Joi.number().required(),
+      thumbnail: Joi.string(),
     })
     .min(1),
 };

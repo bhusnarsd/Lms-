@@ -57,6 +57,7 @@ module.exports = router;
  *               mediumId: 64d327a41128844220f0cce4
  *               classId: 64d327811128844220f0cce0
  *               subjectId: 64d9d4666205c371563fcadb
+ *               thumbnail: afllnEGAS/AGSJAGSNL
  *     responses:
  *       "201":
  *         description: Created
@@ -64,8 +65,6 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Book'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -183,9 +182,21 @@ module.exports = router;
  *                 type: string
  *               classId:
  *                 type: string
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               thumbnail:
+ *                 type: string
+ *               subjectId:
+ *                 type: string
  *             example:
  *               name: fake name
  *               classId: 64d9d4666205c371563fcadb
+ *               thumbnail: afllnEGAS/AGSJAGSNL
+ *               boardId: 614a7e7d7f1d813bbf8e89b7
+ *               mediumId: 614a7e7d7f1d813bbf8e89a9
+ *               subjectId: 614a7e7d7f1d813bbf8e89a9,
  *     responses:
  *       "200":
  *         description: OK

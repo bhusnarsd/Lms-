@@ -58,12 +58,15 @@ module.exports = router;
  *                 type: string
  *               order:
  *                 type: number
+ *               thumbnail:
+ *                 type: string
  *             example:
  *               name: CBSC
  *               boardId: 614a7e7d7f1d813bbf8e89b9
  *               mediumId: 614a7e7d7f1d813bbf8e89b8
  *               classId: 614a7e7d7f1d813bbf8e89b7
  *               order: 2
+ *               thumbnail: ajfvshBa/asfbjgvjcav
  *     responses:
  *       "201":
  *         description: Created
@@ -228,12 +231,15 @@ module.exports = router;
  *                 type: string
  *               order:
  *                 type: number
+ *               thumbnail:
+ *                 type: string
  *             example:
  *               name: CBSC
  *               boardId: 614a7e7d7f1d813bbf8e89b9
  *               mediumId: 614a7e7d7f1d813bbf8e89b8
  *               classId: 614a7e7d7f1d813bbf8e89b7
  *               order: 2
+ *               thumbnail: fvacgjhbzjnkl/aclhgh
  *     responses:
  *       "200":
  *         description: OK

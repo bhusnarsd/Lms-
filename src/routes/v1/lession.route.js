@@ -61,7 +61,7 @@ module.exports = router;
  *                 type: string
  *               poster:
  *                 type: string
- *               
+ *
  *             example:
  *               name: English
  *               type: "https://www.youtube.com/watch?v=D52_BL9sVMU"
@@ -74,7 +74,7 @@ module.exports = router;
  *               subjectId: 64b122d49ddf324d2a8d12d3
  *               bookId: 64b8f019ba89c333de42f169
  *               chapterId: 64b8f094050c643582b80481
- *               
+ *
  *     responses:
  *       "201":
  *         description: Created

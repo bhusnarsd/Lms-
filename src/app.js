@@ -50,7 +50,6 @@ if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
 
-
 // Apply the basic authentication middleware to the /v1/docs path
 app.use('/v1', routes);
 

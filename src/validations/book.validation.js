@@ -8,6 +8,7 @@ const createBook = {
     subjectId: Joi.string(),
     mediumId: Joi.string(),
     boardId: Joi.string(),
+    thumbnail: Joi.string(),
   }),
 };
 
@@ -34,9 +35,10 @@ const updateBook = {
     .keys({
       name: Joi.string(),
       classId: Joi.string(),
+      subjectId: Joi.string(),
       mediumId: Joi.string(),
       boardId: Joi.string(),
-      subjectId: Joi.string(),
+      thumbnail: Joi.string(),
     })
     .min(1),
 };
