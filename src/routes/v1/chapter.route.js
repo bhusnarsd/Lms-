@@ -215,9 +215,30 @@ module.exports = router;
  *     ChapterUpdateInput:
  *       type: object
  *       properties:
+ *         boardId:
+ *           type: string
+ *           description: ID of the board
+ *         mediumId:
+ *           type: string
+ *           description: ID of the medium
+ *         classId:
+ *           type: string
+ *           description: ID of the class
+ *         subjectId:
+ *           type: string
+ *           description: ID of the subject
+ *         bookId:
+ *           type: string
+ *           description: ID of the book
  *         chapterName:
  *           type: string
  *           description: Name of the chapter
  *       example:
+ *         boardId: 614a7e7d7f1d813bbf8e89a9
+ *         mediumId: 614a7e7d7f1d813bbf8e89b0
+ *         classId: 614a7e7d7f1d813bbf8e89b7
+ *         subjectId: 614a7e7d7f1d813bbf8e89c2
+ *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
+ *         order:  1
  */

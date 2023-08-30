@@ -82,8 +82,6 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Lession'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -198,10 +196,40 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               classId:
+ *                 type: string
+ *               subjectId:
+ *                 type: string
+ *               bookId:
+ *                 type: string
+ *               chapterId:
+ *                 type: string
  *               name:
+ *                 type: string *
+ *               type:
+ *                 type: string
+ *               order:
+ *                 type: number
+ *               thumbnail:
+ *                 type: string
+ *               poster:
  *                 type: string
  *             example:
- *               name: fake name*
+ *               name: English
+ *               type: "https://www.youtube.com/watch?v=D52_BL9sVMU"
+ *               order: 2
+ *               thumbnail: "https://ionicframework.com/docs/img/demos/thumbnail.svg"
+ *               poster: "https://ionicframework.com/docs/img/demos"
+ *               boardId: 64ca45e050227f21d906d83c
+ *               mediumId: 64d0bc1d18f7609763d21063
+ *               classId: 64b122401b4cf04c356b8fc2
+ *               subjectId: 64b122d49ddf324d2a8d12d3
+ *               bookId: 64b8f019ba89c333de42f169
+ *               chapterId: 64b8f094050c643582b80481
  *     responses:
  *       "200":
  *         description: OK
@@ -209,8 +237,6 @@ module.exports = router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Lession'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

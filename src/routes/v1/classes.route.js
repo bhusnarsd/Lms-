@@ -220,9 +220,18 @@ module.exports = router;
  *     ClassUpdateInput:
  *       type: object
  *       properties:
+ *         mediumId:
+ *           type: string
+ *           description: id of medium
  *         className:
  *           type: string
  *           description: Name of the class
+ *         order:
+ *           type: number
+ *           description: order number
  *       example:
+ *         mediumId: 614a7e7d7f1d813bbf8e89b0
  *         className: Math 101
+ *         order: 1
  */
+ 

@@ -39,7 +39,13 @@ const updateChapterById = {
   }),
   body: Joi.object()
     .keys({
+      boardId: Joi.string().required(),
+      mediumId: Joi.string().required(),
+      classId: Joi.string().required(),
+      subjectId: Joi.string().required(),
+      bookId: Joi.string().required(),
       chapterName: Joi.string().required(),
+      order: Joi.number().required(),
     })
     .min(1),
 };

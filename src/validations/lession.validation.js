@@ -43,10 +43,16 @@ const updateLession = {
   }),
   body: Joi.object()
     .keys({
-      name: Joi.string(),
-      type: Joi.string(),
-      order: Joi.string(),
-      thumbnail: Joi.string(),
+      boardId: Joi.string().custom(objectId),
+      mediumId: Joi.string().custom(objectId),
+      classId: Joi.string().custom(objectId),
+      subjectId: Joi.string().custom(objectId),
+      bookId: Joi.string().custom(objectId),
+      chapterId: Joi.string().custom(objectId),
+      name: Joi.string().required(),
+      type: Joi.string().required(),
+      order: Joi.number().required(),
+      thumbnail: Joi.string().required(),
       poster: Joi.string(),
     })
     .min(1),
