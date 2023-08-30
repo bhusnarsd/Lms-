@@ -115,7 +115,7 @@ module.exports = router;
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/ChapterUpdateInput' # Define this schema
+ *             $ref: '#/components/schemas/ChapterUpdateInput'
  *     responses:
  *       200:
  *         description: Successful response
@@ -205,4 +205,19 @@ module.exports = router;
  *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
  *         order:  1
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     ChapterUpdateInput:
+ *       type: object
+ *       properties:
+ *         chapterName:
+ *           type: string
+ *           description: Name of the chapter
+ *       example:
+ *         chapterName: Chapter 1
  */
