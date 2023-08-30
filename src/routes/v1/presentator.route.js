@@ -112,7 +112,7 @@ module.exports = router;
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/PresentatorupdateInput' # Define this schema
+ *             $ref: '#/components/schemas/PresentatorupdateInput'
  *     responses:
  *       200:
  *         description: Successful response
@@ -157,6 +157,29 @@ module.exports = router;
  * components:
  *   schemas:
  *     PresentatorInput:
+ *       type: object
+ *       properties:
+ *         presentatorName:
+ *           type: string
+ *         qualification:
+ *           type: string
+ *         experience:
+ *           type: string
+ *         schoolName:
+ *           type: string
+ *       example:
+ *         presentatorName: Anil Sharma
+ *         qualification: Msc ,Bsc
+ *         experience: 3 years
+ *         schoolName: Shastri school lucknow
+ */
+
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     PresentatorupdateInput:
  *       type: object
  *       properties:
  *         presentatorName:

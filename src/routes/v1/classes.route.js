@@ -212,3 +212,17 @@ module.exports = router;
  *         className: Math 101
  *         order: 1
  */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     ClassUpdateInput:
+ *       type: object
+ *       properties:
+ *         className:
+ *           type: string
+ *           description: Name of the class
+ *       example:
+ *         className: Math 101
+ */

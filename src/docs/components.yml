@@ -61,6 +61,92 @@ components:
       example:
         name: Example Medium
         boardId: 614a7e7d7f1d813bbf8e89b7  
+        
+    Chapter:
+      type: object
+      properties:
+        chapterName:
+          type: string
+          description: Name of the chapter
+        boardId:
+          type: string
+          description: ID of the boardId
+        mediumId:
+          type: string
+          description: ID of the boardId
+        classId:
+          type: string
+          description: ID of the boardId
+        subjectId:
+          type: string
+          description: ID of the boardId
+        bookId:
+          type: string
+          description: ID of the boardId
+        order:
+          type: number
+          description: order number
+      example:
+        name: Example Medium
+        boardId: 614a7e7d7f1d813bbf8e89b7
+        mediumId: 614a7e7d7f1d813bbf8e89b7
+        classId: 614a7e7d7f1d813bbf8e89b7
+        subjectId: 614a7e7d7f1d813bbf8e89b7
+        bookId: 614a7e7d7f1d813bbf8e89b7
+        order: 1
+        chapterName: friction
+
+    Class:
+      type: object
+      properties:
+        className:
+          type: string
+          description: Name of the class
+        mediumId:
+          type: string
+          description: ID of the medium
+        order:
+          type: number
+          description: order number
+      example:
+        mediumId: 614a7e7d7f1d813bbf8e89b7
+        order: 1
+        className: 10A
+        
+    Studio:
+      type: object
+      properties:
+        studioName:
+          type: string
+          description: Name of the studio
+        location:
+          type: string
+          description: name of the location
+      example:
+        studioName: Studio-1
+        location: pune
+
+                
+    Presentator:
+      type: object
+      properties:
+        presentatorName:
+          type: string
+          description: Name of the presentator
+        qualification:
+          type: string
+          description: qualification
+        schoolName:
+          type: string
+          description: name of the school
+        experience:
+          type: string
+          description: years of the experience
+      example:
+        presentatorName: Mohit Sharma
+        qualification: M.A
+        schoolName: D Y Patil School
+        experience:  3 years
 
     Lession:
       type: object

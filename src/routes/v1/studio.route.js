@@ -61,7 +61,7 @@ module.exports = router;
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/StudioUpdateInput' # Define this schema
+ *             $ref: '#/components/schemas/StudioUpdateInput'
  *     responses:
  *       200:
  *         description: Successful response
@@ -106,6 +106,22 @@ module.exports = router;
  * components:
  *   schemas:
  *     StudioInput:
+ *       type: object
+ *       properties:
+ *         studioName:
+ *           type: string
+ *         location:
+ *           type: string
+ *       example:
+ *         studioName: studio1 or studio-2
+ *         location: pune,mumbai,delhi
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     StudioUpdateInput:
  *       type: object
  *       properties:
  *         studioName:
