@@ -7,16 +7,13 @@ const createSubject = {
     boardId: Joi.string().required(),
     mediumId: Joi.string().required(),
     classId: Joi.string().required(),
+    thumbnail: Joi.string(),
   }),
 };
 
 const getAllSubject = {
   query: Joi.object().keys({
     name: Joi.string(),
-    order: Joi.number(),
-    boardId: Joi.string(),
-    mediumId: Joi.string(),
-    classId: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
     page: Joi.number().integer(),
@@ -40,6 +37,7 @@ const updateSubject = {
       boardId: Joi.string().required(),
       mediumId: Joi.string().required(),
       classId: Joi.string().required(),
+      thumbnail: Joi.string(),
     })
     .min(1),
 };

@@ -174,7 +174,6 @@ module.exports = router;
  *         schoolName: Shastri school lucknow
  */
 
-
 /**
  * @swagger
  * components:

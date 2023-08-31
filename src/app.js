@@ -22,7 +22,7 @@ if (config.env !== 'test') {
 }
 
 // set security HTTP headers
-app.use(helmet());
+//app.use(helmet());
 
 // parse json request body
 app.use(express.json());
@@ -49,7 +49,6 @@ passport.use('jwt', jwtStrategy);
 if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
-
 
 // Apply the basic authentication middleware to the /v1/docs path
 app.use('/v1', routes);

@@ -197,6 +197,9 @@ module.exports = router;
  *         chapterName:
  *           type: string
  *           description: Name of the chapter
+ *         thumbnail:
+ *           type: string
+ *           description: path of thumbnail
  *       example:
  *         boardId: 614a7e7d7f1d813bbf8e89a9
  *         mediumId: 614a7e7d7f1d813bbf8e89b0
@@ -205,8 +208,8 @@ module.exports = router;
  *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
  *         order:  1
+ *         thumbnail: dvhjgsdv/dshbvhdsgh
  */
-
 
 /**
  * @swagger
@@ -233,6 +236,9 @@ module.exports = router;
  *         chapterName:
  *           type: string
  *           description: Name of the chapter
+ *         thumbnail:
+ *           type: string
+ *           description: path of thumbnail
  *       example:
  *         boardId: 614a7e7d7f1d813bbf8e89a9
  *         mediumId: 614a7e7d7f1d813bbf8e89b0
@@ -241,4 +247,5 @@ module.exports = router;
  *         bookId: 614a7e7d7f1d813bbf8e89d0
  *         chapterName: Chapter 1
  *         order:  1
+ *         thumbnail: dvhjgsdv/dshbvhdsgh
  */
