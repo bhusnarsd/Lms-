@@ -4,14 +4,13 @@ const { objectId } = require('./custom.validation');
 const createQuize = {
   body: Joi.object().keys({
     quizname: Joi.string(),
-    option1: Joi.string(),
-    option2: Joi.string(),
-    option3: Joi.string(),
-    option4: Joi.string(),
+    options: Joi.array().items(Joi.string()),
+    correctOptions: Joi.array().items(Joi.number()),
     explain: Joi.string(),
     hint: Joi.string(),
     types: Joi.string(),
     isVerified: Joi.boolean(),
+    userAnswers: Joi.array().items(Joi.number()),
     marks: Joi.number(),
     boardId: Joi.string(),
     mediumId: Joi.string(),
@@ -38,6 +37,16 @@ const getQuize = {
   }),
 };
 
+submitQuize = {
+  params: Joi.object().keys({
+    quizeId: Joi.string().custom(objectId),
+  }),
+  body: Joi.object()
+  .keys({
+    answer: Joi.array().items(Joi.number())
+  })
+};
+
 const updateQuize = {
   params: Joi.object().keys({
     quizeId: Joi.required().custom(objectId),
@@ -45,14 +54,13 @@ const updateQuize = {
   body: Joi.object()
     .keys({
       quizname: Joi.string(),
-      option1: Joi.string(),
-      option2: Joi.string(),
-      option3: Joi.string(),
-      option4: Joi.string(),
+      options: Joi.array().items(Joi.string()),
+      correctOptions: Joi.array().items(Joi.number()),
       explain: Joi.string(),
       hint: Joi.string(),
       types: Joi.string(),
       isVerified: Joi.boolean(),
+      userAnswers: Joi.array().items(Joi.number()),
       marks: Joi.number(),
       boardId: Joi.string(),
       mediumId: Joi.string(),
@@ -75,6 +83,7 @@ module.exports = {
   createQuize,
   getQuizes,
   getQuize,
+  submitQuize,
   updateQuize,
   deleteQuize,
 };

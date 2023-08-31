@@ -24,10 +24,27 @@ const getQuizeById = catchAsync(async (req, res) => {
   res.send(quize);
 });
 
+const QuizeByIdSubmit = catchAsync(async (req, res) => {
+  const quiz = await quizeService.QuizeByIdSubmit(req.params.quizeId);
+  if (!quiz) {
+    return res.status(404).json({ message: 'Quiz not found' });
+  }
+  const correctAnswerSet = new Set(quiz.correctOptions);
+  const userAnswerSet = new Set(req.body.answer);
+  const allSelectedCorrect = Array.from(userAnswerSet).every((index) => correctAnswerSet.has(index));
+  const atLeastOneCorrect = Array.from(userAnswerSet).some((index) => correctAnswerSet.has(index));
+  if (allSelectedCorrect) {
+    quiz.userAnswers = req.body.answer;
+    await quiz.save();
+    return res.json({ message: 'Correct answer!' });
+  } else if (atLeastOneCorrect) {
+    return res.json({ message: 'At least one correct answer selected, but not all.' });
+  } else {
+    return res.json({ message: 'Incorrect answer.' });
+  }
+});
+
 const updateQuizeById = catchAsync(async (req, res) => {
-  // if (req.user.role !== 'Teacher') {
-  //   return res.status(httpStatus.FORBIDDEN).json({ message: 'Access denied' });
-  // }
   const quize = await quizeService.updateQuizeById(req.params.quizeId, req.body);
   res.send(quize);
 });
@@ -41,6 +58,7 @@ module.exports = {
   createQuize,
   getAllQuize,
   getQuizeById,
+  QuizeByIdSubmit,
   updateQuizeById,
   deleteQuizeById,
 };
