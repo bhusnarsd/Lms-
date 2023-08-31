@@ -16,6 +16,13 @@ const getAllQuize = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const getAllNotSelected = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['quizname']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await quizeService.QuizeNotSelected(filter, options);
+  res.send(result);
+});
+
 const getQuizeById = catchAsync(async (req, res) => {
   const quize = await quizeService.getQuizeById(req.params.quizeId);
   if (!quize) {
@@ -61,4 +68,5 @@ module.exports = {
   QuizeByIdSubmit,
   updateQuizeById,
   deleteQuizeById,
+  getAllNotSelected,
 };
