@@ -31,6 +31,15 @@ const getQuizes = {
   }),
 };
 
+const NotSelectQuize = {
+  query: Joi.object().keys({
+    name: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
+
 const getQuize = {
   params: Joi.object().keys({
     quizeId: Joi.string().custom(objectId),
@@ -85,4 +94,5 @@ module.exports = {
   submitQuize,
   updateQuize,
   deleteQuize,
+  NotSelectQuize,
 };
