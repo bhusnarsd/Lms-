@@ -63,7 +63,7 @@ module.exports = router;
  *               correctOptions: [0, 2 ]
  *               explain: Explanation for the correct option
  *               hint: Hint for solving the quiz
- *               types: [easy]
+ *               types: easy
  *               isVerified: false
  *               userAnswers: []
  *               marks: 23
