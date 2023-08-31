@@ -8,13 +8,16 @@ const router = express.Router();
 router
   .route('/')
   .post(validate(quizeValidation.createQuize), quizeController.createQuize)
-  .get(validate(quizeValidation.getQuizes), quizeController.getAllQuize);
+  .get(validate(quizeValidation.getQuizes), quizeController.getAllQuize)
+
 
 router
   .route('/:quizeId')
+
   .get(validate(quizeValidation.getQuize), quizeController.getQuizeById)
   .patch(validate(quizeValidation.updateQuize), quizeController.updateQuizeById)
-  .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById);
+  .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById)
+  router.route('/:quizeId/submit').post(validate(quizeValidation.submitQuize), quizeController.QuizeByIdSubmit)
 
 module.exports = router;
 
@@ -39,14 +42,13 @@ module.exports = router;
  *             type: object
  *             required:
  *               - quizname
- *               - option1
- *               - option2
- *               - option3
- *               - option4
+ *               - options
+ *               - correctOptions
  *               - explain
  *               - hint
  *               - types
  *               - isVerified
+ *               - userAnswers
  *               - marks
  *               - boardId
  *               - mediumId
@@ -56,15 +58,14 @@ module.exports = router;
  *               - chapterId
  *               - lessonId
  *             example:
- *               quizname: Sample Quiz
- *               option1: Option A
- *               option2: Option B
- *               option3: Option c
- *               option4: Option D
+ *               quizname: Which of the following colors are primary colors?
+ *               options: ["Red", "Green", "Blue", "Yellow" ]
+ *               correctOptions: [0, 2 ]
  *               explain: Explanation for the correct option
  *               hint: Hint for solving the quiz
- *               types: easy
+ *               types: [easy]
  *               isVerified: false
+ *               userAnswers: []
  *               marks: 23
  *               boardId: 64d9ceaef49e9f5dc06502c6
  *               mediumId: 64d327a41128844220f0cce4
@@ -192,13 +193,39 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               quizname:
- *                 type: string
- *               explain:
- *                 type: string
+ *               - quizname
+ *               - options
+ *               - correctOptions
+ *               - explain
+ *               - hint
+ *               - types
+ *               - isVerified
+ *               - userAnswers
+ *               - marks
+ *               - boardId
+ *               - mediumId
+ *               - classId
+ *               - bookId
+ *               - subjectId
+ *               - chapterId
+ *               - lessonId
  *             example:
- *               quizname: Demo testing name
- *               explain: "this is testing releted explain"
+ *               quizname: Which of the following colors are primary colors?
+ *               options: ["Red", "Green", "Blue", "Yellow" ]
+ *               correctOptions: [0, 2 ]
+ *               explain: Explanation for the correct option
+ *               hint: Hint for solving the quiz
+ *               types: easy
+ *               isVerified: false
+ *               userAnswers: []
+ *               marks: 23
+ *               boardId: 64d9ceaef49e9f5dc06502c6
+ *               mediumId: 64d327a41128844220f0cce4
+ *               classId: 64d327811128844220f0cce0
+ *               bookId: 64d9d7143ac675796cdcd433
+ *               subjectId: 64d9d4666205c371563fcadb
+ *               chapterId: 64d327811128844220f0cce0
+ *               lessonId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "200":
  *         description: OK
@@ -235,4 +262,43 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ *  @swagger
+ *  /quizes/{quizeId}/submit:
+*   post:
+*     summary: Submit a quiz answer
+*     tags: [Quize]
+*     parameters:
+*       - in: path
+*         name: quizeId
+*         required: true
+*         description: ID of the quiz to submit an answer for
+*         schema:
+*           type: string
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*           schema:
+*             type: object
+*             required:
+*               - userAnswers
+*             properties:
+*               userAnswers:
+*                 type: array
+*                 items:
+*                   type: number
+*             example:
+*               answer: [0, 2]
+*     responses:
+*       "200":
+*         description: Quiz answer submitted successfully
+*       "400":
+*         $ref: '#/components/responses/BadRequest'
+*       "401":
+*         $ref: '#/components/responses/Unauthorized'
+*       "403":
+*         $ref: '#/components/responses/Forbidden'
  */

@@ -6,18 +6,15 @@ const quizeSchema = mongoose.Schema(
     quizname: {
       type: String,
     },
-    option1: {
-      type: String,
+    options: {
+      type: [String],
+      required: true,
+      validate: [arrayLimit, 'There must be exactly 4 options.'],
     },
-    option2: {
-      type: String,
-    },
-    option3: {
-      type: String,
-    },
-    option4: {
-      type: String,
-    },
+    correctOptions: {
+      type: [Number], // An array of indices (0 to 3) of correct options
+      required: true,
+    },   
     explain: {
       type: String,
     },
@@ -32,6 +29,7 @@ const quizeSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    userAnswers: [Number],
     marks: {
       type: Number,
     },
@@ -75,6 +73,10 @@ const quizeSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+function arrayLimit(val) {
+  return val.length === 4;
+}
 
 // add plugin that converts mongoose to json
 quizeSchema.plugin(toJSON);

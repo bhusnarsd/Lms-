@@ -34,6 +34,23 @@ const getQuizeById = async (id) => {
   return Quize.findById(id);
 };
 
+
+/**
+ * create quize by id
+ * @param {ObjectId} quizeId
+ * @param {Object} updateBody
+ * @returns {Promise<Quize>}
+ */
+const QuizeByIdSubmit = async (quizeId, updateBody) => {
+  const quizes = await getQuizeById(quizeId);
+  if (!quizes) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');
+  }
+  Object.assign(quizes, updateBody);
+  await quizes.save();
+  return quizes;
+};
+
 /**
  * Update quize by id
  * @param {ObjectId} quizeId
@@ -41,6 +58,7 @@ const getQuizeById = async (id) => {
  * @returns {Promise<Quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
+  console.log(quizeId)
   const quizes = await getQuizeById(quizeId);
   if (!quizes) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');
@@ -68,6 +86,7 @@ module.exports = {
   createQuize,
   queryQuize,
   getQuizeById,
+  QuizeByIdSubmit,
   updateQuizeById,
   deleteQuizeById,
 };
