@@ -37,11 +37,11 @@ const QuizeByIdSubmit = catchAsync(async (req, res) => {
     quiz.userAnswers = req.body.answer;
     await quiz.save();
     return res.json({ message: 'Correct answer!' });
-  } else if (atLeastOneCorrect) {
-    return res.json({ message: 'At least one correct answer selected, but not all.' });
-  } else {
-    return res.json({ message: 'Incorrect answer.' });
   }
+  if (atLeastOneCorrect) {
+    return res.json({ message: 'At least one correct answer selected, but not all.' });
+  }
+  return res.json({ message: 'Incorrect answer.' });
 });
 
 const updateQuizeById = catchAsync(async (req, res) => {

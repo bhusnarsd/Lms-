@@ -8,16 +8,15 @@ const router = express.Router();
 router
   .route('/')
   .post(validate(quizeValidation.createQuize), quizeController.createQuize)
-  .get(validate(quizeValidation.getQuizes), quizeController.getAllQuize)
-
+  .get(validate(quizeValidation.getQuizes), quizeController.getAllQuize);
 
 router
   .route('/:quizeId')
 
   .get(validate(quizeValidation.getQuize), quizeController.getQuizeById)
   .patch(validate(quizeValidation.updateQuize), quizeController.updateQuizeById)
-  .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById)
-  router.route('/:quizeId/submit').post(validate(quizeValidation.submitQuize), quizeController.QuizeByIdSubmit)
+  .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById);
+router.route('/:quizeId/submit').post(validate(quizeValidation.submitQuize), quizeController.QuizeByIdSubmit);
 
 module.exports = router;
 
@@ -63,10 +62,10 @@ module.exports = router;
  *               correctOptions: [0, 2 ]
  *               explain: Explanation for the correct option
  *               hint: Hint for solving the quiz
- *               types: [easy]
+ *               types: easy
  *               isVerified: false
  *               userAnswers: []
- *               marks: 23
+ *               marks: 00
  *               boardId: 64d9ceaef49e9f5dc06502c6
  *               mediumId: 64d327a41128844220f0cce4
  *               classId: 64d327811128844220f0cce0
@@ -218,7 +217,7 @@ module.exports = router;
  *               types: easy
  *               isVerified: false
  *               userAnswers: []
- *               marks: 23
+ *               marks: 00
  *               boardId: 64d9ceaef49e9f5dc06502c6
  *               mediumId: 64d327a41128844220f0cce4
  *               classId: 64d327811128844220f0cce0
@@ -267,38 +266,38 @@ module.exports = router;
 /**
  *  @swagger
  *  /quizes/{quizeId}/submit:
-*   post:
-*     summary: Submit a quiz answer
-*     tags: [Quize]
-*     parameters:
-*       - in: path
-*         name: quizeId
-*         required: true
-*         description: ID of the quiz to submit an answer for
-*         schema:
-*           type: string
-*     requestBody:
-*       required: true
-*       content:
-*         application/json:
-*           schema:
-*             type: object
-*             required:
-*               - userAnswers
-*             properties:
-*               userAnswers:
-*                 type: array
-*                 items:
-*                   type: number
-*             example:
-*               answer: [0, 2]
-*     responses:
-*       "200":
-*         description: Quiz answer submitted successfully
-*       "400":
-*         $ref: '#/components/responses/BadRequest'
-*       "401":
-*         $ref: '#/components/responses/Unauthorized'
-*       "403":
-*         $ref: '#/components/responses/Forbidden'
+ *   post:
+ *     summary: Submit a quiz answer
+ *     tags: [Quize]
+ *     parameters:
+ *       - in: path
+ *         name: quizeId
+ *         required: true
+ *         description: ID of the quiz to submit an answer for
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - userAnswers
+ *             properties:
+ *               userAnswers:
+ *                 type: array
+ *                 items:
+ *                   type: number
+ *             example:
+ *               answer: [0, 2]
+ *     responses:
+ *       "200":
+ *         description: Quiz answer submitted successfully
+ *       "400":
+ *         $ref: '#/components/responses/BadRequest'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
  */
