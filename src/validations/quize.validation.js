@@ -37,14 +37,13 @@ const getQuize = {
   }),
 };
 
-submitQuize = {
+const submitQuize = {
   params: Joi.object().keys({
     quizeId: Joi.string().custom(objectId),
   }),
-  body: Joi.object()
-  .keys({
-    answer: Joi.array().items(Joi.number())
-  })
+  body: Joi.object().keys({
+    answer: Joi.array().items(Joi.number()),
+  }),
 };
 
 const updateQuize = {

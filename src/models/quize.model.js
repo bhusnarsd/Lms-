@@ -9,12 +9,13 @@ const quizeSchema = mongoose.Schema(
     options: {
       type: [String],
       required: true,
+      // eslint-disable-next-line no-use-before-define
       validate: [arrayLimit, 'There must be exactly 4 options.'],
     },
     correctOptions: {
       type: [Number], // An array of indices (0 to 3) of correct options
       required: true,
-    },   
+    },
     explain: {
       type: String,
     },
