@@ -13,7 +13,7 @@ const lessionRoute = require('./lession.route');
 const subjectRoute = require('./subject.route');
 const bookRoute = require('./book.route');
 const broadcast = require('./broadcast.route');
-const quizeRoute = require('./quize.route');
+const quizeRoute = require('./quiz.route');
 const presentatorRoute = require('./presentator.route');
 const studioRoute = require('./studio.route');
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const quizeController = require('../../controllers/quize.controller');
-const quizeValidation = require('../../validations/quize.validation');
+const quizeController = require('../../controllers/quiz.controller');
+const quizeValidation = require('../../validations/quiz.validation');
 // const isTeacher = require('../../middlewares/quize.middleware')
 const router = express.Router();
 
@@ -27,7 +27,7 @@ module.exports = router;
 /**
  * @swagger
  * tags:
- *   name: Quize
+ *   name: Quiz
  *   description: Quize management and retrieval
  */
 
@@ -36,7 +36,7 @@ module.exports = router;
  * /quizes:
  *   post:
  *     summary: Create a quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     requestBody:
  *       required: true
  *       content:
@@ -92,7 +92,7 @@ module.exports = router;
  *
  *   get:
  *     summary: Get all quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -154,7 +154,7 @@ module.exports = router;
  * /quizes/{id}:
  *   get:
  *     summary: Get a Quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -179,7 +179,7 @@ module.exports = router;
  *
  *   patch:
  *     summary: Update a Quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -246,7 +246,7 @@ module.exports = router;
  *
  *   delete:
  *     summary: Delete a Quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -272,7 +272,7 @@ module.exports = router;
  *  /quizes/{quizeId}/submit:
  *   post:
  *     summary: Submit a quiz answer
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     parameters:
  *       - in: path
  *         name: quizeId
@@ -311,7 +311,7 @@ module.exports = router;
  * /quizes/NotSelect:
  *   get:
  *     summary: Get Not selected quize
- *     tags: [Quize]
+ *     tags: [Quiz]
  *     security:
  *       - bearerAuth: []
  *     parameters:
