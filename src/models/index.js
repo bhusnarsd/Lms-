@@ -10,7 +10,7 @@ module.exports.Chapter = require('./chapter.model');
 
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
-module.exports.Quize = require('./quize.model');
+module.exports.Quize = require('./quiz.model');
 
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');

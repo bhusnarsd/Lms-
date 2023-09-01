@@ -6,6 +6,9 @@ const quizeSchema = mongoose.Schema(
     quizname: {
       type: String,
     },
+    picture: {
+      type: String,
+    },
     options: {
       type: [String],
       required: true,
