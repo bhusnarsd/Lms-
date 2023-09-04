@@ -8,23 +8,23 @@ const multimediaSchema = mongoose.Schema(
       trim: true,
     },
     icon1: {
-        type: String,
+      type: String,
     },
     icon2: {
-        type: String
+      type: String,
     },
     path: {
-        type: String
+      type: String,
     },
     multimediaType: {
-        type: String
+      type: String,
     },
     chapterId: {
-        type: String
+      type: String,
     },
     lessoinId: {
-        type: String
-    }
+      type: String,
+    },
   },
   {
     timestamps: true,

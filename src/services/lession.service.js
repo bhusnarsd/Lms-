@@ -45,6 +45,18 @@ const getLessionbychapterId = async (chapterId) => {
 };
 
 /**
+ * Get lession by id
+ * @param {ObjectId} chapterId
+ * @param {ObjectId} chapterId
+ * @param {ObjectId} chapterId
+ * @param {ObjectId} chapterId
+ * @returns {Promise<Lession>}
+ */
+const getLessionByFilter = async (chapterId) => {
+  return Lession.find({ chapterId });
+};
+
+/**
  * Update lession by id
  * @param {ObjectId} lessionId
  * @param {Object} updateBody

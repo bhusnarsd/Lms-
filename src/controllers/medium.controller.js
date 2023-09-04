@@ -48,5 +48,5 @@ module.exports = {
   getMedium,
   updateMedium,
   deleteMedium,
- // getMediumbyBoardId,
+  // getMediumbyBoardId,
 };

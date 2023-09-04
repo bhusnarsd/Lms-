@@ -17,8 +17,8 @@ const getAllSubject = catchAsync(async (req, res) => {
 });
 
 const getSubjectByFilter = catchAsync(async (req, res) => {
-  const {boardId,mediumId,classId} = req.params
-  const subject = await subjectService.getClassByFilter(boardId,mediumId,classId);
+  const { boardId, mediumId, classId } = req.params;
+  const subject = await subjectService.getClassByFilter(boardId, mediumId, classId);
   if (!subject) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
   }
@@ -32,6 +32,15 @@ const getSubjectById = catchAsync(async (req, res) => {
   }
   res.send(subject);
 });
+
+const getSubjectByClassId = catchAsync(async (req, res) => {
+  const subject = await subjectService.getSubjectByClassId(req.params.classId);
+  if (!subject) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Subject not found');
+  }
+  res.send(subject);
+});
+
 const updateSubject = catchAsync(async (req, res) => {
   const subject = await subjectService.updatSubjectById(req.params.subjectId, req.body);
   res.send(subject);
@@ -49,4 +58,5 @@ module.exports = {
   updateSubject,
   deleteSubject,
   getSubjectByFilter,
+  getSubjectByClassId,
 };

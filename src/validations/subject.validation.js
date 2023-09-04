@@ -33,7 +33,6 @@ const getSubjectFilter = {
   }),
 };
 
-
 const updateSubject = {
   params: Joi.object().keys({
     subjectId: Joi.string().required(),
@@ -62,5 +61,5 @@ module.exports = {
   updateSubject,
   deleteSubject,
   getAllSubject,
-  getSubjectFilter
+  getSubjectFilter,
 };

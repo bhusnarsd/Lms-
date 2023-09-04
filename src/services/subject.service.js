@@ -4,8 +4,8 @@ const ApiError = require('../utils/ApiError');
 
 /**
  * Create a subject
- * @param {Object} boardBody
- * @returns {Promise<Board>}
+ * @param {Object} subjectBody
+ * @returns {Promise<Subject>}
  */
 const createSubject = async (subjectBody) => {
   return Subject.create(subjectBody);
@@ -28,12 +28,20 @@ const querySubject = async (filter, options) => {
 /**
  * Get subject by id
  * @param {ObjectId} id
- * @returns {Promise<Board>}
+ * @returns {Promise<Subject>}
  */
 const getSubjectById = async (id) => {
   return Subject.findById(id);
 };
 
+/**
+ * Get subject by classId
+ * @param {ObjectId} classId
+ * @returns {Promise<Subject>}
+ */
+const getSubjectByClassId = async (classId) => {
+  return Subject.findById({ classId });
+};
 /**
  * Get subject by filter
  * @param {ObjectId} boardId
@@ -41,8 +49,8 @@ const getSubjectById = async (id) => {
  * @param {ObjectId} classId
  * @returns {Promise<Board>}
  */
-const getClassByFilter = async (boardId,mediumId,classId) => {
-  return Subject.find({ boardId,mediumId,classId });
+const getClassByFilter = async (boardId, mediumId, classId) => {
+  return Subject.find({ boardId, mediumId, classId });
 };
 
 /**
@@ -82,4 +90,5 @@ module.exports = {
   updatSubjectById,
   deleteSubjectById,
   getClassByFilter,
+  getSubjectByClassId,
 };

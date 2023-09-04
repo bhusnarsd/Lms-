@@ -83,8 +83,8 @@ const defaultRoutes = [
   },
   {
     path: '/multimedia',
-    route: multimediaRoute
-  }
+    route: multimediaRoute,
+  },
 ];
 
 const devRoutes = [

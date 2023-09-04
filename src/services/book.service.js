@@ -34,18 +34,29 @@ const queryBook = async (filter, options) => {
  * @returns {Promise<Book>}
  */
 
-const getBookByFilter = async ( boardId,mediumId,classId,subjectId) => {
-  return Book.find({ boardId,mediumId,classId,subjectId });
+const getBookByFilter = async (boardId, mediumId, classId, subjectId) => {
+  return Book.find({ boardId, mediumId, classId, subjectId });
 };
 
 const getBookById = async (id) => {
   return Book.findById(id);
 };
+
+/**
+ * Get book by subjectId
+ * @param {ObjectId} subjectId
+ * @returns {Promise<Book>}
+ */
+
+const getBookBysubjectId = async (subjectId) => {
+  return Book.find({ subjectId });
+};
+
 /**
  * Update book by id
  * @param {ObjectId} bookId
  * @param {Object} updateBody
- * @returns {Promise<Board>}
+ * @returns {Promise<Book>}
  */
 const updatBookById = async (bookId, updateBody) => {
   const book = await getBookById(bookId);
@@ -78,4 +89,5 @@ module.exports = {
   updatBookById,
   deleteBookById,
   getBookByFilter,
+  getBookBysubjectId,
 };

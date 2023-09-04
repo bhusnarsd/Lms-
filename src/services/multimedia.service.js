@@ -75,10 +75,10 @@ const deleteMultimediaById = async (multimediaId) => {
 };
 
 module.exports = {
-    createMultimedia,
-    queryMultimedia,
-    getByChapterId,
-    updateMultimediaById,
-    deleteMultimediaById,
-    getMultimediaById,
+  createMultimedia,
+  queryMultimedia,
+  getByChapterId,
+  updateMultimediaById,
+  deleteMultimediaById,
+  getMultimediaById,
 };

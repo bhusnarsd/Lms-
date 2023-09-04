@@ -17,9 +17,10 @@ router
   .delete(validate(bookValidation.deleteBook), bookController.deleteBook);
 
 router
-.route('/filter/:boardId/:mediumId/:classId/:subjectId')
-.get( validate(bookValidation.getBookByFilter),bookController.getBookByFilter);
+  .route('/filter/:boardId/:mediumId/:classId/:subjectId')
+  .get(validate(bookValidation.getBookByFilter), bookController.getBookByFilter);
 
+router.route('/subject/:subjectId').get(validate(bookValidation.getBookBySubjectId), bookController.getBookBySubjectId);
 module.exports = router;
 
 /**
@@ -261,6 +262,36 @@ module.exports = router;
  *         name: classId
  *         required: true
  *         description: The ID of the class
+ *       - in: path
+ *         name: subjectId
+ *         required: true
+ *         description: The ID of the subject
+ *         schema:
+ *           type: string
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ * @swagger
+ * /books/subject/{subjectId}:
+ *   get:
+ *     summary: Get a Book
+ *     tags: [Book]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
  *       - in: path
  *         name: subjectId
  *         required: true

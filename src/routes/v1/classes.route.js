@@ -166,7 +166,7 @@ module.exports = router;
  *         description: No content
  *       404:
  *         description: Class not found
- * 
+ *
  */
 
 //  * /classes/getAllclassByMediumId/{mediumId}:
@@ -192,8 +192,6 @@ module.exports = router;
 //  *               order: 1
 //  *       404:
 //  *         description: Class not found
-
-
 
 /**
  * @swagger

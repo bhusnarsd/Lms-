@@ -5,20 +5,15 @@ const mediumValidation = require('../../validations/medium.validation');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post( multimediaController.createMultimedia)
-  .get( multimediaController.getMultimedia);
+router.route('/').post(multimediaController.createMultimedia).get(multimediaController.getMultimedia);
 
 router
   .route('/:multimediaId')
-  .get( multimediaController.getMultimediaById)
-  .patch( multimediaController.updateMultimedia)
-  .delete( multimediaController.deleteMultimedia);
+  .get(multimediaController.getMultimediaById)
+  .patch(multimediaController.updateMultimedia)
+  .delete(multimediaController.deleteMultimedia);
 
-router
-  .route('/getByChapterId/:chapterId')
-  .get( multimediaController.getByChapterId);
+router.route('/getByChapterId/:chapterId').get(multimediaController.getByChapterId);
 
 module.exports = router;
 
@@ -79,7 +74,7 @@ module.exports = router;
  *           application/json:
  *             schema:
  *               $ref: '#/components/responses/Forbidden'
- * 
+ *
  *
  *   get:
  *     summary: Get all Medium
