@@ -34,7 +34,14 @@ const getSubjectById = async (id) => {
   return Subject.findById(id);
 };
 
-const getClassByFilter = async (classId) => {
+/**
+ * Get subject by filter
+ * @param {ObjectId} boardId
+ * @param {ObjectId} mediumId
+ * @param {ObjectId} classId
+ * @returns {Promise<Board>}
+ */
+const getClassByFilter = async (boardId,mediumId,classId) => {
   return Subject.find({ boardId,mediumId,classId });
 };
 

@@ -27,6 +27,14 @@ const getBook = {
   }),
 };
 
+const getBookByFilter = {
+  params: Joi.object().keys({
+    boardId: Joi.string().required(),
+    mediumId: Joi.string().required(),
+    classId: Joi.string().required(),
+    subjectId: Joi.string().required()
+  }),
+};
 const updateBook = {
   params: Joi.object().keys({
     bookId: Joi.required().custom(objectId),
@@ -53,6 +61,7 @@ module.exports = {
   createBook,
   getBooks,
   getBook,
+  getBookByFilter,
   updateBook,
   deleteBook,
 };

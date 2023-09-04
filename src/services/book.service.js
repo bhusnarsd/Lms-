@@ -26,13 +26,16 @@ const queryBook = async (filter, options) => {
 };
 
 /**
- * Get subject by id
- * @param {ObjectId} id
- * @returns {Promise<Board>}
+ * Get book by filter
+ * @param {ObjectId} boardId
+ * @param {ObjectId} mediumId
+ * @param {ObjectId} classId
+ * @param {ObjectId} subjectId
+ * @returns {Promise<Book>}
  */
 
-const getBookBySubjectId = async (subjectId) => {
-  return Book.find({ subjectId });
+const getBookByFilter = async ( boardId,mediumId,classId,subjectId) => {
+  return Book.find({ boardId,mediumId,classId,subjectId });
 };
 
 const getBookById = async (id) => {
@@ -74,5 +77,5 @@ module.exports = {
   getBookById,
   updatBookById,
   deleteBookById,
-  getBookBySubjectId,
+  getBookByFilter,
 };
