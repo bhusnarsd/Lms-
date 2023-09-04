@@ -16,9 +16,9 @@ router
   .patch(validate(classValidation.updateClassById), classesController.updateSingleClass)
   .delete(validate(classValidation.deleteClassById), classesController.deleteSingleClass);
 
-router
-  .route('/getAllclassByMediumId/:mediumId')
-  .get(validate(classValidation.getClassesByMediumId), classesController.getAllClassByMediumId);
+// router
+//   .route('/getAllclassByMediumId/:mediumId')
+//   .get(validate(classValidation.getClassesByMediumId), classesController.getAllClassByMediumId);
 
 module.exports = router;
 
@@ -166,30 +166,34 @@ module.exports = router;
  *         description: No content
  *       404:
  *         description: Class not found
- * /classes/getAllclassByMediumId/{mediumId}:
- *   get:
- *     summary: Get all class by medium id
- *     tags: [Classes]
- *     parameters:
- *       - in: path
- *         name: mediumId
- *         required: true
- *         schema:
- *           type: string
- *         description: ID of the medium
- *     responses:
- *       200:
- *         description: Successful response
- *         content:
- *           application/json:
- *             example:
- *               id: "123"
- *               className: "10 A"
- *               mediumId: "614a7e7d7f1d813bbf8e89b0"
- *               order: 1
- *       404:
- *         description: Class not found
+ * 
  */
+
+//  * /classes/getAllclassByMediumId/{mediumId}:
+//  *   get:
+//  *     summary: Get all class by medium id
+//  *     tags: [Classes]
+//  *     parameters:
+//  *       - in: path
+//  *         name: mediumId
+//  *         required: true
+//  *         schema:
+//  *           type: string
+//  *         description: ID of the medium
+//  *     responses:
+//  *       200:
+//  *         description: Successful response
+//  *         content:
+//  *           application/json:
+//  *             example:
+//  *               id: "123"
+//  *               className: "10 A"
+//  *               mediumId: "614a7e7d7f1d813bbf8e89b0"
+//  *               order: 1
+//  *       404:
+//  *         description: Class not found
+
+
 
 /**
  * @swagger

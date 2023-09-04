@@ -34,8 +34,8 @@ const getSubjectById = async (id) => {
   return Subject.findById(id);
 };
 
-const getClassById = async (classId) => {
-  return Subject.find({ classId });
+const getClassByFilter = async (classId) => {
+  return Subject.find({ boardId,mediumId,classId });
 };
 
 /**
@@ -74,5 +74,5 @@ module.exports = {
   getSubjectById,
   updatSubjectById,
   deleteSubjectById,
-  getClassById,
+  getClassByFilter,
 };

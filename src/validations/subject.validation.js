@@ -25,6 +25,14 @@ const getSubject = {
     subjectId: Joi.string(),
   }),
 };
+const getSubjectFilter = {
+  params: Joi.object().keys({
+    boardId: Joi.string().required(),
+    mediumId: Joi.string().required(),
+    classId: Joi.string().required(),
+  }),
+};
+
 
 const updateSubject = {
   params: Joi.object().keys({
@@ -54,4 +62,5 @@ module.exports = {
   updateSubject,
   deleteSubject,
   getAllSubject,
+  getSubjectFilter
 };

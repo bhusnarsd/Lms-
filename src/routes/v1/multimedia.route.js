@@ -1,41 +1,41 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const mediumController = require('../../controllers/medium.controller');
+const multimediaController = require('../../controllers/multimedia.controller');
 const mediumValidation = require('../../validations/medium.validation');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(mediumValidation.createMedium), mediumController.createMedium)
-  .get(validate(mediumValidation.getMediums), mediumController.getMediums);
+  .post( multimediaController.createMultimedia)
+  .get( multimediaController.getMultimedia);
 
 router
-  .route('/:mediumId')
-  .get(validate(mediumValidation.getMedium), mediumController.getMedium)
-  .patch(validate(mediumValidation.updateMedium), mediumController.updateMedium)
-  .delete(validate(mediumValidation.deleteMedium), mediumController.deleteMedium);
+  .route('/:multimediaId')
+  .get( multimediaController.getMultimediaById)
+  .patch( multimediaController.updateMultimedia)
+  .delete( multimediaController.deleteMultimedia);
 
-// router
-//   .route('/getAllmedium/:boardId')
-//   .get(validate(mediumValidation.getMediumbyBoardId), mediumController.getMediumbyBoardId);
+router
+  .route('/getByChapterId/:chapterId')
+  .get( multimediaController.getByChapterId);
 
 module.exports = router;
 
 /**
  * @swagger
  * tags:
- *   name: Medium
+ *   name: Multimedia
  *   description: Medium management and retrieval
  */
 
 /**
  * @swagger
- * /medium:
+ * /multimedia:
  *   post:
- *     summary: Create a Medium
- *     description: create other medium.
- *     tags: [Medium]
+ *     summary: Create a multimedia
+ *     description: Create other multimedia.
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -45,30 +45,41 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
- *               - boardId
+ *               - lessionName
+ *               - path
  *             properties:
- *               name:
- *                 type: string *
- *               boardId:
+ *               lessionName:
  *                 type: string
- *             example:
- *               name: English
- *               boardId: 64ca45e050227f21d906d83c
- *
+ *               icon1:
+ *                 type: string
+ *               icon2:
+ *                 type: string
+ *               path:
+ *                 type: string
+ *               chapterId:
+ *                 type: string
+ *               lessionId:
+ *                 type: string
  *     responses:
  *       "201":
  *         description: Created
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Medium'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *               $ref: '#/components/schemas/Multimedia'
  *       "401":
- *         $ref: '#/components/responses/Unauthorized'
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/responses/Unauthorized'
  *       "403":
- *         $ref: '#/components/responses/Forbidden'
+ *         description: Forbidden
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/responses/Forbidden'
+ * 
  *
  *   get:
  *     summary: Get all Medium
@@ -223,33 +234,31 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
- *  */
-
-//  * /medium/getAllmedium/{boardId}:
-//  *   get:
-//  *     summary: Get a medium by boardId
-//  *     tags: [Medium]
-//  *     security:
-//  *       - bearerAuth: []
-//  *     parameters:
-//  *       - in: path
-//  *         name: boardId
-//  *         required: true
-//  *         schema:
-//  *           type: string
-//  *         description: board id
-//  *     responses:
-//  *       "200":
-//  *         description: OK
-//  *         content:
-//  *           application/json:
-//  *             schema:
-//  *                $ref: '#/components/schemas/Medium'
-//  *       "401":
-//  *         $ref: '#/components/responses/Unauthorized'
-//  *       "403":
-//  *         $ref: '#/components/responses/Forbidden'
-//  *       "404":
-//  *         $ref: '#/components/responses/NotFound'
-//  *
-
+ * /medium/getAllmedium/{boardId}:
+ *   get:
+ *     summary: Get a medium by boardId
+ *     tags: [Medium]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: boardId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: board id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Medium'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
+ */

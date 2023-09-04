@@ -7,13 +7,12 @@ module.exports.Classes = require('./classes.model');
 module.exports.Medium = require('./medium.model');
 module.exports.Lession = require('./lession.model');
 module.exports.Chapter = require('./chapter.model');
-
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
 module.exports.Quize = require('./quiz.model');
-
 module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
 module.exports.Broadcast = require('./brandcast.model');
 module.exports.Presentator = require('./presentator.model');
 module.exports.Studio = require('./studio.model');
+module.exports.Multimedia = require('./multimedia.model');

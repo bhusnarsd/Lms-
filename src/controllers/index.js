@@ -12,3 +12,4 @@ module.exports.bookController = require('./book.controller');
 module.exports.quizeController = require('./quize.controller');
 module.exports.broadcastController = require('./broadcast.controller');
 module.exports.studioController = require('./studio.controller');
+module.exports.multimediaController = require('./multimedia.controller');

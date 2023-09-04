@@ -227,7 +227,35 @@ components:
         boardId: 614a7e7d7f1d813bbf8e89b8
         mediumId: 614a7e7d7f1d813bbf8e89b9
         thumbnail: sdfgjjhsdgjsf/sdghdgs
-         
+
+    Multimedia: 
+      type: object
+      properties:
+        lessionName: 
+          type: string
+        icon1: 
+          type: string
+        icon2: 
+          type: string
+        path: 
+          type: string
+        multumediaType:
+          type: string
+        chapterId:
+          type: string
+        lessionId:
+          type: string
+      example:
+        lessionName: English
+        icon1: imagelink/icon1
+        icon2: imagelink/icon2
+        path: multimedia/path
+        multimediaType: video
+        chapterId: 64ca45e050227f21d906d83c
+        lessionId: 64ca45e050227f21d906d83c
+
+
+
     Token:
       type: object
       properties:
