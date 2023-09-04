@@ -32,6 +32,15 @@ const getLessionbychapId = catchAsync(async (req, res) => {
   res.send(lession);
 });
 
+const getLessionByFilter = catchAsync(async (req, res) => {
+  const { boardId, mediumId, classId, subjectId, bookId, chapterId } = req.params;
+  const lession = await lessionService.getLessionByFilter(boardId, mediumId, classId, subjectId, bookId, chapterId);
+  if (!lession) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Lession not found');
+  }
+  res.send(lession);
+});
+
 const updateLession = catchAsync(async (req, res) => {
   const lession = await lessionService.updateLessionById(req.params.lessionId, req.body);
   res.send(lession);
@@ -49,4 +58,5 @@ module.exports = {
   updateLession,
   deleteLession,
   getLessionbychapId,
+  getLessionByFilter,
 };

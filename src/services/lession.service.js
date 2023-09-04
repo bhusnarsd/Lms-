@@ -45,15 +45,17 @@ const getLessionbychapterId = async (chapterId) => {
 };
 
 /**
- * Get lession by id
- * @param {ObjectId} chapterId
- * @param {ObjectId} chapterId
- * @param {ObjectId} chapterId
- * @param {ObjectId} chapterId
- * @returns {Promise<Lession>}
+ * Get Lession by filter
+ * @param {ObjectId} boardId
+ * @param {ObjectId} mediumId
+ * @param {ObjectId} classId
+ * @param {ObjectId} subjectId
+ * @param {ObjectId} bookId
+ * @returns {Promise<lesssion>}
  */
-const getLessionByFilter = async (chapterId) => {
-  return Lession.find({ chapterId });
+
+const getLessionByFilter = async (boardId, mediumId, classId, subjectId, bookId, chapterId) => {
+  return Lession.find({ boardId, mediumId, classId, subjectId, bookId, chapterId });
 };
 
 /**
@@ -93,4 +95,5 @@ module.exports = {
   updateLessionById,
   deleteLessionById,
   getLessionbychapterId,
+  getLessionByFilter,
 };

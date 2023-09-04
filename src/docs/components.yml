@@ -57,12 +57,8 @@ components:
         name:
           type: string
           description: Name of the Medium
-        boardId:
-          type: string
-          description: ID of the boardId
       example:
         name: Example Medium
-        boardId: 614a7e7d7f1d813bbf8e89b7  
         
     Chapter:
       type: object
