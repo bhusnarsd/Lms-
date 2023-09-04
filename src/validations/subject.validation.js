@@ -1,12 +1,12 @@
 const Joi = require('joi');
-
+const { objectId } = require('./custom.validation');
 const createSubject = {
   body: Joi.object().keys({
     name: Joi.string().required(),
     order: Joi.number().required(),
-    boardId: Joi.string().required(),
-    mediumId: Joi.string().required(),
-    classId: Joi.string().required(),
+    boardId: Joi.string().custom(objectId).required(),
+    mediumId: Joi.string().custom(objectId).required(),
+    classId: Joi.string().custom(objectId).required(),
     thumbnail: Joi.string(),
   }),
 };
@@ -27,11 +27,17 @@ const getSubject = {
 };
 const getSubjectFilter = {
   params: Joi.object().keys({
-    boardId: Joi.string().required(),
-    mediumId: Joi.string().required(),
-    classId: Joi.string().required(),
+    boardId: Joi.string().custom(objectId).required(),
+    mediumId: Joi.string().custom(objectId).required(),
+    classId: Joi.string().custom(objectId).required(),
   }),
 };
+const getSubjectByClassId = {
+  params: Joi.object().keys({
+    classId: Joi.string().custom(objectId).required(),
+  }),
+};
+
 
 const updateSubject = {
   params: Joi.object().keys({
@@ -62,4 +68,5 @@ module.exports = {
   deleteSubject,
   getAllSubject,
   getSubjectFilter,
+  getSubjectByClassId
 };

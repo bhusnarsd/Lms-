@@ -40,7 +40,7 @@ const getSubjectById = async (id) => {
  * @returns {Promise<Subject>}
  */
 const getSubjectByClassId = async (classId) => {
-  return Subject.findById({ classId });
+  return Subject.find({ classId });
 };
 /**
  * Get subject by filter
