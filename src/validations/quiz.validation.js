@@ -31,6 +31,12 @@ const getQuizes = {
   }),
 };
 
+const uploadFiles = {
+  body: Joi.object().keys({
+    files: Joi.string(),
+  }),
+};
+
 const NotSelectQuize = {
   query: Joi.object().keys({
     name: Joi.string(),
@@ -95,4 +101,5 @@ module.exports = {
   updateQuize,
   deleteQuize,
   NotSelectQuize,
+  uploadFiles,
 };

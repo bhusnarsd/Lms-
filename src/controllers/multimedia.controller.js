@@ -25,8 +25,16 @@ const getMultimediaById = catchAsync(async (req, res) => {
 });
 
 const getByChapterId = catchAsync(async (req, res) => {
-    const { boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId } = req.params;
-  const multimedia = await multimediaService.getByChapterId(boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId );
+  const { boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId } = req.params;
+  const multimedia = await multimediaService.getByChapterId(
+    boardId,
+    mediumId,
+    classId,
+    subjectId,
+    bookId,
+    chapterId,
+    lessionId
+  );
   if (!multimedia) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Multimedia not found');
   }

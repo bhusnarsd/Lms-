@@ -6,14 +6,12 @@ const quizeSchema = mongoose.Schema(
     quizname: {
       type: String,
     },
-    picture: {
+    files: {
       type: String,
     },
     options: {
       type: [String],
       required: true,
-      // eslint-disable-next-line no-use-before-define
-      validate: [arrayLimit, 'There must be exactly 4 options.'],
     },
     correctOptions: {
       type: [Number], // An array of indices (0 to 3) of correct options
@@ -78,9 +76,9 @@ const quizeSchema = mongoose.Schema(
   }
 );
 
-function arrayLimit(val) {
-  return val.length === 4;
-}
+// function arrayLimit(val) {
+//   return val.length === 4;
+// }
 
 // add plugin that converts mongoose to json
 quizeSchema.plugin(toJSON);

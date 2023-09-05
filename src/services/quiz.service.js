@@ -10,7 +10,15 @@ const ApiError = require('../utils/ApiError');
 const createQuize = async (quizeBody) => {
   return Quize.create(quizeBody);
 };
-
+/**
+ * Create Upload quize
+ * @param {Object} quizeBody
+ * @returns { Promise<Quize>}
+ */
+const uploadQuiz = async (quizeBody) => {
+  const quizData = Quize.create(quizeBody);
+  return quizData;
+};
 /**
  * Query for board
  * @param {Object} filter - Mongo filter
@@ -35,6 +43,21 @@ const getQuizeById = async (id) => {
 };
 
 /**
+ * Query for board
+ * @param {Object} filter - Mongo filter
+ * @param {Object} options - Query options
+ * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
+ * @param {number} [options.limit] - Maximum number of results per page (default = 10)
+ * @param {number} [options.page] - Current page (default = 1)
+ * @returns {Promise<QueryResult>}
+ */
+const QuizeNotSelected = async (filter, options) => {
+  const updatedFilter = { ...filter, isVerified: true };
+  const quizes = await Quize.paginate(updatedFilter, options);
+  return quizes;
+};
+
+/**
  * create quize by id
  * @param {ObjectId} quizeId
  * @param {Object} updateBody
@@ -48,6 +71,23 @@ const QuizeByIdSubmit = async (quizeId, updateBody) => {
   Object.assign(quizes, updateBody);
   await quizes.save();
   return quizes;
+};
+
+const CheckoutAnswer = async (correctOptions, answer) => {
+  const quiz = await QuizeByIdSubmit(correctOptions);
+  const correctAnswerSet = new Set(quiz.correctOptions);
+  const userAnswerSet = new Set(answer);
+  const allSelectedCorrect = Array.from(userAnswerSet).every((index) => correctAnswerSet.has(index));
+  const atLeastOneCorrect = Array.from(userAnswerSet).some((index) => correctAnswerSet.has(index));
+  if (allSelectedCorrect) {
+    quiz.userAnswers = answer;
+    await quiz.save();
+    throw new ApiError(httpStatus.ACCEPTED, 'Correct answer!');
+  }
+  if (atLeastOneCorrect) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'At least one correct answer selected, but not all.');
+  }
+  throw new ApiError(httpStatus.NOT_FOUND, 'Incorrect answer.');
 };
 
 /**
@@ -87,4 +127,7 @@ module.exports = {
   QuizeByIdSubmit,
   updateQuizeById,
   deleteQuizeById,
+  QuizeNotSelected,
+  uploadQuiz,
+  CheckoutAnswer,
 };

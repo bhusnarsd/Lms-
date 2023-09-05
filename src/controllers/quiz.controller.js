@@ -9,6 +9,11 @@ const createQuize = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(quize);
 });
 
+const uploadFiles = catchAsync(async (req, res) => {
+  const quizData = await quizeService.uploadQuiz(req.body);
+  res.status(httpStatus.CREATED).send(quizData);
+});
+
 const getAllQuize = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['quizname']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
@@ -32,23 +37,11 @@ const getQuizeById = catchAsync(async (req, res) => {
 });
 
 const QuizeByIdSubmit = catchAsync(async (req, res) => {
-  const quiz = await quizeService.QuizeByIdSubmit(req.params.quizeId);
+  const quiz = await quizeService.CheckoutAnswer(req.params.quizeId, req.body.answer);
   if (!quiz) {
-    return res.status(404).json({ message: 'Quiz not found' });
+    throw new ApiError(httpStatus.NOT_FOUND, 'Quiz not found');
   }
-  const correctAnswerSet = new Set(quiz.correctOptions);
-  const userAnswerSet = new Set(req.body.answer);
-  const allSelectedCorrect = Array.from(userAnswerSet).every((index) => correctAnswerSet.has(index));
-  const atLeastOneCorrect = Array.from(userAnswerSet).some((index) => correctAnswerSet.has(index));
-  if (allSelectedCorrect) {
-    quiz.userAnswers = req.body.answer;
-    await quiz.save();
-    return res.json({ message: 'Correct answer!' });
-  }
-  if (atLeastOneCorrect) {
-    return res.json({ message: 'At least one correct answer selected, but not all.' });
-  }
-  return res.json({ message: 'Incorrect answer.' });
+  res.send(quiz);
 });
 
 const updateQuizeById = catchAsync(async (req, res) => {
@@ -69,4 +62,5 @@ module.exports = {
   updateQuizeById,
   deleteQuizeById,
   getAllNotSelected,
+  uploadFiles,
 };
