@@ -14,7 +14,6 @@ const createMultimeda = {
     subjectId: Joi.string().custom(objectId),
     bookId: Joi.string().custom(objectId),
     chapterId: Joi.string().custom(objectId),
-    lessionId: Joi.string().custom(objectId),
   }),
 };
 
@@ -41,7 +40,6 @@ const getMultimediaByFilter = {
     subjectId: Joi.string().custom(objectId).required(),
     bookId: Joi.string().custom(objectId).required(),
     chapterId: Joi.string().custom(objectId).required(),
-    lessionId: Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -62,7 +60,6 @@ const updateMultimedia = {
       subjectId: Joi.string().custom(objectId),
       bookId: Joi.string().custom(objectId),
       chapterId: Joi.string().custom(objectId),
-      lessionId: Joi.string().custom(objectId),
     })
     .min(1),
 };

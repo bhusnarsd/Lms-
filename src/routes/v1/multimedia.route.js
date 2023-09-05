@@ -17,7 +17,7 @@ router
   .delete(validate(multimediaValidation.deleteMultimedia), multimediaController.deleteMultimedia);
 
 router
-  .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId/:chapterId/:lessionId')
+  .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId/:chapterId')
   .get(validate(multimediaValidation.getMultimediaByFilter), multimediaController.getMultimediaByFilter);
 
 module.exports = router;
@@ -70,8 +70,6 @@ module.exports = router;
  *                 type: string
  *               chapterId:
  *                 type: string
- *               lessionId:
- *                 type: string
  *             example:
  *               lessionName: English
  *               icon1: imagelink/icon1
@@ -85,7 +83,6 @@ module.exports = router;
  *               subjectId: 64d9d4666205c371563fcadb
  *               bookId: 64d9d7143ac675796cdcd433
  *               chapterId: 64d327811128844220f0cce0
- *               lessionId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "201":
  *         description: Created
@@ -234,8 +231,6 @@ module.exports = router;
  *                 type: string
  *               chapterId:
  *                 type: string
- *               lessionId:
- *                 type: string
  *             example:
  *               lessionName: English
  *               icon1: imagelink/icon1
@@ -249,7 +244,6 @@ module.exports = router;
  *               subjectId: 64d9d4666205c371563fcadb
  *               bookId: 64d9d7143ac675796cdcd433
  *               chapterId: 64d327811128844220f0cce0
- *               lessionId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "200":
  *         description: OK
@@ -285,8 +279,11 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
- * /multimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{subjectId}/{chapterId}/{lessionId}:
+ */
+
+ /**
+ * @swagger
+ * /multimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{chapterId}:
  *   get:
  *     summary: Get a multimedia
  *     tags: [Multimedia]
@@ -319,10 +316,6 @@ module.exports = router;
  *         name: chapterId
  *         required: true
  *         description: The ID of the chapter
- *       - in: path
- *         name: lessionId
- *         required: true
- *         description: The ID of the lession
  *         schema:
  *           type: string
  *     responses:
