@@ -216,6 +216,7 @@ module.exports = router;
  *                 type: string
  *             example:
  *               $ref: '#/components/schemas/Multimedia'
+ *               $ref: '#/components/schemas/Multimedia'
  *     responses:
  *       "200":
  *         description: OK

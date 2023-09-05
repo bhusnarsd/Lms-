@@ -1,8 +1,10 @@
 const express = require('express');
+const multer = require('multer');
 const validate = require('../../middlewares/validate');
 const quizeController = require('../../controllers/quiz.controller');
 const quizeValidation = require('../../validations/quiz.validation');
-// const isTeacher = require('../../middlewares/quize.middleware')
+
+const upload = multer({ dest: 'uploads/' });
 const router = express.Router();
 
 router
@@ -18,9 +20,10 @@ router
   .get(validate(quizeValidation.getQuize), quizeController.getQuizeById)
   .patch(validate(quizeValidation.updateQuize), quizeController.updateQuizeById)
   .delete(validate(quizeValidation.deleteQuize), quizeController.deleteQuizeById);
+
 router.route('/:quizeId/submit').post(validate(quizeValidation.submitQuize), quizeController.QuizeByIdSubmit);
 
-// router.route('/NotSelect').get(validate(quizeValidation.NotSelectQuize), quizeController.getAllNotSelect);
+router.post('/upload_files', upload.array('files'), quizeController.uploadFiles);
 
 module.exports = router;
 
@@ -366,4 +369,92 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /quizes/upload_files:
+ *   post:
+ *     summary: Upload a quiz.
+ *     tags:
+ *       - Quiz
+ *     requestBody:
+ *       required: true
+ *       content:
+ *          multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               files:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *               quizname:
+ *                 type: string
+ *                 example: "Which of the following colors are primary colors?"
+ *               options:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: ["Red", "Green", "Blue", "Yellow"]
+ *               correctOptions:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                 example: [2]
+ *               explain:
+ *                 type: string
+ *                 example: "Explanation for the correct option"
+ *               hint:
+ *                 type: string
+ *                 example: "Hint for solving the quiz"
+ *               types:
+ *                 type: string
+ *                 example: "easy"
+ *               isVerified:
+ *                 type: boolean
+ *                 example: false
+ *               userAnswers:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example: []
+ *               marks:
+ *                 type: integer
+ *                 example: 00
+ *               boardId:
+ *                 type: string
+ *                 example: "64d9ceaef49e9f5dc06502c6"
+ *               mediumId:
+ *                 type: string
+ *                 example: "64d327a41128844220f0cce4"
+ *               classId:
+ *                 type: string
+ *                 example: "64d327811128844220f0cce0"
+ *               bookId:
+ *                 type: string
+ *                 example: "64d9d7143ac675796cdcd433"
+ *               subjectId:
+ *                 type: string
+ *                 example: "64d9d4666205c371563fcadb"
+ *               chapterId:
+ *                 type: string
+ *                 example: "64d327811128844220f0cce0"
+ *               lessonId:
+ *                 type: string
+ *                 example: "64d9d83711b20e7b83affceb"
+ *     responses:
+ *       201:
+ *         description: Quiz uploaded successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Successfully uploaded quiz."
+ *       400:
+ *         description: Bad request. Check your request data.
  */
