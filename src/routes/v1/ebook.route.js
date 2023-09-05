@@ -1,24 +1,24 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const multimediaController = require('../../controllers/multimedia.controller');
+const ebookController = require('../../controllers/ebook.controller');
 const multimediaValidation = require('../../validations/multimedia.validation');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(multimediaValidation.createMultimeda), multimediaController.createMultimedia)
-  .get(validate(multimediaValidation.getAllMultimedia), multimediaController.getMultimedia);
+  .post(validate(multimediaValidation.createMultimeda), ebookController.createEbook)
+  //.get(validate(multimediaValidation.getAllMultimedia), ebookController.getEbookById);
 
 router
   .route('/:multimediaId')
-  .get(validate(multimediaValidation.getMultimediaById), multimediaController.getMultimediaById)
-  .patch(validate(multimediaValidation.updateMultimedia), multimediaController.updateMultimedia)
-  .delete(validate(multimediaValidation.deleteMultimedia), multimediaController.deleteMultimedia);
+  .get(validate(multimediaValidation.getMultimediaById), ebookController.getEbookById)
+  .patch(validate(multimediaValidation.updateMultimedia), ebookController.updateEbook)
+  .delete(validate(multimediaValidation.deleteMultimedia), ebookController.deleteEbook);
 
-router
-  .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId/:chapterId/:lessionId')
-  .get(validate(multimediaValidation.getMultimediaByFilter), multimediaController.getMultimediaByFilter);
+// router
+//   .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId/:chapterId/:lessionId')
+//   .get(validate(multimediaValidation.getMultimediaByFilter), ebookController.);
 
 module.exports = router;
 

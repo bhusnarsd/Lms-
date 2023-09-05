@@ -237,6 +237,8 @@ components:
           type: string
         multumediaType:
           type: string
+        order: 
+          type: string  
         boardId:
           type: string
         mediumId: 
@@ -257,7 +259,8 @@ components:
         icon2: imagelink/icon2
         path: multimedia/path
         multimediaType: video
-        boarId: 64ca45e050227f21d906d83c
+        order: 1
+        boardId: 64ca45e050227f21d906d83c
         mediumId: 64ca45e050227f21d906d
         classId: 64ca45e050227f21d906d
         subjectId: 64ca45e050227f21d906d

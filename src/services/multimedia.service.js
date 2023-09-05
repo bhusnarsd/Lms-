@@ -43,11 +43,10 @@ const getMultimediaById = async (id) => {
  *  @param {ObjectId} subjectId
  *  @param {ObjectId} bookId
  *  @param {ObjectId} chapterId
- *  @param {ObjectId} lessionId
  * @returns {Promise<Multimedia>}
  */
-const getMultimediaByFilter = async (boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId) => {
-  return Multimedia.find({ boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId });
+const getMultimediaByFilter = async (boardId, mediumId, classId, subjectId, bookId, chapterId) => {
+  return Multimedia.find({ boardId, mediumId, classId, subjectId, bookId, chapterId });
 };
 
 /**

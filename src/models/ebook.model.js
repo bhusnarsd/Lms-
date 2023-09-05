@@ -1,27 +1,15 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 
-const multimediaSchema = mongoose.Schema(
+const ebookSchema = mongoose.Schema(
   {
-    lessionName: {
-      type: String,
-      trim: true,
-      required: true,
-    },
-    icon1: {
-      type: String,
-    },
-    icon2: {
-      type: String,
-    },
+    chapterId: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Chapter',
+        required: true,
+      },
     path: {
       type: String,
-    },
-    multimediaType: {
-      type: String,
-    },
-    order: {
-      type: Number
     },
     boardId: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -48,11 +36,6 @@ const multimediaSchema = mongoose.Schema(
       ref: 'Book',
       required: true,
     },
-    chapterId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Chapter',
-      required: true,
-    }
   },
   {
     timestamps: true,
@@ -60,9 +43,9 @@ const multimediaSchema = mongoose.Schema(
 );
 
 // add plugin that converts mongoose to json
-multimediaSchema.plugin(toJSON);
-multimediaSchema.plugin(paginate);
+ebookSchema.plugin(toJSON);
+ebookSchema.plugin(paginate);
 
-const Multimedia = mongoose.model('Multimedia', multimediaSchema);
+const Ebook = mongoose.model('Ebook', ebookSchema);
 
-module.exports = Multimedia;
+module.exports = Ebook;
