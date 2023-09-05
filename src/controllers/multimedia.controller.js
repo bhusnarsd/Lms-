@@ -24,9 +24,9 @@ const getMultimediaById = catchAsync(async (req, res) => {
   res.send(multimedia);
 });
 
-const getByChapterId = catchAsync(async (req, res) => {
+const getMultimediaByFilter = catchAsync(async (req, res) => {
   const { boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId } = req.params;
-  const multimedia = await multimediaService.getByChapterId(
+  const multimedia = await multimediaService.getMultimediaByFilter(
     boardId,
     mediumId,
     classId,
@@ -55,7 +55,7 @@ module.exports = {
   createMultimedia,
   getMultimedia,
   getMultimediaById,
-  getByChapterId,
+  getMultimediaByFilter,
   updateMultimedia,
   deleteMultimedia,
 };

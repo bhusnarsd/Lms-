@@ -1,19 +1,24 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
 const multimediaController = require('../../controllers/multimedia.controller');
-const mediumValidation = require('../../validations/medium.validation');
+const multimediaValidation = require('../../validations/multimedia.validation');
 
 const router = express.Router();
 
-router.route('/').post(multimediaController.createMultimedia).get(multimediaController.getMultimedia);
+router
+  .route('/')
+  .post(validate(multimediaValidation.createMultimeda), multimediaController.createMultimedia)
+  .get(validate(multimediaValidation.getAllMultimedia), multimediaController.getMultimedia);
 
 router
   .route('/:multimediaId')
-  .get(multimediaController.getMultimediaById)
-  .patch(multimediaController.updateMultimedia)
-  .delete(multimediaController.deleteMultimedia);
+  .get(validate(multimediaValidation.getMultimediaById), multimediaController.getMultimediaById)
+  .patch(validate(multimediaValidation.updateMultimedia), multimediaController.updateMultimedia)
+  .delete(validate(multimediaValidation.deleteMultimedia), multimediaController.deleteMultimedia);
 
-router.route('/getByChapterId/:chapterId').get(multimediaController.getByChapterId);
+router
+  .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId/:subjectId/:chapterId/:lessionId')
+  .get(validate(multimediaValidation.getMultimediaByFilter), multimediaController.getMultimediaByFilter);
 
 module.exports = router;
 
@@ -211,6 +216,7 @@ module.exports = router;
  *                 type: string
  *             example:
  *               $ref: '#/components/schemas/Multimedia'
+ *               $ref: '#/components/schemas/Multimedia'
  *     responses:
  *       "200":
  *         description: OK
@@ -247,7 +253,7 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
- * /mtimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{subjectId}/{chapterId}/{lessionId}:
+ * /multimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{subjectId}/{chapterId}/{lessionId}:
  *   get:
  *     summary: Get a multimedia
  *     tags: [Multimedia]
