@@ -1,3 +1,5 @@
+const { required } = require('joi');
+
 module.exports.Token = require('./token.model');
 module.exports.User = require('./user.model');
 module.exports.Video = require('./video.model');
@@ -11,8 +13,8 @@ module.exports.Subject = require('./subject.model');
 module.exports.Book = require('./book.model');
 module.exports.Quize = require('./quiz.model');
 module.exports.Subject = require('./subject.model');
-module.exports.Book = require('./book.model');
 module.exports.Broadcast = require('./brandcast.model');
 module.exports.Presentator = require('./presentator.model');
 module.exports.Studio = require('./studio.model');
 module.exports.Multimedia = require('./multimedia.model');
+module.exports.Ebook =  require('./ebook.model')
