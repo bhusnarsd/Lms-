@@ -45,13 +45,13 @@ app.options('*', cors());
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
 
+// Apply the basic authentication middleware to the /v1/docs path
+app.use('/v1', routes);
+
 // limit repeated failed requests to auth endpoints
 if (config.env === 'production') {
   app.use('/v1/auth', authLimiter);
 }
-
-// Apply the basic authentication middleware to the /v1/docs path
-app.use('/v1', routes);
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
