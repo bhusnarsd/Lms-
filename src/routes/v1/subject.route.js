@@ -16,7 +16,10 @@ router
   .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject)
   .get(validate(subjectValidation.getSubject), subjectController.getSubjectById);
 
-router.route('/class/:classId').get(subjectController.getSubjectByClassId);
+router
+  .route('/filter/:boardId/:mediumId/:classId')
+  .get(validate(subjectValidation.getSubjectFilter), subjectController.getSubjectByFilter);
+router.route('/class/:classId').get(validate(subjectValidation.getSubjectByClassId), subjectController.getSubjectByClassId);
 
 module.exports = router;
 
@@ -171,7 +174,7 @@ module.exports = router;
  */
 /**
  * @swagger
- * /subjects/class/{classId}:
+ * /subjects/filter/{boardId}/{mediumId}/{classId}:
  *   get:
  *     summary: Get a class
  *     tags: [Subject]
@@ -179,26 +182,38 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: classId
+ *         name: boardId
  *         required: true
+ *         description: The ID of the board
  *         schema:
  *           type: string
- *         description: classId
+ *       - in: path
+ *         name: mediumId
+ *         required: true
+ *         description: The ID of the medium
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: classId
+ *         required: true
+ *         description: The ID of the class
+ *         schema:
+ *           type: string
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
- *               schema:
- *                $ref: '#/components/schemas/Subject'
+ *             schema:
+ *               $ref: '#/components/schemas/Subject'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
  */
+
 /**
  * @swagger
  * /subjects/{subjectId}:
@@ -275,4 +290,34 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
+ */
+
+/**
+ * @swagger
+ * /subjects/class/{classId}:
+ *   get:
+ *     summary: Get a class
+ *     tags: [Subject]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: classId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *               schema:
+ *                $ref: '#/components/schemas/Subject'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */

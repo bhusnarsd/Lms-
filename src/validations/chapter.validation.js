@@ -16,12 +16,22 @@ const createChapter = {
 
 const getChapter = {
   params: Joi.object().keys({
-    chapterId: Joi.string().custom(objectId),
+    chapterId: Joi.string().custom(objectId).required(),
   }),
 };
 const getChaptersByBookId = {
   params: Joi.object().keys({
-    bookId: Joi.string().custom(objectId),
+    bookId: Joi.string().custom(objectId).required(),
+  }),
+};
+
+const getChaptersByFilter = {
+  params: Joi.object().keys({
+    boardId: Joi.string().custom(objectId).required(),
+    mediumId: Joi.string().custom(objectId).required(),
+    classId: Joi.string().custom(objectId).required(),
+    subjectId: Joi.string().custom(objectId).required(),
+    bookId: Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -36,15 +46,15 @@ const getAllChapter = {
 
 const updateChapterById = {
   params: Joi.object().keys({
-    chapterId: Joi.required().custom(objectId),
+    chapterId: Joi.required().custom(objectId).required(),
   }),
   body: Joi.object()
     .keys({
-      boardId: Joi.string().required(),
-      mediumId: Joi.string().required(),
-      classId: Joi.string().required(),
-      subjectId: Joi.string().required(),
-      bookId: Joi.string().required(),
+      boardId: Joi.string().custom(objectId).required(),
+      mediumId: Joi.string().custom(objectId).required(),
+      classId: Joi.string().custom(objectId).required(),
+      subjectId: Joi.string().custom(objectId).required(),
+      bookId: Joi.string().custom(objectId).required(),
       chapterName: Joi.string().required(),
       order: Joi.number().required(),
       thumbnail: Joi.string(),
@@ -53,7 +63,7 @@ const updateChapterById = {
 };
 const deleteChapterById = {
   params: Joi.object().keys({
-    chapterId: Joi.string().custom(objectId),
+    chapterId: Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -64,4 +74,5 @@ module.exports = {
   updateChapterById,
   deleteChapterById,
   getChaptersByBookId,
+  getChaptersByFilter,
 };

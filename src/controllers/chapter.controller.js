@@ -23,6 +23,16 @@ const getSingleChapter = catchAsync(async (req, res) => {
   }
   res.send(singleChapter);
 });
+
+const getChapterByFilter = catchAsync(async (req, res) => {
+  const { boardId, mediumId, classId, subjectId, bookId } = req.params;
+  const chapter = await chapterService.getChaptersByFilter(boardId, mediumId, classId, subjectId, bookId);
+  if (!chapter) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Chapter not found');
+  }
+  res.send(chapter);
+});
+
 const getChaptersByBookId = catchAsync(async (req, res) => {
   const AllChapter = await chapterService.getChaptersByBookId(req.params.bookId);
   if (!AllChapter) {
@@ -48,4 +58,5 @@ module.exports = {
   updateSingleClass,
   deleteSingleChapter,
   getChaptersByBookId,
+  getChapterByFilter,
 };

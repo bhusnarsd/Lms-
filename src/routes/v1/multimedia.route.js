@@ -1,41 +1,41 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
-const bookController = require('../../controllers/book.controller');
-const bookValidation = require('../../validations/book.validation');
+const multimediaController = require('../../controllers/multimedia.controller');
+const mediumValidation = require('../../validations/medium.validation');
 
 const router = express.Router();
 
 router
-  .route('/')
-  .post(validate(bookValidation.createBook), bookController.createBook)
-  .get(validate(bookValidation.getBooks), bookController.getAllBook);
+.route('/')
+.post(multimediaController.createMultimedia)
+.get(multimediaController.getMultimedia);
 
 router
-  .route('/:bookId')
-  .get(validate(bookValidation.getBook), bookController.getBookById)
-  .patch(validate(bookValidation.updateBook), bookController.updateBook)
-  .delete(validate(bookValidation.deleteBook), bookController.deleteBook);
+  .route('/:multimediaId')
+  .get(multimediaController.getMultimediaById)
+  .patch(multimediaController.updateMultimedia)
+  .delete(multimediaController.deleteMultimedia);
 
 router
-  .route('/filter/:boardId/:mediumId/:classId/:subjectId')
-  .get(validate(bookValidation.getBookByFilter), bookController.getBookByFilter);
+.route('/getByChapterId/:chapterId')
+.get(multimediaController.getByChapterId);
 
-router.route('/subject/:subjectId').get(validate(bookValidation.getBookBySubjectId), bookController.getBookBySubjectId);
 module.exports = router;
 
 /**
  * @swagger
  * tags:
- *   name: Book
- *   description: Book managment
+ *   name: Multimedia
+ *   description: Medium management and retrieval
  */
 
 /**
  * @swagger
- * /books:
+ * /multimedia:
  *   post:
- *     summary: Create a book
- *     tags: [Book]
+ *     summary: Create a multimedia
+ *     description: Create other multimedia.
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -45,45 +45,61 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
- *               - boardId
- *               - mediumId
- *               - classId
- *               - subjectId
+ *               - lessionName
+ *               - path
  *             properties:
- *               name:
+ *               lessionName:
  *                 type: string
- *               classId: string
- *             example:
- *               name: History
- *               boardId: 64d9ceaef49e9f5dc06502c6
- *               mediumId: 64d327a41128844220f0cce4
- *               classId: 64d327811128844220f0cce0
- *               subjectId: 64d9d4666205c371563fcadb
- *               thumbnail: afllnEGAS/AGSJAGSNL
+ *               icon1:
+ *                 type: string
+ *               icon2:
+ *                 type: string
+ *               path:
+ *                 type: string
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               subjectId:
+ *                 type: string
+ *               bookId:
+ *                 type: string
+ *               chapterId:
+ *                 type: string
+ *               lessionId:
+ *                 type: string
  *     responses:
  *       "201":
  *         description: Created
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Book'
+ *               $ref: '#/components/schemas/Multimedia'
  *       "401":
- *         $ref: '#/components/responses/Unauthorized'
+ *         description: Unauthorized
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/responses/Unauthorized'
  *       "403":
- *         $ref: '#/components/responses/Forbidden'
+ *         description: Forbidden
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/responses/Forbidden'
+ *
  *
  *   get:
- *     summary: Get all book
- *     tags: [Book]
+ *     summary: Get all Multimedia
+ *     description: all mulrimedia.
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: subject
+ *         name: lessionName
  *         schema:
  *           type: string
- *         description: Subject name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -95,7 +111,7 @@ module.exports = router;
  *           type: integer
  *           minimum: 1
  *         default: 10
- *         description: Maximum number of subject
+ *         description: Maximum number of Multimedia
  *       - in: query
  *         name: page
  *         schema:
@@ -114,7 +130,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Book'
+ *                     $ref: '#/components/schemas/Multimedia'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -132,29 +148,27 @@ module.exports = router;
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  */
-
 /**
  * @swagger
- * /books/{bookId}:
+ * /multimedia/{multimediaId}:
  *   get:
- *     summary: Get a book
- *     tags: [Book]
+ *     summary: Get a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: bookId
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: bookId
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Book'
+ *                $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -163,17 +177,16 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a book
- *     tags: [Book]
+ *     summary: Update a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: bookId
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: bookId
  *     requestBody:
  *       required: true
  *       content:
@@ -181,32 +194,35 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               lessionName:
  *                 type: string
- *               classId:
+ *               icon1:
+ *                 type: string
+ *               icon2:
+ *                 type: string
+ *               path:
  *                 type: string
  *               boardId:
  *                 type: string
  *               mediumId:
  *                 type: string
- *               thumbnail:
- *                 type: string
  *               subjectId:
  *                 type: string
+ *               bookId:
+ *                 type: string
+ *               chapterId:
+ *                 type: string
+ *               lessionId:
+ *                 type: string
  *             example:
- *               name: fake name
- *               classId: 64d9d4666205c371563fcadb
- *               thumbnail: afllnEGAS/AGSJAGSNL
- *               boardId: 614a7e7d7f1d813bbf8e89b7
- *               mediumId: 614a7e7d7f1d813bbf8e89a9
- *               subjectId: 614a7e7d7f1d813bbf8e89a9,
+ *               $ref: '#/components/schemas/Multimedia'            
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Book'
+ *                $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -215,17 +231,17 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a book
- *     tags: [Book]
+ *     summary: Delete a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: bookId
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: bookId
+ *         description: multimediaId
  *     responses:
  *       "200":
  *         description: No content
@@ -235,14 +251,11 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- */
-
-/**
- * @swagger
- * /books/filter/{boardId}/{mediumId}/{classId}/{subjectId}:
+ *
+ * /mtimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{subjectId}/{chapterId}/{lessionId}:
  *   get:
- *     summary: Get a Book
- *     tags: [Book]
+ *     summary: Get a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -256,8 +269,6 @@ module.exports = router;
  *         name: mediumId
  *         required: true
  *         description: The ID of the medium
- *         schema:
- *           type: string
  *       - in: path
  *         name: classId
  *         required: true
@@ -266,36 +277,18 @@ module.exports = router;
  *         name: subjectId
  *         required: true
  *         description: The ID of the subject
- *         schema:
- *           type: string
- *     responses:
- *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Book'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- */
-
-/**
- * @swagger
- * /books/subject/{subjectId}:
- *   get:
- *     summary: Get a Book
- *     tags: [Book]
- *     security:
- *       - bearerAuth: []
- *     parameters:
  *       - in: path
- *         name: subjectId
+ *         name: bookId
  *         required: true
- *         description: The ID of the subject
+ *         description: The ID of the book
+ *       - in: path
+ *         name: chapterId
+ *         required: true
+ *         description: The ID of the chapter
+ *       - in: path
+ *         name: lessionId
+ *         required: true
+ *         description: The ID of the lession
  *         schema:
  *           type: string
  *     responses:
@@ -304,7 +297,7 @@ module.exports = router;
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Book'
+ *               $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":

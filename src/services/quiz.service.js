@@ -20,7 +20,7 @@ const uploadQuiz = async (quizeBody) => {
   return quizData;
 };
 /**
- * Query for quize
+ * Query for board
  * @param {Object} filter - Mongo filter
  * @param {Object} options - Query options
  * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
@@ -30,21 +30,6 @@ const uploadQuiz = async (quizeBody) => {
  */
 const queryQuize = async (filter, options) => {
   const quizes = await Quize.paginate(filter, options);
-  return quizes;
-};
-
-/**
- * Query for board
- * @param {Object} filter - Mongo filter
- * @param {Object} options - Query options
- * @param {string} [options.sortBy] - Sort option in the format: sortField:(desc|asc)
- * @param {number} [options.limit] - Maximum number of results per page (default = 10)
- * @param {number} [options.page] - Current page (default = 1)
- * @returns {Promise<QueryResult>}
- */
-const QuizeNotSelected = async (filter, options) => {
-  const updatedFilter = { ...filter, isVerified: true };
-  const quizes = await Quize.paginate(updatedFilter, options);
   return quizes;
 };
 

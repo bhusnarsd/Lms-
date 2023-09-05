@@ -16,6 +16,7 @@ const broadcast = require('./broadcast.route');
 const quizeRoute = require('./quiz.route');
 const presentatorRoute = require('./presentator.route');
 const studioRoute = require('./studio.route');
+const multimediaRoute = require('./multimedia.route');
 
 const router = express.Router();
 
@@ -79,6 +80,10 @@ const defaultRoutes = [
   {
     path: '/studio',
     route: studioRoute,
+  },
+  {
+    path: '/multimedia',
+    route: multimediaRoute,
   },
 ];
 

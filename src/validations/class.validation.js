@@ -3,7 +3,6 @@ const { objectId } = require('./custom.validation');
 
 const createClass = {
   body: Joi.object().keys({
-    mediumId: Joi.string().required(),
     className: Joi.string().required(),
     order: Joi.number().required(),
   }),

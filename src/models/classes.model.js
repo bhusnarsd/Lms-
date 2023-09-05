@@ -3,12 +3,6 @@ const { toJSON, paginate } = require('./plugins');
 
 const classSchema = mongoose.Schema(
   {
-    mediumId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'medium',
-      required: true,
-      trim: true,
-    },
     className: {
       type: String,
       trim: true,

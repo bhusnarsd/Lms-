@@ -16,10 +16,6 @@ router
   .patch(validate(classValidation.updateClassById), classesController.updateSingleClass)
   .delete(validate(classValidation.deleteClassById), classesController.deleteSingleClass);
 
-router
-  .route('/getAllclassByMediumId/:mediumId')
-  .get(validate(classValidation.getClassesByMediumId), classesController.getAllClassByMediumId);
-
 module.exports = router;
 
 /**
@@ -166,29 +162,7 @@ module.exports = router;
  *         description: No content
  *       404:
  *         description: Class not found
- * /classes/getAllclassByMediumId/{mediumId}:
- *   get:
- *     summary: Get all class by medium id
- *     tags: [Classes]
- *     parameters:
- *       - in: path
- *         name: mediumId
- *         required: true
- *         schema:
- *           type: string
- *         description: ID of the medium
- *     responses:
- *       200:
- *         description: Successful response
- *         content:
- *           application/json:
- *             example:
- *               id: "123"
- *               className: "10 A"
- *               mediumId: "614a7e7d7f1d813bbf8e89b0"
- *               order: 1
- *       404:
- *         description: Class not found
+ *
  */
 
 /**
@@ -198,9 +172,6 @@ module.exports = router;
  *     ClassInput:
  *       type: object
  *       properties:
- *         mediumId:
- *           type: string
- *           description: id of medium
  *         className:
  *           type: string
  *           description: Name of the class
@@ -208,7 +179,6 @@ module.exports = router;
  *           type: number
  *           description: order number
  *       example:
- *         mediumId: 614a7e7d7f1d813bbf8e89b0
  *         className: Math 101
  *         order: 1
  */
@@ -220,9 +190,6 @@ module.exports = router;
  *     ClassUpdateInput:
  *       type: object
  *       properties:
- *         mediumId:
- *           type: string
- *           description: id of medium
  *         className:
  *           type: string
  *           description: Name of the class
@@ -230,7 +197,6 @@ module.exports = router;
  *           type: number
  *           description: order number
  *       example:
- *         mediumId: 614a7e7d7f1d813bbf8e89b0
  *         className: Math 101
  *         order: 1
  */

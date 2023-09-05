@@ -4,7 +4,6 @@ const { objectId } = require('./custom.validation');
 const createMedium = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    boardId: Joi.string().custom(objectId),
   }),
 };
 

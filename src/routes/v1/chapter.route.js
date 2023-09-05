@@ -19,6 +19,10 @@ router
   .patch(validate(chapterValidation.updateChapterById), chaterController.updateSingleClass)
   .delete(validate(chapterValidation.deleteChapterById), chaterController.deleteSingleChapter);
 
+router
+  .route('/filter/:boardId/:mediumId/:classId/:subjectId/:bookId')
+  .get(validate(chapterValidation.getChaptersByFilter), chaterController.getChapterByFilter);
+
 module.exports = router;
 /**
  * @swagger
@@ -248,4 +252,53 @@ module.exports = router;
  *         chapterName: Chapter 1
  *         order:  1
  *         thumbnail: dvhjgsdv/dshbvhdsgh
+ */
+/**
+ * @swagger
+ * /chapter/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}:
+ *   get:
+ *     summary: Get a chapter
+ *     tags: [Chapters]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: boardId
+ *         required: true
+ *         description: The ID of the board
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: mediumId
+ *         required: true
+ *         description: The ID of the medium
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: classId
+ *         required: true
+ *         description: The ID of the class
+ *       - in: path
+ *         name: subjectId
+ *         required: true
+ *         description: The ID of the subject
+ *       - in: path
+ *         name: bookId
+ *         required: true
+ *         description: The ID of the book
+ *         schema:
+ *           type: string
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/ChapterInput'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  */

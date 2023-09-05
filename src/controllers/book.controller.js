@@ -25,7 +25,16 @@ const getBookById = catchAsync(async (req, res) => {
 });
 
 const getBookBySubjectId = catchAsync(async (req, res) => {
-  const book = await bookService.getBookBySubjectId(req.params.subjectId);
+  const book = await bookService.getBookBysubjectId(req.params.subjectId);
+  if (!book) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
+  }
+  res.send(book);
+});
+
+const getBookByFilter = catchAsync(async (req, res) => {
+  const { boardId, mediumId, classId, subjectId } = req.params;
+  const book = await bookService.getBookByFilter(boardId, mediumId, classId, subjectId);
   if (!book) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Book not found');
   }
@@ -48,5 +57,6 @@ module.exports = {
   getBookById,
   updateBook,
   deleteBook,
+  getBookByFilter,
   getBookBySubjectId,
 };

@@ -15,3 +15,4 @@ module.exports.quizeService = require('./quiz.service');
 module.exports.broadcastService = require('./broadcast.service');
 module.exports.presentatorService = require('./presentator.service');
 module.exports.studioService = require('./studio.service');
+module.exports.multimediaService = require('./multimedia.service');

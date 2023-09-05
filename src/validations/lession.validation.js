@@ -36,6 +36,16 @@ const getLessionbychapterId = {
     chapterId: Joi.string().custom(objectId),
   }),
 };
+const getLessionByFilter = {
+  params: Joi.object().keys({
+    boardId: Joi.string().custom(objectId).required(),
+    mediumId: Joi.string().custom(objectId).required(),
+    classId: Joi.string().custom(objectId).required(),
+    subjectId: Joi.string().custom(objectId).required(),
+    bookId: Joi.string().custom(objectId).required(),
+    chapterId: Joi.string().custom(objectId).required(),
+  }),
+};
 
 const updateLession = {
   params: Joi.object().keys({
@@ -71,4 +81,5 @@ module.exports = {
   updateLession,
   deleteLession,
   getLessionbychapterId,
+  getLessionByFilter,
 };
