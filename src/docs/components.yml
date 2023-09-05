@@ -251,8 +251,6 @@ components:
           type: string          
         chapterId:
           type: string
-        lessionId:
-          type: string
       example:
         lessionName: English
         icon1: imagelink/icon1
@@ -266,9 +264,37 @@ components:
         subjectId: 64ca45e050227f21d906d
         bookId: 64ca45e050227f21d906d
         chapterId: 64ca45e050227f21d906d83c
-        lessionId: 64ca45e050227f21d906d83c
 
-
+  # Ebook:
+  #   type: object
+  #     properties:
+  #        path:
+  #          type: string
+  #        order:
+  #          type: string
+  #        boardId:
+  #          type: string
+  #        mediumId:
+  #          type: string
+  #        subjectId:
+  #          type: string
+  #        bookId:
+  #          type: string
+  #        chapterId:
+  #          type: string
+  #     example:
+  #       lessionName: English
+  #       icon1: imagelink/icon1
+  #       icon2: imagelink/icon2
+  #       path: multimedia/path
+  #       multimediaType: video
+  #       order: 1
+  #       boardId: 64ca45e050227f21d906d83c
+  #       mediumId: 64ca45e050227f21d906d
+  #       classId: 64ca45e050227f21d906d
+  #       subjectId: 64ca45e050227f21d906d
+  #       bookId: 64ca45e050227f21d906d
+  #       chapterId: 64ca45e050227f21d906d83c
 
     Token:
       type: object

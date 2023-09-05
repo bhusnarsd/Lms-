@@ -48,15 +48,6 @@ const getEbookByFilter = async (boardId, mediumId, classId, subjectId, bookId) =
 };
 
 /**
- * Get ebook by chapterId
- * @param {ObjectId} chapterId
- * @returns {Promise<Ebook>}
- */
-const getEbookByChapterId = async (chapterId) => {
-    return Ebook.findById({chapterId});
-};
-
-/**
  * Update Ebook by id
  * @param {ObjectId} ebookId
  * @param {Object} updateBody
@@ -93,5 +84,4 @@ module.exports = {
     updateEbookById,
     deleteEbookById,
     getEbookById,
-    getEbookByChapterId
 };

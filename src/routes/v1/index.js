@@ -17,6 +17,7 @@ const quizeRoute = require('./quiz.route');
 const presentatorRoute = require('./presentator.route');
 const studioRoute = require('./studio.route');
 const multimediaRoute = require('./multimedia.route');
+const ebookRoute = require('./ebook.route')
 
 const router = express.Router();
 
@@ -84,6 +85,10 @@ const defaultRoutes = [
   {
     path: '/multimedia',
     route: multimediaRoute,
+  },
+  {
+    path: '/ebooks',
+    route: ebookRoute,
   },
 ];
 

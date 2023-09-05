@@ -11,6 +11,9 @@ const ebookSchema = mongoose.Schema(
     path: {
       type: String,
     },
+    order: {
+        type: Number
+    },
     boardId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Board',
