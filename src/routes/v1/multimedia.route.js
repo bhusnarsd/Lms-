@@ -5,7 +5,10 @@ const mediumValidation = require('../../validations/medium.validation');
 
 const router = express.Router();
 
-router.route('/').post(multimediaController.createMultimedia).get(multimediaController.getMultimedia);
+router
+.route('/')
+.post(multimediaController.createMultimedia)
+.get(multimediaController.getMultimedia);
 
 router
   .route('/:multimediaId')
@@ -13,7 +16,9 @@ router
   .patch(multimediaController.updateMultimedia)
   .delete(multimediaController.deleteMultimedia);
 
-router.route('/getByChapterId/:chapterId').get(multimediaController.getByChapterId);
+router
+.route('/getByChapterId/:chapterId')
+.get(multimediaController.getByChapterId);
 
 module.exports = router;
 
@@ -51,6 +56,14 @@ module.exports = router;
  *                 type: string
  *               path:
  *                 type: string
+ *               boardId:
+ *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               subjectId:
+ *                 type: string
+ *               bookId:
+ *                 type: string
  *               chapterId:
  *                 type: string
  *               lessionId:
@@ -77,17 +90,16 @@ module.exports = router;
  *
  *
  *   get:
- *     summary: Get all Medium
- *     description: all medium.
- *     tags: [Medium]
+ *     summary: Get all Multimedia
+ *     description: all mulrimedia.
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: name
+ *         name: lessionName
  *         schema:
  *           type: string
- *         description: Medium name *
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -99,7 +111,7 @@ module.exports = router;
  *           type: integer
  *           minimum: 1
  *         default: 10
- *         description: Maximum number of Medium
+ *         description: Maximum number of Multimedia
  *       - in: query
  *         name: page
  *         schema:
@@ -118,7 +130,7 @@ module.exports = router;
  *                 results:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Medium'
+ *                     $ref: '#/components/schemas/Multimedia'
  *                 page:
  *                   type: integer
  *                   example: 1
@@ -138,26 +150,25 @@ module.exports = router;
  */
 /**
  * @swagger
- * /medium/{id}:
+ * /multimedia/{multimediaId}:
  *   get:
- *     summary: Get a medium
- *     tags: [Medium]
+ *     summary: Get a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: Medium id
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Medium'
+ *                $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -166,17 +177,16 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a Medium
- *     tags: [Medium]
+ *     summary: Update a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: medium id
  *     requestBody:
  *       required: true
  *       content:
@@ -184,22 +194,35 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               lessionName:
+ *                 type: string
+ *               icon1:
+ *                 type: string
+ *               icon2:
+ *                 type: string
+ *               path:
  *                 type: string
  *               boardId:
  *                 type: string
+ *               mediumId:
+ *                 type: string
+ *               subjectId:
+ *                 type: string
+ *               bookId:
+ *                 type: string
+ *               chapterId:
+ *                 type: string
+ *               lessionId:
+ *                 type: string
  *             example:
- *               name: fake name*
- *               boardId: 64e845f71915d76bbf365d37
+ *               $ref: '#/components/schemas/Multimedia'            
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Medium'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *                $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -208,17 +231,17 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a Medium
- *     tags: [Medium]
+ *     summary: Delete a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: multimediaId
  *         required: true
  *         schema:
  *           type: string
- *         description: medium id
+ *         description: multimediaId
  *     responses:
  *       "200":
  *         description: No content
@@ -229,31 +252,56 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
- * /medium/getAllmedium/{boardId}:
+ * /mtimedia/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{subjectId}/{chapterId}/{lessionId}:
  *   get:
- *     summary: Get a medium by boardId
- *     tags: [Medium]
+ *     summary: Get a multimedia
+ *     tags: [Multimedia]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: boardId
  *         required: true
+ *         description: The ID of the board
  *         schema:
  *           type: string
- *         description: board id
+ *       - in: path
+ *         name: mediumId
+ *         required: true
+ *         description: The ID of the medium
+ *       - in: path
+ *         name: classId
+ *         required: true
+ *         description: The ID of the class
+ *       - in: path
+ *         name: subjectId
+ *         required: true
+ *         description: The ID of the subject
+ *       - in: path
+ *         name: bookId
+ *         required: true
+ *         description: The ID of the book
+ *       - in: path
+ *         name: chapterId
+ *         required: true
+ *         description: The ID of the chapter
+ *       - in: path
+ *         name: lessionId
+ *         required: true
+ *         description: The ID of the lession
+ *         schema:
+ *           type: string
  *     responses:
  *       "200":
  *         description: OK
  *         content:
  *           application/json:
  *             schema:
- *                $ref: '#/components/schemas/Medium'
+ *               $ref: '#/components/schemas/Multimedia'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
  */

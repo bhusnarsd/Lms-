@@ -57,7 +57,6 @@ const QuizeByIdSubmit = async (quizeId, updateBody) => {
  * @returns {Promise<Quize>}
  */
 const updateQuizeById = async (quizeId, updateBody) => {
-  console.log(quizeId);
   const quizes = await getQuizeById(quizeId);
   if (!quizes) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Quize not found');

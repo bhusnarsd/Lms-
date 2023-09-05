@@ -36,12 +36,18 @@ const getMultimediaById = async (id) => {
 };
 
 /**
- * Get mutimedia by boardId
- * @param {ObjectId} chapterId
- * @returns {Promise<Medium>}
+ * Get mutimedia by Filter
+ * @param {ObjectId} boardId
+ *  @param {ObjectId} mediumId
+ *  @param {ObjectId} classId
+ *  @param {ObjectId} subjectId
+ *  @param {ObjectId} bookId
+ *  @param {ObjectId} chapterId
+ *  @param {ObjectId} lessionId
+ * @returns {Promise<Multimedia>}
  */
-const getByChapterId = async (chapterId) => {
-  return Multimedia.find({ chapterId });
+const getByChapterId = async ( boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId ) => {
+  return Multimedia.find({  boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId  });
 };
 
 /**

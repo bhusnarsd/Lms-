@@ -237,6 +237,16 @@ components:
           type: string
         multumediaType:
           type: string
+        boardId:
+          type: string
+        mediumId: 
+          type: string
+        classId:
+          type: string
+        subjectId:
+          type: string
+        bookId:
+          type: string          
         chapterId:
           type: string
         lessionId:
@@ -247,6 +257,11 @@ components:
         icon2: imagelink/icon2
         path: multimedia/path
         multimediaType: video
+        boarId: 64ca45e050227f21d906d83c
+        mediumId: 64ca45e050227f21d906d
+        classId: 64ca45e050227f21d906d
+        subjectId: 64ca45e050227f21d906d
+        bookId: 64ca45e050227f21d906d
         chapterId: 64ca45e050227f21d906d83c
         lessionId: 64ca45e050227f21d906d83c
 
