@@ -5,10 +5,7 @@ const mediumValidation = require('../../validations/medium.validation');
 
 const router = express.Router();
 
-router
-.route('/')
-.post(multimediaController.createMultimedia)
-.get(multimediaController.getMultimedia);
+router.route('/').post(multimediaController.createMultimedia).get(multimediaController.getMultimedia);
 
 router
   .route('/:multimediaId')
@@ -16,9 +13,7 @@ router
   .patch(multimediaController.updateMultimedia)
   .delete(multimediaController.deleteMultimedia);
 
-router
-.route('/getByChapterId/:chapterId')
-.get(multimediaController.getByChapterId);
+router.route('/getByChapterId/:chapterId').get(multimediaController.getByChapterId);
 
 module.exports = router;
 
@@ -215,7 +210,7 @@ module.exports = router;
  *               lessionId:
  *                 type: string
  *             example:
- *               $ref: '#/components/schemas/Multimedia'            
+ *               $ref: '#/components/schemas/Multimedia'
  *     responses:
  *       "200":
  *         description: OK
