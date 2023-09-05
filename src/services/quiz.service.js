@@ -10,7 +10,15 @@ const ApiError = require('../utils/ApiError');
 const createQuize = async (quizeBody) => {
   return Quize.create(quizeBody);
 };
-
+/**
+ * Create Upload quize
+ * @param {Object} quizeBody
+ * @returns { Promise<Quize>}
+ */
+const uploadQuiz = async (quizeBody) => {
+  const quizData = Quize.create(quizeBody);
+  return quizData;
+};
 /**
  * Query for quize
  * @param {Object} filter - Mongo filter
@@ -65,6 +73,23 @@ const QuizeByIdSubmit = async (quizeId, updateBody) => {
   return quizes;
 };
 
+const CheckoutAnswer = async (correctOptions, answer) => {
+  const quiz = await QuizeByIdSubmit(correctOptions);
+  const correctAnswerSet = new Set(quiz.correctOptions);
+  const userAnswerSet = new Set(answer);
+  const allSelectedCorrect = Array.from(userAnswerSet).every((index) => correctAnswerSet.has(index));
+  const atLeastOneCorrect = Array.from(userAnswerSet).some((index) => correctAnswerSet.has(index));
+  if (allSelectedCorrect) {
+    quiz.userAnswers = answer;
+    await quiz.save();
+    throw new ApiError(httpStatus.ACCEPTED, 'Correct answer!');
+  }
+  if (atLeastOneCorrect) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'At least one correct answer selected, but not all.');
+  }
+  throw new ApiError(httpStatus.NOT_FOUND, 'Incorrect answer.');
+};
+
 /**
  * Update quize by id
  * @param {ObjectId} quizeId
@@ -103,4 +128,6 @@ module.exports = {
   updateQuizeById,
   deleteQuizeById,
   QuizeNotSelected,
+  uploadQuiz,
+  CheckoutAnswer,
 };
