@@ -46,8 +46,8 @@ const getMultimediaById = async (id) => {
  *  @param {ObjectId} lessionId
  * @returns {Promise<Multimedia>}
  */
-const getByChapterId = async ( boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId ) => {
-  return Multimedia.find({  boardId, mediumId, classId, subjectId, bookId, chapterId,lessionId  });
+const getMultimediaByFilter = async (boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId) => {
+  return Multimedia.find({ boardId, mediumId, classId, subjectId, bookId, chapterId, lessionId });
 };
 
 /**
@@ -83,7 +83,7 @@ const deleteMultimediaById = async (multimediaId) => {
 module.exports = {
   createMultimedia,
   queryMultimedia,
-  getByChapterId,
+  getMultimediaByFilter,
   updateMultimediaById,
   deleteMultimediaById,
   getMultimediaById,
