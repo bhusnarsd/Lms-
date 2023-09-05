@@ -68,6 +68,19 @@ module.exports = router;
  *                 type: string
  *               lessionId:
  *                 type: string
+ *             example:
+ *               lessionName: English
+ *               icon1: imagelink/icon1
+ *               icon2: imagelink/icon2
+ *               path: multimedia/path
+ *               multimediaType: video
+ *               boardId: 64d9ceaef49e9f5dc06502c6
+ *               mediumId: 64d327a41128844220f0cce4
+ *               classId: 64d327811128844220f0cce0
+ *               subjectId: 64d9d4666205c371563fcadb
+ *               bookId: 64d9d7143ac675796cdcd433
+ *               chapterId: 64d327811128844220f0cce0
+ *               lessionId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "201":
  *         description: Created
@@ -215,8 +228,18 @@ module.exports = router;
  *               lessionId:
  *                 type: string
  *             example:
- *               $ref: '#/components/schemas/Multimedia'
- *               $ref: '#/components/schemas/Multimedia'
+ *               lessionName: English
+ *               icon1: imagelink/icon1
+ *               icon2: imagelink/icon2
+ *               path: multimedia/path
+ *               multimediaType: video
+ *               boardId: 64d9ceaef49e9f5dc06502c6
+ *               mediumId: 64d327a41128844220f0cce4
+ *               classId: 64d327811128844220f0cce0
+ *               subjectId: 64d9d4666205c371563fcadb
+ *               bookId: 64d9d7143ac675796cdcd433
+ *               chapterId: 64d327811128844220f0cce0
+ *               lessionId: 64d9d83711b20e7b83affceb
  *     responses:
  *       "200":
  *         description: OK

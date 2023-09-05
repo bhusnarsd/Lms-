@@ -257,7 +257,7 @@ components:
         icon2: imagelink/icon2
         path: multimedia/path
         multimediaType: video
-        boarId: 64ca45e050227f21d906d83c
+        boardId: 64ca45e050227f21d906d83c
         mediumId: 64ca45e050227f21d906d
         classId: 64ca45e050227f21d906d
         subjectId: 64ca45e050227f21d906d

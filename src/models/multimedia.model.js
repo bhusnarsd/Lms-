@@ -42,7 +42,7 @@ const multimediaSchema = mongoose.Schema(
     },
     bookId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'book',
+      ref: 'Book',
       required: true,
     },
     chapterId: {
@@ -50,10 +50,10 @@ const multimediaSchema = mongoose.Schema(
       ref: 'Chapter',
       required: true,
     },
-    lessoinId: {
+    lessionId: {
       type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Chapter',
-      required: true,
+      ref: 'Lession',
+      required: true
     },
   },
   {
