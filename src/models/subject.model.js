@@ -8,23 +8,8 @@ const subjectSchema = mongoose.Schema(
       trim: true,
       required: true,
     },
-    boardId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Board',
-      required: true,
-      trim: true,
-    },
-    mediumId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Medium',
-      required: true,
-      trim: true,
-    },
-    classId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'Classes',
-      required: true,
-      trim: true,
+    code: {
+      type: Number,
     },
     order: {
       type: Number,

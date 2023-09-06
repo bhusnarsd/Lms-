@@ -8,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Ebook>}
  */
 const createEbook = async (ebookBody) => {
-    return Ebook.create(ebookBody);
+  return Ebook.create(ebookBody);
 };
 
 /**
@@ -21,8 +21,8 @@ const createEbook = async (ebookBody) => {
  * @returns {Promise<QueryResult>}
  */
 const queryEbook = async (filter, options) => {
-    const ebook = await Ebook.paginate(filter, options);
-    return ebook;
+  const ebook = await Ebook.paginate(filter, options);
+  return ebook;
 };
 
 /**
@@ -31,7 +31,7 @@ const queryEbook = async (filter, options) => {
  * @returns {Promise<Ebook>}
  */
 const getEbookById = async (id) => {
-    return Ebook.findById(id);
+  return Ebook.findById(id);
 };
 
 /**
@@ -44,7 +44,7 @@ const getEbookById = async (id) => {
  * @returns {Promise<Multimedia>}
  */
 const getEbookByFilter = async (boardId, mediumId, classId, subjectId, bookId) => {
-    return Ebook.find({ boardId, mediumId, classId, subjectId, bookId });
+  return Ebook.find({ boardId, mediumId, classId, subjectId, bookId });
 };
 
 /**
@@ -54,13 +54,13 @@ const getEbookByFilter = async (boardId, mediumId, classId, subjectId, bookId) =
  * @returns {Promise<Ebook>}
  */
 const updateEbookById = async (ebookId, updateBody) => {
-    const ebook = await getEbookById(ebookId);
-    if (!ebook) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
-    }
-    Object.assign(ebook, updateBody);
-    await ebook.save();
-    return ebook;
+  const ebook = await getEbookById(ebookId);
+  if (!ebook) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
+  }
+  Object.assign(ebook, updateBody);
+  await ebook.save();
+  return ebook;
 };
 
 /**
@@ -69,19 +69,19 @@ const updateEbookById = async (ebookId, updateBody) => {
  * @returns {Promise<Ebook>}
  */
 const deleteEbookById = async (ebookId) => {
-    const ebook = await getEbookById(ebookId);
-    if (!ebook) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
-    }
-    await ebook.remove();
-    return ebook;
+  const ebook = await getEbookById(ebookId);
+  if (!ebook) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
+  }
+  await ebook.remove();
+  return ebook;
 };
 
 module.exports = {
-    createEbook,
-    queryEbook,
-    getEbookByFilter,
-    updateEbookById,
-    deleteEbookById,
-    getEbookById,
+  createEbook,
+  queryEbook,
+  getEbookByFilter,
+  updateEbookById,
+  deleteEbookById,
+  getEbookById,
 };

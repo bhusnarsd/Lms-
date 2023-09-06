@@ -17,4 +17,4 @@ module.exports.Broadcast = require('./brandcast.model');
 module.exports.Presentator = require('./presentator.model');
 module.exports.Studio = require('./studio.model');
 module.exports.Multimedia = require('./multimedia.model');
-module.exports.Ebook =  require('./ebook.model')
+module.exports.Ebook = require('./ebook.model');

@@ -16,11 +16,6 @@ router
   .delete(validate(subjectValidation.deleteSubject), subjectController.deleteSubject)
   .get(validate(subjectValidation.getSubject), subjectController.getSubjectById);
 
-router
-  .route('/filter/:boardId/:mediumId/:classId')
-  .get(validate(subjectValidation.getSubjectFilter), subjectController.getSubjectByFilter);
-router.route('/class/:classId').get(validate(subjectValidation.getSubjectByClassId), subjectController.getSubjectByClassId);
-
 module.exports = router;
 
 /**
@@ -46,28 +41,19 @@ module.exports = router;
  *             type: object
  *             required:
  *               - name
- *               - boardId
- *               - mediumId
- *               - classId
  *               - order
  *             properties:
  *               name:
  *                 type: string
- *               classId:
- *                 type: string
- *               boardId:
- *                 type: string
- *               mediumId:
- *                 type: string
+ *               code:
+ *                 type: number
  *               order:
  *                 type: number
  *               thumbnail:
  *                 type: string
  *             example:
  *               name: CBSC
- *               boardId: 614a7e7d7f1d813bbf8e89b9
- *               mediumId: 614a7e7d7f1d813bbf8e89b8
- *               classId: 614a7e7d7f1d813bbf8e89b7
+ *               code: 6
  *               order: 2
  *               thumbnail: ajfvshBa/asfbjgvjcav
  *     responses:
@@ -172,47 +158,6 @@ module.exports = router;
  *         $ref: '#/components/responses/NotFound'
  *
  */
-/**
- * @swagger
- * /subjects/filter/{boardId}/{mediumId}/{classId}:
- *   get:
- *     summary: Get a class
- *     tags: [Subject]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: boardId
- *         required: true
- *         description: The ID of the board
- *         schema:
- *           type: string
- *       - in: path
- *         name: mediumId
- *         required: true
- *         description: The ID of the medium
- *         schema:
- *           type: string
- *       - in: path
- *         name: classId
- *         required: true
- *         description: The ID of the class
- *         schema:
- *           type: string
- *     responses:
- *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Subject'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- */
 
 /**
  * @swagger
@@ -290,34 +235,4 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- */
-
-/**
- * @swagger
- * /subjects/class/{classId}:
- *   get:
- *     summary: Get a class
- *     tags: [Subject]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: classId
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *               schema:
- *                $ref: '#/components/schemas/Subject'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- *
  */

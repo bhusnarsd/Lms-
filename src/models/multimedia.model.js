@@ -21,7 +21,7 @@ const multimediaSchema = mongoose.Schema(
       type: String,
     },
     order: {
-      type: Number
+      type: Number,
     },
     boardId: {
       type: mongoose.SchemaTypes.ObjectId,
@@ -52,7 +52,7 @@ const multimediaSchema = mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Chapter',
       required: true,
-    }
+    },
   },
   {
     timestamps: true,

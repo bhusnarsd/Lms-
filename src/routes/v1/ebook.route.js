@@ -1,7 +1,7 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
 const ebookController = require('../../controllers/ebook.controller');
-const {ebookValidation} = require('../../validations');
+const { ebookValidation } = require('../../validations');
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router
 router
   .route('/:ebookId')
   .get(validate(ebookValidation.getEbookById), ebookController.getEbookById)
-  .patch(validate(ebookValidation.updateEbook),  ebookController.updateEbook)
+  .patch(validate(ebookValidation.updateEbook), ebookController.updateEbook)
   .delete(validate(ebookValidation), ebookController.deleteEbook);
 
 router
@@ -258,7 +258,7 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  */
- /**
+/**
  * @swagger
  * /ebooks/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}:
  *   get:

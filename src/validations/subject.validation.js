@@ -5,6 +5,7 @@ const createSubject = {
   body: Joi.object().keys({
     name: Joi.string().required(),
     order: Joi.number().required(),
+    code: Joi.number(),
     boardId: Joi.string().custom(objectId).required(),
     mediumId: Joi.string().custom(objectId).required(),
     classId: Joi.string().custom(objectId).required(),
@@ -51,6 +52,7 @@ const updateSubject = {
       mediumId: Joi.string().required(),
       classId: Joi.string().required(),
       thumbnail: Joi.string(),
+      code: Joi.number(),
     })
     .min(1),
 };
