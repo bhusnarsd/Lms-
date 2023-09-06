@@ -78,10 +78,10 @@ const deleteEbookById = async (ebookId) => {
 };
 
 module.exports = {
-    createEbook,
-    queryEbook,
-    getEbookByFilter,
-    updateEbookById,
-    deleteEbookById,
-    getEbookById,
+  createEbook,
+  queryEbook,
+  getEbookByFilter,
+  updateEbookById,
+  deleteEbookById,
+  getEbookById,
 };

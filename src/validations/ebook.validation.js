@@ -11,7 +11,6 @@ const createEbook = {
     classId: Joi.string().custom(objectId),
     subjectId: Joi.string().custom(objectId),
     bookId: Joi.string().custom(objectId),
-
   }),
 };
 
@@ -45,14 +44,14 @@ const updateEbook = {
   }),
   body: Joi.object()
     .keys({
-        chapterId: Joi.string().custom(objectId),
-        path: Joi.string(),
-        order: Joi.number(),
-        boardId: Joi.string().custom(objectId),
-        mediumId: Joi.string().custom(objectId),
-        classId: Joi.string().custom(objectId),
-        subjectId: Joi.string().custom(objectId),
-        bookId: Joi.string().custom(objectId),
+      chapterId: Joi.string().custom(objectId),
+      path: Joi.string(),
+      order: Joi.number(),
+      boardId: Joi.string().custom(objectId),
+      mediumId: Joi.string().custom(objectId),
+      classId: Joi.string().custom(objectId),
+      subjectId: Joi.string().custom(objectId),
+      bookId: Joi.string().custom(objectId),
     })
     .min(1),
 };
@@ -64,7 +63,7 @@ const deleteEbook = {
 };
 
 module.exports = {
-    createEbook,
+  createEbook,
   getAllEbook,
   getEbookById,
   getEbookByFilter,

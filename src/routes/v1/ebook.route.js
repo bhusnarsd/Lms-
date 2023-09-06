@@ -1,19 +1,19 @@
 const express = require('express');
 const validate = require('../../middlewares/validate');
 const ebookController = require('../../controllers/ebook.controller');
-const {ebookValidation} = require('../../validations');
+const { ebookValidation } = require('../../validations');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(multimediaValidation.createMultimeda), ebookController.createEbook)
-  //.get(validate(multimediaValidation.getAllMultimedia), ebookController.getEbookById);
+  .post(validate(ebookValidation.createEbook), ebookController.createEbook)
+  .get(validate(ebookValidation.getAllEbook), ebookController.getEbook);
 
 router
   .route('/:ebookId')
   .get(validate(ebookValidation.getEbookById), ebookController.getEbookById)
-  .patch(validate(ebookValidation.updateEbook),  ebookController.updateEbook)
+  .patch(validate(ebookValidation.updateEbook), ebookController.updateEbook)
   .delete(validate(ebookValidation), ebookController.deleteEbook);
 
 router
@@ -53,6 +53,11 @@ module.exports = router;
  *             properties:
  *               path:
  *                 type: string
+<<<<<<< HEAD
+ *               multimediaType:
+ *                 type: string
+=======
+>>>>>>> origin/main
  *               order:
  *                 type: number
  *               boardId:
@@ -201,8 +206,11 @@ module.exports = router;
  *             properties:
  *               path:
  *                 type: string
- *               mediumType: 
+<<<<<<< HEAD
+ *               mediumType:
  *                 type: string
+=======
+>>>>>>> origin/main
  *               order:
  *                 type: string
  *               boardId:
@@ -260,7 +268,7 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  */
- /**
+/**
  * @swagger
  * /ebooks/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}:
  *   get:

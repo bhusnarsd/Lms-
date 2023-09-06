@@ -10,7 +10,7 @@ const createEbook = catchAsync(async (req, res) => {
 });
 
 const getEbook = catchAsync(async (req, res) => {
-  const filter = pick(req.query,['path']);
+  const filter = pick(req.query, ['path']);
   const options = pick(req.query, ['sortBy', 'limit', 'page']);
   const result = await ebookService.queryEbook(filter, options);
   res.send(result);
@@ -24,24 +24,14 @@ const getEbookById = catchAsync(async (req, res) => {
   res.send(ebook);
 });
 
-
-
 const getEbookByFilter = catchAsync(async (req, res) => {
-    const { boardId, mediumId, classId, subjectId, bookId} = req.params;
-    const ebook = await ebookService.getEbookByFilter(
-      boardId,
-      mediumId,
-      classId,
-      subjectId,
-      bookId,
-      
-    );
-    if (!ebook) {
-      throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
-    }
-    res.send(ebook);
-  });
-  
+  const { boardId, mediumId, classId, subjectId, bookId } = req.params;
+  const ebook = await ebookService.getEbookByFilter(boardId, mediumId, classId, subjectId, bookId);
+  if (!ebook) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Ebook not found');
+  }
+  res.send(ebook);
+});
 
 const updateEbook = catchAsync(async (req, res) => {
   const ebook = await ebookService.updateEbookById(req.params.ebookId, req.body);
@@ -54,10 +44,10 @@ const deleteEbook = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-    createEbook,
-    getEbookById,
-    updateEbook,
-    deleteEbook,
-    getEbook,
-    getEbookByFilter,
+  createEbook,
+  getEbookById,
+  updateEbook,
+  deleteEbook,
+  getEbook,
+  getEbookByFilter,
 };

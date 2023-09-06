@@ -12,7 +12,7 @@ const ebookSchema = mongoose.Schema(
       type: String,
     },
     order: {
-        type: Number
+      type: Number,
     },
     boardId: {
       type: mongoose.SchemaTypes.ObjectId,

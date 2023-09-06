@@ -18,7 +18,7 @@ const presentatorRoute = require('./presentator.route');
 const studioRoute = require('./studio.route');
 const multimediaRoute = require('./multimedia.route');
 const homeworkRoute = require('./homework.route');
-const ebookRoute = require('./ebook.route')
+const ebookRoute = require('./ebook.route');
 
 const router = express.Router();
 
