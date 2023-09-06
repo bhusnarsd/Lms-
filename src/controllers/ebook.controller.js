@@ -43,9 +43,9 @@ const deleteEbook = catchAsync(async (req, res) => {
 });
 
 module.exports = {
-    createEbook,
-    getEbookById,
-    getEbookByChapterId,
-    updateEbook,
-    deleteEbook,
+  createEbook,
+  getEbookById,
+  getEbookByChapterId,
+  updateEbook,
+  deleteEbook,
 };

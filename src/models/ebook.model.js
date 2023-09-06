@@ -4,10 +4,10 @@ const { toJSON, paginate } = require('./plugins');
 const ebookSchema = mongoose.Schema(
   {
     chapterId: {
-        type: mongoose.SchemaTypes.ObjectId,
-        ref: 'Chapter',
-        required: true,
-      },
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Chapter',
+      required: true,
+    },
     path: {
       type: String,
     },

@@ -17,3 +17,4 @@ module.exports.presentatorService = require('./presentator.service');
 module.exports.studioService = require('./studio.service');
 module.exports.multimediaService = require('./multimedia.service');
 module.exports.ebookService = require('./ebook.service');
+module.exports.HomeworkSerices = require('./homework.services');

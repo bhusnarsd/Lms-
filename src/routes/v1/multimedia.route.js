@@ -58,7 +58,7 @@ module.exports = router;
  *                 type: string
  *               multimediaType:
  *                 type: string
- *               order: 
+ *               order:
  *                 type: number
  *               boardId:
  *                 type: string
@@ -220,7 +220,7 @@ module.exports = router;
  *                 type: string
  *               path:
  *                 type: string
- *               mediumType: 
+ *               mediumType:
  *                 type: string
  *               order:
  *                 type: string

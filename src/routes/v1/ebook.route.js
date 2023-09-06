@@ -5,10 +5,8 @@ const multimediaValidation = require('../../validations/multimedia.validation');
 
 const router = express.Router();
 
-router
-  .route('/')
-  .post(validate(multimediaValidation.createMultimeda), ebookController.createEbook)
-  //.get(validate(multimediaValidation.getAllMultimedia), ebookController.getEbookById);
+router.route('/').post(validate(multimediaValidation.createMultimeda), ebookController.createEbook);
+// .get(validate(multimediaValidation.getAllMultimedia), ebookController.getEbookById);
 
 router
   .route('/:multimediaId')
@@ -58,7 +56,7 @@ module.exports = router;
  *                 type: string
  *               multimediaType:
  *                 type: string
- *               order: 
+ *               order:
  *                 type: number
  *               boardId:
  *                 type: string
@@ -220,7 +218,7 @@ module.exports = router;
  *                 type: string
  *               path:
  *                 type: string
- *               mediumType: 
+ *               mediumType:
  *                 type: string
  *               order:
  *                 type: string

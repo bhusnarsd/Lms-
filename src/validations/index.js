@@ -13,3 +13,4 @@ module.exports.quizeValidation = require('./quiz.validation');
 module.exports.studioValidation = require('./studio.validation');
 module.exports.presentatorValidation = require('./presentator.validation');
 module.exports.planvideoValidation = require('./planvideo.validation');
+module.exports.HomeworkValidation = require('./homework.validation');
