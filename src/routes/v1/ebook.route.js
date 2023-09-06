@@ -257,8 +257,10 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
- * /ebooks/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}/{chapterId}:
+ */
+ /**
+ * @swagger
+ * /ebooks/filter/{boardId}/{mediumId}/{classId}/{subjectId}/{bookId}:
  *   get:
  *     summary: Get a ebook
  *     tags: [Ebook]
@@ -287,10 +289,6 @@ module.exports = router;
  *         name: bookId
  *         required: true
  *         description: The ID of the book
- *       - in: path
- *         name: chapterId
- *         required: true
- *         description: The ID of the chapter
  *         schema:
  *           type: string
  *     responses:
