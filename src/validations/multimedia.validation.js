@@ -8,13 +8,13 @@ const createMultimeda = {
     icon2: Joi.string(),
     path: Joi.string(),
     multimediaType: Joi.string(),
+    order: Joi.number(),
     boardId: Joi.string().custom(objectId),
     mediumId: Joi.string().custom(objectId),
     classId: Joi.string().custom(objectId),
     subjectId: Joi.string().custom(objectId),
     bookId: Joi.string().custom(objectId),
     chapterId: Joi.string().custom(objectId),
-    lessionId: Joi.string().custom(objectId),
   }),
 };
 
@@ -41,7 +41,6 @@ const getMultimediaByFilter = {
     subjectId: Joi.string().custom(objectId).required(),
     bookId: Joi.string().custom(objectId).required(),
     chapterId: Joi.string().custom(objectId).required(),
-    lessionId: Joi.string().custom(objectId).required(),
   }),
 };
 
@@ -54,15 +53,15 @@ const updateMultimedia = {
       lessionName: Joi.string(),
       icon1: Joi.string(),
       icon2: Joi.string(),
-      path: Joi.string(),
+      path: Joi.number(),
       multimediaType: Joi.string(),
+      order: Joi.string(),
       boardId: Joi.string().custom(objectId),
       mediumId: Joi.string().custom(objectId),
       classId: Joi.string().custom(objectId),
       subjectId: Joi.string().custom(objectId),
       bookId: Joi.string().custom(objectId),
       chapterId: Joi.string().custom(objectId),
-      lessionId: Joi.string().custom(objectId),
     })
     .min(1),
 };

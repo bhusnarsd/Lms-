@@ -238,7 +238,7 @@ components:
         multumediaType:
           type: string
         order: 
-          type: string  
+          type: number  
         boardId:
           type: string
         mediumId: 
@@ -250,8 +250,6 @@ components:
         bookId:
           type: string          
         chapterId:
-          type: string
-        lessionId:
           type: string
       example:
         lessionName: English
@@ -266,10 +264,36 @@ components:
         subjectId: 64ca45e050227f21d906d
         bookId: 64ca45e050227f21d906d
         chapterId: 64ca45e050227f21d906d83c
-        lessionId: 64ca45e050227f21d906d83c
 
+    Ebook: 
+      type: object
+      properties:
 
-
+        path: 
+          type: string
+        order: 
+          type: number  
+        boardId:
+          type: string
+        mediumId: 
+          type: string
+        classId:
+          type: string
+        subjectId:
+          type: string
+        bookId:
+          type: string          
+        chapterId:
+          type: string
+      example:
+        path: multimedia/path
+        order: 1
+        boardId: 64ca45e050227f21d906d83c
+        mediumId: 64ca45e050227f21d906d
+        classId: 64ca45e050227f21d906d
+        subjectId: 64ca45e050227f21d906d
+        bookId: 64ca45e050227f21d906d
+        chapterId: 64ca45e050227f21d906d83c
     Token:
       type: object
       properties:
